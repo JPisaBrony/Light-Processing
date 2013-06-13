@@ -5,4 +5,4 @@ JPisaBrony aka JP
 
 Meoco55 aka Rellik55 aka Rellik
 
-ASSSSSSSSSSSSSSSS
+The repository for the Minecraft mod "Light Processing."
