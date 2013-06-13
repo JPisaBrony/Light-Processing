@@ -1,0 +1,21 @@
+[
+{
+  "modid": "LtP",
+  "name": "Light Processing",
+  "description": "Harness the powers of light and darkness to shape your world!",
+  "version": "0.0.1a",
+  "url": "",
+  "updateUrl": "",
+  "authorList": [
+    "Rellik55",
+    "JPisaBrony"
+  ],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [
+  ],
+  "parent":"",
+  "dependencies": [
+  ]
+}
+]
