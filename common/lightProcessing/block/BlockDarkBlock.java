@@ -13,7 +13,10 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.world.EnumSkyBlock;
+import net.minecraft.world.IWorldAccess;
 import net.minecraft.world.World;
+import net.minecraft.world.chunk.Chunk;
 
 public class BlockDarkBlock extends Block{
 
@@ -52,7 +55,9 @@ public class BlockDarkBlock extends Block{
 	    return false;
 	}
 	
-	
+	public void onBlockAdded(World par1World, int par2, int par3, int par4){
+
+	}
 	 @Override
 	    @SideOnly(Side.CLIENT)
 	    public void registerIcons(IconRegister iconRegister) {
