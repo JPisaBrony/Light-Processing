@@ -1,6 +1,8 @@
 package lightProcessing;
 
+import net.minecraftforge.common.Configuration;
 import lib.BlockTab;
+import lib.IDRef;
 import lib.ItemTab;
 import lib.Reference;
 import lightProcessing.network.CommonProxy;
@@ -40,7 +42,6 @@ public class LightProcessing {
 		lib.Blocks.InitBlocks();
 		lib.Items.InitItems();
 		lib.Recipes.InitRecipes();
-	
 		
 	}
 	

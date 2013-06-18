@@ -1,5 +1,6 @@
 package lightProcessing.block;
 
+import lib.IDRef;
 import lib.Methods;
 import lib.Reference;
 import cpw.mods.fml.relauncher.Side;
@@ -10,6 +11,7 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -34,6 +36,7 @@ public class BlockAbsBlock extends Block{
 			if(par5Entity.isBurning()){
 				par5Entity.extinguish();
 			}
+			par5Entity.fallDistance = 0.0F;
 		}
 	}
 	
@@ -57,11 +60,9 @@ public class BlockAbsBlock extends Block{
 	    return false;
 	}
 	
-	
 	 @Override
 	    @SideOnly(Side.CLIENT)
 	    public void registerIcons(IconRegister iconRegister) {
 	        blockIcon = iconRegister.registerIcon(Reference.MOD_ID.toLowerCase() + ":" + this.getUnlocalizedName2());
 	 }
-	
 }
