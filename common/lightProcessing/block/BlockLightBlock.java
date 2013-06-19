@@ -11,6 +11,9 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
@@ -30,6 +33,28 @@ public class BlockLightBlock extends Block{
 	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity){
 		if(par5Entity instanceof EntityLiving){
 			((EntityLiving)par5Entity).addPotionEffect(new PotionEffect(Potion.nightVision.getId(),400,50));
+		}
+		
+		
+		
+		
+		if(par5Entity instanceof EntityZombie && ((EntityZombie) par5Entity).isVillager()){
+			 EntityVillager entityvillager = new EntityVillager(par5Entity.worldObj);
+		        entityvillager.func_82149_j(par5Entity);
+		        entityvillager.initCreature();
+		        entityvillager.func_82187_q();
+
+		        if (((EntityZombie) par5Entity).isChild())
+		        {
+		            entityvillager.setGrowingAge(-24000);
+		        }
+
+		        par5Entity.worldObj.removeEntity(par5Entity);
+		        if(!par1World.isRemote){
+		        par5Entity.worldObj.spawnEntityInWorld(entityvillager);
+		        }
+		        entityvillager.addPotionEffect(new PotionEffect(Potion.confusion.id, 200, 0));
+		        par5Entity.worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1017, (int)par5Entity.posX, (int)par5Entity.posY, (int)par5Entity.posZ, 0);
 		}
 		if(par5Entity.isCreatureType(EnumCreatureType.monster, true)){
 		par5Entity.setFire(5);
