@@ -31,12 +31,15 @@ public class BlockLightBlock extends Block{
 	}
 
 	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity){
+		
+		//gives night vision
+		
 		if(par5Entity instanceof EntityLiving){
 			((EntityLiving)par5Entity).addPotionEffect(new PotionEffect(Potion.nightVision.getId(),400,50));
 		}
 		
 		
-		
+		//cures zombie villagers
 		
 		if(par5Entity instanceof EntityZombie && ((EntityZombie) par5Entity).isVillager()){
 			 EntityVillager entityvillager = new EntityVillager(par5Entity.worldObj);
@@ -56,6 +59,9 @@ public class BlockLightBlock extends Block{
 		        entityvillager.addPotionEffect(new PotionEffect(Potion.confusion.id, 200, 0));
 		        par5Entity.worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1017, (int)par5Entity.posX, (int)par5Entity.posY, (int)par5Entity.posZ, 0);
 		}
+		
+		//sets hostile mobs on fire
+		
 		if(par5Entity.isCreatureType(EnumCreatureType.monster, true)){
 		par5Entity.setFire(5);
 		}

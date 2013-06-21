@@ -9,4 +9,9 @@ public class CommonProxy {
 	{
 	 TickRegistry.registerTickHandler(new ServerTickHandler(), Side.SERVER);
 	}
+
+	public void registerRenderThings() {
+		// TODO Auto-generated method stub
+		
+	}
 }

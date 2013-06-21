@@ -6,6 +6,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import lib.IDRef;
 import lib.Reference;
+import lightProcessing.tiles.TileEntityAbsComp;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -13,6 +14,7 @@ import net.minecraft.dispenser.IPosition;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
@@ -32,10 +34,34 @@ public class BlockAbsComp extends Block{
 	        blockIcon = iconRegister.registerIcon(Reference.MOD_ID.toLowerCase() + ":" + this.getUnlocalizedName2());
 	 }
 	 
-	 
-	 @SideOnly(Side.CLIENT)
-		public void randomDisplayTick(World world, int x, int y, int z, Random random){
+	 @Override
+	 public boolean hasTileEntity(int metadata){
+		 return true;
 	 }
+	 
+	 @Override
+	 public boolean renderAsNormalBlock()
+		{
+			return false;
+		}
+		
+		@Override
+		public boolean isOpaqueCube()
+		{
+			return false;
+		}
+		
+		@Override
+		public TileEntity createTileEntity(World world, int metadata)
+		{
+			return new TileEntityAbsComp();
+		}
+		
+		@Override
+		public int getRenderType()
+		{
+			return -1;
+		}
 	 
 	 @SideOnly(Side.CLIENT)
 	 public void particles(World world, int x, int y, int z){
