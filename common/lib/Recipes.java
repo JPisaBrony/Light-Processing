@@ -21,8 +21,8 @@ public static void InitRecipes(){
 //TEMPORARY
 	GameRegistry.addRecipe(new ItemStack(lib.Items.ItemAbsIngot), "DLD", "LUL", "DLD", 'D', lib.Items.ItemDarkIngot, 'L', lib.Items.ItemLightIngot, 'U', lib.Items.ItemUnstableAbs);
 	GameRegistry.addRecipe(new ItemStack(lib.Items.ItemAbsIngot), "LDL", "DUD", "LDL", 'D', lib.Items.ItemDarkIngot, 'L', lib.Items.ItemLightIngot, 'U', lib.Items.ItemUnstableAbs);
-	GameRegistry.addRecipe(new ItemStack(lib.Items.ItemDarkBall), "OOO", "OEO", "OOO", 'O', Block.obsidian, 'E', Item.enderPearl);
-	GameRegistry.addRecipe(new ItemStack(lib.Items.ItemLightBall), "GGG", "GEG", "GGG", 'G', Block.glowStone, 'E', Item.enderPearl);
+	GameRegistry.addRecipe(new ItemStack(lib.Items.ItemDarkBall, 3), "OOO", "OEO", "OOO", 'O', Block.obsidian, 'E', Item.enderPearl);
+	GameRegistry.addRecipe(new ItemStack(lib.Items.ItemLightBall, 3), "GGG", "GEG", "GGG", 'G', Block.glowStone, 'E', Item.enderPearl);
 	GameRegistry.addRecipe(new ItemStack(lib.Items.ItemAbsRod), "ASA", "ASA", "ASA", 'A', lib.Items.ItemAbsIngot, 'S', Item.stick);
 }
 }
