@@ -6,7 +6,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import lib.IDRef;
 import lib.Reference;
-import lightProcessing.tiles.TileEntityAbsComp;
+import lightProcessing.tile.TileEntityAbsComp;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -16,6 +16,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockAbsComp extends Block{
@@ -62,9 +63,12 @@ public class BlockAbsComp extends Block{
 		{
 			return -1;
 		}
-	 
+		
+
+
+		
 	 @SideOnly(Side.CLIENT)
-	 public void particles(World world, int x, int y, int z){
+	 public static void particles(World world, int x, int y, int z){
 		 
 		 Random random = new Random();
 		 float f1 = (float)x + 0.5F;
@@ -86,66 +90,71 @@ public class BlockAbsComp extends Block{
 	 }
 	 
 	 
+	 public static void compress(World par1World, int par2, int par3, int par4){
+		 int id = par1World.getBlockId(par2 - 1, par3, par4);
+		 int id2 = par1World.getBlockId(par2 + 1, par3, par4);
+		 int id3 = par1World.getBlockId(par2, par3, par4 - 1);
+		 int id4 = par1World.getBlockId(par2, par3, par4 + 1);
+		 int id5 = par1World.getBlockId(par2, par3 + 1, par4);	 
+		 int light = IDRef.LIGHT_BLOCK_ID;
+		 int dark = IDRef.DARK_BLOCK_ID;
+		 
+		 ItemStack unAbStack  = new ItemStack(lib.Items.ItemUnstableAbs, 1);
+	     EntityItem entityitem = new EntityItem(par1World, par2 + 0.5, par3 + 1.15, par4 + 0.5, unAbStack);
+	     entityitem.motionX = 0;
+	     entityitem.motionY = 0;
+	     entityitem.motionZ = 0;
+	     
+		 
+		 if(id == light && id2 == dark){
+			 if(id5 == 0){
+			 par1World.setBlock(par2 -1, par3, par4, 0);
+			 par1World.setBlock(par2 +1, par3, par4, 0);
+			 particles(par1World, par2, par3, par4);	
+			 if(!par1World.isRemote){
+		     par1World.spawnEntityInWorld(entityitem);
+			 }
+			 }
+			 }
+		 else if(id == dark && id2 == light){
+			 if(id5 == 0){
+			 par1World.setBlock(par2 -1, par3, par4, 0);
+			 par1World.setBlock(par2 +1, par3, par4, 0);
+			 particles(par1World, par2, par3, par4);	
+			 if(!par1World.isRemote){
+			     par1World.spawnEntityInWorld(entityitem);
+				 }
+			 }
+		 }
+		 else if(id3 == light && id4 == dark){
+			 if(id5 == 0){
+			 par1World.setBlock(par2, par3, par4 - 1, 0);
+			 par1World.setBlock(par2, par3, par4 + 1, 0);
+			 particles(par1World, par2, par3, par4);
+			 if(!par1World.isRemote){
+			     par1World.spawnEntityInWorld(entityitem);
+				 }
+			 }
+		 }
+		 else if(id3 == dark && id4 == light){
+			 if(id5 == 0){
+			 par1World.setBlock(par2, par3, par4 - 1, 0);
+			 par1World.setBlock(par2, par3, par4 + 1, 0);
+			 particles(par1World, par2, par3, par4);	
+			 if(!par1World.isRemote){
+			     par1World.spawnEntityInWorld(entityitem);
+				 }
+			 }
+		 }
+		 }
+	 
+	 
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9)
     {
 		
 	 if(par5EntityPlayer.getCurrentItemOrArmor(0) == null){
-	 int id = par1World.getBlockId(par2 - 1, par3, par4);
-	 int id2 = par1World.getBlockId(par2 + 1, par3, par4);
-	 int id3 = par1World.getBlockId(par2, par3, par4 - 1);
-	 int id4 = par1World.getBlockId(par2, par3, par4 + 1);
-	 int id5 = par1World.getBlockId(par2, par3 + 1, par4);	 
-	 int light = IDRef.LIGHT_BLOCK_ID;
-	 int dark = IDRef.DARK_BLOCK_ID;
-	 
-	 ItemStack unAbStack  = new ItemStack(lib.Items.ItemUnstableAbs, 1);
-     EntityItem entityitem = new EntityItem(par1World, par2 + 0.5, par3 + 1.15, par4 + 0.5, unAbStack);
-     entityitem.motionX = 0;
-     entityitem.motionY = 0;
-     entityitem.motionZ = 0;
-     
-	 
-	 if(id == light && id2 == dark){
-		 if(id5 == 0){
-		 par1World.setBlock(par2 -1, par3, par4, 0);
-		 par1World.setBlock(par2 +1, par3, par4, 0);
-		 particles(par1World, par2, par3, par4);	
-		 if(!par1World.isRemote){
-	     par1World.spawnEntityInWorld(entityitem);
-		 }
-		 }
-		 }
-	 else if(id == dark && id2 == light){
-		 if(id5 == 0){
-		 par1World.setBlock(par2 -1, par3, par4, 0);
-		 par1World.setBlock(par2 +1, par3, par4, 0);
-		 particles(par1World, par2, par3, par4);	
-		 if(!par1World.isRemote){
-		     par1World.spawnEntityInWorld(entityitem);
-			 }
-		 }
+		 compress(par1World, par2, par3, par4);
 	 }
-	 else if(id3 == light && id4 == dark){
-		 if(id5 == 0){
-		 par1World.setBlock(par2, par3, par4 - 1, 0);
-		 par1World.setBlock(par2, par3, par4 + 1, 0);
-		 particles(par1World, par2, par3, par4);
-		 if(!par1World.isRemote){
-		     par1World.spawnEntityInWorld(entityitem);
-			 }
-		 }
-	 }
-	 else if(id3 == dark && id4 == light){
-		 if(id5 == 0){
-		 par1World.setBlock(par2, par3, par4 - 1, 0);
-		 par1World.setBlock(par2, par3, par4 + 1, 0);
-		 particles(par1World, par2, par3, par4);	
-		 if(!par1World.isRemote){
-		     par1World.spawnEntityInWorld(entityitem);
-			 }
-		 }
-	 }
-	 }
-	 return false;
-    }
+	return false;
+}
 }

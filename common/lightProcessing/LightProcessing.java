@@ -6,7 +6,7 @@ import lib.IDRef;
 import lib.ItemTab;
 import lib.Reference;
 import lightProcessing.network.CommonProxy;
-import lightProcessing.tiles.TileEntityAbsComp;
+import lightProcessing.tile.TileEntityAbsComp;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;

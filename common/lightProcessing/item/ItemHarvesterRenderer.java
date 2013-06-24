@@ -1,7 +1,7 @@
 package lightProcessing.item;
 
-import lightProcessing.tiles.TileEntityAbsComp;
-import lightProcessing.tiles.TileEntityHarvester;
+import lightProcessing.tile.TileEntityAbsComp;
+import lightProcessing.tile.TileEntityHarvester;
 import mods.LtP.models.ModelAbsComp;
 import mods.LtP.models.ModelHarvester;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;

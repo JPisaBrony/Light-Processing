@@ -2,10 +2,10 @@ package lightProcessing.network;
 
 import lightProcessing.item.ItemAbsCompRenderer;
 import lightProcessing.item.ItemHarvesterRenderer;
-import lightProcessing.tiles.TileEntityAbsComp;
-import lightProcessing.tiles.TileEntityAbsCompRender;
-import lightProcessing.tiles.TileEntityHarvester;
-import lightProcessing.tiles.TileEntityHarvesterRender;
+import lightProcessing.tile.TileEntityAbsComp;
+import lightProcessing.tile.TileEntityAbsCompRender;
+import lightProcessing.tile.TileEntityHarvester;
+import lightProcessing.tile.TileEntityHarvesterRender;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import net.minecraftforge.client.IItemRenderer;
 import net.minecraftforge.client.MinecraftForgeClient;
