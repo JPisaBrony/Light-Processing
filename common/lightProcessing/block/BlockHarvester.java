@@ -7,7 +7,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import lib.BlockTab;
 import lib.Reference;
 import lightProcessing.LightProcessing;
-import lightProcessing.gui.TileEntityHarvester;
+import lightProcessing.tiles.TileEntityHarvester;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -30,32 +30,41 @@ public class BlockHarvester extends BlockContainer{
 		this.setCreativeTab(BlockTab.blockTab);
 	}
 	
-	@SideOnly(Side.CLIENT)
-	private Icon iconTop;
-	private Icon iconSides;
 	
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister par1IconRegister)
 	{
-		iconSides = par1IconRegister.registerIcon(Reference.MOD_ID + ":" + this.getUnlocalizedName2());
-		iconTop = par1IconRegister.registerIcon(Reference.MOD_ID + ":" + this.getUnlocalizedName2() + "Top");
+		this.blockIcon = par1IconRegister.registerIcon(Reference.MOD_ID + ":" + this.getUnlocalizedName2() + "Top");
 	}
 	
-	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int par1, int par2)
-	{
-		switch(par1)
+	 @Override
+	 public boolean hasTileEntity(int metadata){
+		 return true;
+	 }
+	 
+	 @Override
+	 public boolean renderAsNormalBlock()
 		{
-			case 1:
-			{
-				return iconTop;
-			}
-			default:
-			{
-				return iconSides;
-			}
+			return false;
 		}
-	}
+		
+		@Override
+		public boolean isOpaqueCube()
+		{
+			return false;
+		}
+		
+		@Override
+		public TileEntity createTileEntity(World world, int metadata)
+		{
+			return new TileEntityHarvester();
+		}
+		
+		@Override
+		public int getRenderType()
+		{
+			return -1;
+		}
 	
 	
 	public void onBlockAdded(World par1World, int x, int y, int z){
