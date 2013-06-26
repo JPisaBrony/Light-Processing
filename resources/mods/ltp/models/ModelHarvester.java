@@ -1,4 +1,4 @@
-package mods.LtP.models;
+package mods.ltp.models;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;

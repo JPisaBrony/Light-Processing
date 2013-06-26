@@ -2,8 +2,8 @@ package lightProcessing.tile;
 
 import org.lwjgl.opengl.GL11;
 
-import mods.LtP.models.ModelAbsComp;
-import mods.LtP.models.ModelHarvester;
+import mods.ltp.models.ModelAbsComp;
+import mods.ltp.models.ModelHarvester;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;

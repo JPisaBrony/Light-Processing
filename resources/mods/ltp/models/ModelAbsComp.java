@@ -9,7 +9,7 @@
 
 
 
-package mods.LtP.models;
+package mods.ltp.models;
 
 import lightProcessing.tile.TileEntityAbsComp;
 import net.minecraft.client.model.ModelBase;
