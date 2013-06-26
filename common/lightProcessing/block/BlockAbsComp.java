@@ -71,7 +71,7 @@ public class BlockAbsComp extends Block{
 	 public static void particles(World world, int x, int y, int z){
 		 
 		 Random random = new Random();
-		 float f1 = (float)x + 0.5F;
+		 	float f1 = (float)x + 0.5F;
 			float f2 = (float)y + 1.1F;
 			float f3 = (float)z + 0.5F; 
 			float f4 = random.nextFloat() * 0.6F -0.3F;
