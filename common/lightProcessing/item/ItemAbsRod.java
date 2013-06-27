@@ -26,8 +26,6 @@ public class ItemAbsRod extends Item{
 		public EnumRarity getRarity(ItemStack par1ItemStack){
 			return EnumRarity.epic;
 		}
-		
-		  @Override
 		  @SideOnly(Side.CLIENT)
 		    public void registerIcons(IconRegister iconRegister)
 		    {

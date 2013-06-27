@@ -24,5 +24,6 @@ public static void InitRecipes(){
 	GameRegistry.addRecipe(new ItemStack(lib.Items.ItemDarkBall, 3), "OOO", "OEO", "OOO", 'O', Block.obsidian, 'E', Item.enderPearl);
 	GameRegistry.addRecipe(new ItemStack(lib.Items.ItemLightBall, 3), "GGG", "GEG", "GGG", 'G', Block.glowStone, 'E', Item.enderPearl);
 	GameRegistry.addRecipe(new ItemStack(lib.Items.ItemAbsRod), "ASA", "ASA", "ASA", 'A', lib.Items.ItemAbsIngot, 'S', Item.stick);
+	GameRegistry.addRecipe(new ItemStack(lib.Blocks.BlockHarvester), "SGS", "LSO", "SSS", 'S', Block.stone, 'G', Block.glass, 'L', Block.glowStone, 'O', Block.obsidian);
 }
 }
