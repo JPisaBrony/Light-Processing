@@ -97,36 +97,19 @@ public class BlockHarvester extends BlockContainer{
 	
 	
 	
-        @Override
-        public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9)
-        {
-        	 if(par5EntityPlayer.getCurrentItemOrArmor(0) == null){
-        		 EntityItem entityitem;
-        		 ItemStack lightStack  = new ItemStack(lib.Items.ItemLightBall, 1);
-        	     ItemStack darkStack  = new ItemStack(lib.Items.ItemDarkBall, 1);
-        	     if(TileEntityHarvester.Light > 0.8F){
-        	     entityitem = new EntityItem(par1World, par2 + 0.5, par3 + 1.5, par4 + 0.5, lightStack);
-        	     }
-        	     else{
-        	     entityitem = new EntityItem(par1World, par2 + 0.5, par3 + 1.5, par4 + 0.5, darkStack);
-        	     }
-        	    	 
-        	     entityitem.motionX = 0;
-        	     entityitem.motionY = 0;
-        	     entityitem.motionZ = 0;
-        	     
-        	     
-        	     
-        	     if(!par1World.isRemote){
-        	    	 System.out.println(TileEntityHarvester.Light);
-        	   par1World.spawnEntityInWorld(entityitem);
-        	   
-        	 }
-        	 }
-        	
-        	
-        	return false;
-              }
+	@Override
+    public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9)
+    {
+      if(par5EntityPlayer.getCurrentItemOrArmor(0) == null){
+       
+       TileEntityHarvester te = (TileEntityHarvester) par1World.getBlockTileEntity(par2, par3, par4);
+       float Light = par1World.getLightBrightness(par2, par3 + 1, par4);
+       te.Spawn(Light);
+       
+      }
+      return false;
+
+      }
  
 
         @Override

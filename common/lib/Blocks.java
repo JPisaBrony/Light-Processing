@@ -13,6 +13,7 @@ public class Blocks {
 	public static Block BlockAbsBlock;
 	public static Block BlockHarvester;
 	public static Block BlockAbsComp;
+	public static Block BlockDarkGen;
 	
 	public static void InitBlocks(){
 		
@@ -44,6 +45,12 @@ public class Blocks {
 		BlockAbsComp = (new lightProcessing.block.BlockAbsComp(IDRef.ABS_COMP_ID, Material.rock));
 		GameRegistry.registerBlock(BlockAbsComp, "AbsComp");
 		LanguageRegistry.addName(BlockAbsComp, "Absolution Compressor");
+		/////////////
+		
+		//DARKNESS GENERATOR
+		BlockDarkGen = (new lightProcessing.block.BlockDarkGen(IDRef.DARK_GEN_ID, Material.rock));
+		GameRegistry.registerBlock(BlockDarkGen, "DarkGen");
+		LanguageRegistry.addName(BlockDarkGen, "Darkness Generator");
 		/////////////
 	}
 	

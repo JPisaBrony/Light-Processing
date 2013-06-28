@@ -8,6 +8,7 @@ public class IDRef {
 	public static int LIGHT_BLOCK_ID = 3002;
 	public static int HARVESTER_ID = 3003;
 	public static int ABS_COMP_ID = 3004;
+	public static int DARK_GEN_ID = 3005;
 	
 	//items
 	public static int ABS_INGOT_ID = 3005;
