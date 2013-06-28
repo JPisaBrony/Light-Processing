@@ -31,7 +31,17 @@ public class BlockHarvester extends BlockContainer{
 	public BlockHarvester (int par1, Material material){
 		super(par1, Material.rock);
 		this.setUnlocalizedName("Harvester");
+		this.setHardness(10);
 		this.setCreativeTab(BlockTab.blockTab);
+		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+	}
+	
+	
+	public static void Essence(World par1World, int par2, int par3, int par4){
+		
+		TileEntityHarvester te = (TileEntityHarvester) par1World.getBlockTileEntity(par2, par3, par4);
+  		 float Light = par1World.getLightBrightness(par2, par3 + 1, par4);
+  		 te.Spawn(Light);
 	}
 	
 	
@@ -40,6 +50,7 @@ public class BlockHarvester extends BlockContainer{
 	{
 		this.blockIcon = par1IconRegister.registerIcon(Reference.MOD_ID + ":" + this.getUnlocalizedName2() + "Top");
 	}
+	
 	
 	 @Override
 	 public boolean hasTileEntity(int metadata){
@@ -96,7 +107,29 @@ public class BlockHarvester extends BlockContainer{
 		           world.spawnParticle("instantSpell", (double)f1 +  f4, (double)f2, (double)f3 + f5, 0.0D, 0.0D, 0.0D);
 			   
 		   }
-	
+		
+		 public void addCollisionBoxesToList(World par1World, int par2, int par3, int par4, AxisAlignedBB par5AxisAlignedBB, List par6List, Entity par7Entity)
+		    {
+			 	this.setBlockBounds(0.0F, 0.815F, 0.0F, 1.0F, 0.8715F, 1.0F);
+		        super.addCollisionBoxesToList(par1World, par2, par3, par4, par5AxisAlignedBB, par6List, par7Entity);
+		        this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.06F);
+		        super.addCollisionBoxesToList(par1World, par2, par3, par4, par5AxisAlignedBB, par6List, par7Entity);
+		        this.setBlockBounds(0.94F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+		        super.addCollisionBoxesToList(par1World, par2, par3, par4, par5AxisAlignedBB, par6List, par7Entity);
+		        this.setBlockBounds(0.0F, 0.0F, 0.94F, 1.0F, 1.0F, 1.0F);
+		        super.addCollisionBoxesToList(par1World, par2, par3, par4, par5AxisAlignedBB, par6List, par7Entity);
+		        this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.06F, 1.0F);
+		        super.addCollisionBoxesToList(par1World, par2, par3, par4, par5AxisAlignedBB, par6List, par7Entity);
+		        this.setBlockBounds(0.0F, 0.0F, 0.0F, 0.06F, 1.0F, 1.0F);
+		        super.addCollisionBoxesToList(par1World, par2, par3, par4, par5AxisAlignedBB, par6List, par7Entity);
+		    }
+		
+		 @Override
+			public void setBlockBoundsBasedOnState(IBlockAccess par1IBlockAccess, int par2, int par3, int par4)
+		    {
+		        this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F);
+		    }
+		
 	public void onBlockAdded(World par1World, int x, int y, int z){
 		super.onBlockAdded(par1World, x, y, z);
 		par1World.markBlockForUpdate(x, y, z);
