@@ -16,7 +16,7 @@ public class TileEntityHarvester extends TileEntity{
 	
 	@Override
 	public void updateEntity(){
-		 if(r.nextInt(500) == 0)
+		 if(r.nextInt(1000) == 0)
 	        {
 	        BlockHarvester.Essence(this.worldObj, this.xCoord, this.yCoord, this.zCoord);
 	        }

@@ -1,5 +1,7 @@
 package lightProcessing;
 
+import java.util.logging.Level;
+
 import net.minecraftforge.common.Configuration;
 import lib.BlockTab;
 import lib.IDRef;
@@ -7,6 +9,7 @@ import lib.ItemTab;
 import lib.Reference;
 import lightProcessing.network.CommonProxy;
 import lightProcessing.tile.TileEntityAbsComp;
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -38,17 +41,37 @@ public class LightProcessing {
 	
 	@PreInit
 	public void preInit(FMLPreInitializationEvent event){
-		
-		ItemTab.InitTab();
-		BlockTab.InitTab();
-		lib.Blocks.InitBlocks();
-		lib.Items.InitItems();
-		lib.Recipes.InitRecipes();
-		lib.Tiles.registerTiles();
-		
+		//CONFIG
+		 Configuration config = new Configuration(event.getSuggestedConfigurationFile());
+		 config.load();
+		 
+		 //blocks
+		 IDRef.ABS_BLOCK_ID = config.get(config.CATEGORY_BLOCK, "AbsBlock", IDRef.ABS_BLOCK_IDD).getInt();
+		 IDRef.DARK_BLOCK_ID = config.get(config.CATEGORY_BLOCK, "DarkBlock", IDRef.DARK_BLOCK_IDD).getInt();
+		 IDRef.LIGHT_BLOCK_ID = config.get(config.CATEGORY_BLOCK, "LightBlock", IDRef.LIGHT_BLOCK_IDD).getInt();
+		 IDRef.HARVESTER_ID = config.get(config.CATEGORY_BLOCK, "Harvester", IDRef.HARVESTER_IDD).getInt();
+		 IDRef.ABS_COMP_ID = config.get(config.CATEGORY_BLOCK, "AbsComp", IDRef.ABS_COMP_ID).getInt();
+		 
+		 //items
+		 IDRef.ABS_INGOT_ID = config.get(config.CATEGORY_ITEM, "AbsIngot", IDRef.ABS_INGOT_IDD).getInt();
+		 IDRef.ABS_ROD_ID = config.get(config.CATEGORY_ITEM, "AbsRod", IDRef.ABS_ROD_IDD).getInt();
+		 IDRef.DARK_BALL_ID = config.get(config.CATEGORY_ITEM, "DarkBall", IDRef.DARK_BALL_IDD).getInt();
+		 IDRef.DARK_INGOT_ID = config.get(config.CATEGORY_ITEM, "DarkIngot", IDRef.DARK_INGOT_IDD).getInt();
+		 IDRef.LIGHT_BALL_ID = config.get(config.CATEGORY_ITEM, "LightBall", IDRef.LIGHT_BALL_IDD).getInt();
+		 IDRef.LIGHT_INGOT_ID = config.get(config.CATEGORY_ITEM, "LightIngot", IDRef.LIGHT_INGOT_IDD).getInt();
+		 IDRef.UNSTABLE_ABS_ID = config.get(config.CATEGORY_ITEM, "UnstableAbs", IDRef.UNSTABLE_ABS_IDD).getInt();
+		 config.save();
+	
+		 
 		 proxy.registerRenderThings();
-         GameRegistry.registerTileEntity(TileEntityAbsComp.class, "tileEntityAbsComp");
-         
+		 ItemTab.InitTab();
+		 BlockTab.InitTab();
+	   	 lib.Blocks.InitBlocks();
+		 lib.Items.InitItems();
+		 lib.Recipes.InitRecipes();
+		 lib.Tiles.registerTiles();
+			
+			
 		
 		
 		
