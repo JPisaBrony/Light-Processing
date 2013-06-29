@@ -60,13 +60,17 @@ public class BlockHarvester extends BlockContainer{
 	   @Override
 	   public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9)
 	   {
-	   	 if(par5EntityPlayer.getCurrentItemOrArmor(0) == null){
+		   
+	   /*	Commented out for now, possibly to be re-implemented later.
+	    
+	     	if(par5EntityPlayer.getCurrentItemOrArmor(0) == null){
 	   		 
 	   		 TileEntityHarvester te = (TileEntityHarvester) par1World.getBlockTileEntity(par2, par3, par4);
 	   		 float Light = par1World.getLightBrightness(par2, par3 + 1, par4);
 	   		 te.Spawn(Light);
 	   		 
 	   	 }
+	   	 */
 	   	 return false;
 
 	   	 }

@@ -51,7 +51,6 @@ public class TileEntityHarvester extends TileEntity{
    	     
    	     if(!this.worldObj.isRemote){
    	  this.worldObj.spawnEntityInWorld(entityitem);
-   	  System.out.println(Light2);
    	     }
 		
 	}

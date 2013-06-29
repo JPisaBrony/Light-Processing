@@ -44,6 +44,7 @@ public class LightProcessing {
 		lib.Blocks.InitBlocks();
 		lib.Items.InitItems();
 		lib.Recipes.InitRecipes();
+		lib.Tiles.registerTiles();
 		
 		 proxy.registerRenderThings();
          GameRegistry.registerTileEntity(TileEntityAbsComp.class, "tileEntityAbsComp");
