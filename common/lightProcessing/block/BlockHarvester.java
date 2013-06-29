@@ -122,6 +122,7 @@ public class BlockHarvester extends BlockContainer{
 		        super.addCollisionBoxesToList(par1World, par2, par3, par4, par5AxisAlignedBB, par6List, par7Entity);
 		        this.setBlockBounds(0.0F, 0.0F, 0.0F, 0.06F, 1.0F, 1.0F);
 		        super.addCollisionBoxesToList(par1World, par2, par3, par4, par5AxisAlignedBB, par6List, par7Entity);
+		       
 		    }
 		
 		 @Override
