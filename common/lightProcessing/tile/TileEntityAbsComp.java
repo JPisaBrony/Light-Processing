@@ -5,11 +5,14 @@ import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityAbsComp extends TileEntity
 {
+	
+	
 	@Override
 	public void updateEntity(){
-		
-if(this.worldObj.getBlockPowerInput(this.xCoord, this.yCoord, this.zCoord) > 0){
-BlockAbsComp.compress(this.worldObj, this.xCoord, this.yCoord, this.zCoord);
-}
+		if(lib.Methods.isPowered(this.worldObj, this.xCoord, this.yCoord, this.zCoord)){
+			BlockAbsComp.compress(this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+		}
 	}
+	
+	
 }

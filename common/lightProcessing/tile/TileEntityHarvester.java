@@ -2,6 +2,7 @@ package lightProcessing.tile;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import lib.IDRef;
 import lightProcessing.block.BlockHarvester;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,10 +14,18 @@ import net.minecraft.world.World;
 public class TileEntityHarvester extends TileEntity{
 
 	private java.util.Random r = new java.util.Random();
+	private int chance;
+	
 	
 	@Override
 	public void updateEntity(){
-		 if(r.nextInt(1000) == 0)
+		if (this.worldObj.getBlockId(this.xCoord, this.yCoord + 1, this.zCoord) == IDRef.LIGHT_BLOCK_ID ||this.worldObj.getBlockId(this.xCoord, this.yCoord + 1, this.zCoord) == IDRef.DARK_BLOCK_ID){
+			chance = 500;
+		}
+		else{
+			chance = 800;
+			}
+		 if(r.nextInt(chance) == 0)
 	        {
 	        BlockHarvester.Essence(this.worldObj, this.xCoord, this.yCoord, this.zCoord);
 	        }

@@ -28,6 +28,10 @@ public class BlockAbsComp extends Block{
 		this.setUnlocalizedName("AbsComp");
 	}
 	
+	@Override
+	public boolean canConnectRedstone(IBlockAccess world, int x, int y, int z, int side){
+		return true;
+	}
 	
 	 @Override
 	    @SideOnly(Side.CLIENT)
