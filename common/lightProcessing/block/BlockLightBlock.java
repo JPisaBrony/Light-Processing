@@ -33,6 +33,7 @@ public class BlockLightBlock extends Block{
 
 	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity){
 		
+		
 		//gives night vision
 		
 		if(par5Entity instanceof EntityLiving){
@@ -66,6 +67,24 @@ public class BlockLightBlock extends Block{
 		if(par5Entity.isCreatureType(EnumCreatureType.monster, true)){
 		par5Entity.setFire(5);
 		}
+		
+		//Light Motion (Horizontal)
+		
+		if(lib.Methods.isPowered(par1World, par2, par3, par4)){
+			if(Math.abs(par5Entity.motionX) > Math.abs(par5Entity.motionZ) && par5Entity.motionX > 0){
+				par5Entity.motionX = par5Entity.motionX + 0.1;
+			}
+			else if(Math.abs(par5Entity.motionX) > Math.abs(par5Entity.motionZ) && par5Entity.motionX < 0){
+				par5Entity.motionX = par5Entity.motionX - 0.1;
+			}
+			else if(Math.abs(par5Entity.motionX) < Math.abs(par5Entity.motionZ) && par5Entity.motionZ > 0){
+				par5Entity.motionZ = par5Entity.motionZ + 0.1;
+			}
+			else{
+				par5Entity.motionZ = par5Entity.motionZ - 0.1;
+			}
+		}
+		
 	}
 	
 	public boolean isOpaqueCube()

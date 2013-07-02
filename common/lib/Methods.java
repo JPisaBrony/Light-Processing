@@ -32,6 +32,27 @@ public class Methods {
 		}
 	}
 	
+	public static boolean isPoweredDirect(World world, int x, int y, int z){
+		if(world.getBlockPowerInput(x, y, z) > 0){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
+	public static boolean isPoweredIndirect(World world, int x, int y, int z){
+		if(world.getBlockPowerInput(x, y, z) > 0){
+			return true;
+		}
+		else if(world.isBlockIndirectlyGettingPowered(x, y, z)){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
 	public static String textureName(String unLocNam){
 		return Reference.MOD_ID.toLowerCase() + ":" + unLocNam;
 	}

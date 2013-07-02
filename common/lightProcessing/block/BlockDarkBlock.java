@@ -30,35 +30,15 @@ public class BlockDarkBlock extends Block{
 		this.setCreativeTab(lib.BlockTab.blockTab);
 		this.setUnlocalizedName("DarkBlock");
 	}
-
-	public int power = 0;
 	
-	/*
-	@Override
-	public boolean canProvidePower()
-	{
-		return true;
-	}
-	*/
 	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity){
 		if(par5Entity instanceof EntityLiving){
 			((EntityLiving)par5Entity).addPotionEffect(new PotionEffect(Potion.blindness.getId(),400,50));
 		}
 		
-		/*
 		if(lib.Methods.isPowered(par1World, par2, par3, par4)){
-			if(par1World.getBlockId(par2, par3 + 1, par4) == IDRef.DARK_BLOCK_ID){
-				power = 1;
-			}
-			if(par5Entity.motionY < 0.08){
-				par5Entity.motionY = 0.08;
-			}
-			par5Entity.motionY = par5Entity.motionY + 0.08;
+				par5Entity.motionY = par5Entity.motionY + 0.05;
 		}
-		else{
-			power = 0;
-		}
-		*/
 	}
 	
 	public boolean isOpaqueCube()
@@ -81,25 +61,6 @@ public class BlockDarkBlock extends Block{
 	    return false;
 	}
 	
-	public void onBlockAdded(World par1World, int par2, int par3, int par4){
-		power = 0;
-	}
-	
-	 public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {
-		 if(!lib.Methods.isPowered(par1World, par2, par3, par4)){
-			 power = 0;
-		 }
-	 }
-	
-	 public int isProvidingStrongPower(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5){
-		 
-		 if(par5 == 0){
-		 return power;
-		 }
-		 else{
-			 return 0;
-		 }
-	    }
 	
 	 @Override
 	    @SideOnly(Side.CLIENT)

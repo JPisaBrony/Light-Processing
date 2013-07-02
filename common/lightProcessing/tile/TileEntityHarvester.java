@@ -59,7 +59,9 @@ public class TileEntityHarvester extends TileEntity{
    	     
    	     
    	     if(!this.worldObj.isRemote){
+   	    	 if(!lib.Methods.isPoweredIndirect(this.worldObj, this.xCoord, this.yCoord, this.zCoord)){
    	  this.worldObj.spawnEntityInWorld(entityitem);
+   	     }
    	     }
 		
 	}
