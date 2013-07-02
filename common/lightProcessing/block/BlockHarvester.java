@@ -46,6 +46,20 @@ public class BlockHarvester extends BlockContainer{
 		 return true;
 	 }
 	 
+	   @Override
+	   public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9)
+	   {
+	   	 if(par5EntityPlayer.getCurrentItemOrArmor(0) == null){
+	   		 
+	   		 TileEntityHarvester te = (TileEntityHarvester) par1World.getBlockTileEntity(par2, par3, par4);
+	   		 float Light = par1World.getLightBrightness(par2, par3 + 1, par4);
+	   		 te.Spawn(Light);
+	   		 
+	   	 }
+	   	 return false;
+
+	   	 }
+	 
 	 @Override
 	 public boolean renderAsNormalBlock()
 		{
@@ -56,12 +70,6 @@ public class BlockHarvester extends BlockContainer{
 		public boolean isOpaqueCube()
 		{
 			return false;
-		}
-		
-		@Override
-		public TileEntity createTileEntity(World world, int metadata)
-		{
-			return new TileEntityHarvester();
 		}
 		
 		@Override
@@ -93,10 +101,8 @@ public class BlockHarvester extends BlockContainer{
 		super.onBlockAdded(par1World, x, y, z);
 		par1World.markBlockForUpdate(x, y, z);
 	}
-	
-	
-	
-	
+ 
+
 	@Override
     public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9)
     {
@@ -110,8 +116,6 @@ public class BlockHarvester extends BlockContainer{
       return false;
 
       }
- 
-
         @Override
         public TileEntity createNewTileEntity(World world) {
                 return new TileEntityHarvester();
