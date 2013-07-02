@@ -36,7 +36,7 @@ public class TileEntityHarvester extends TileEntity{
 		 bb = AxisAlignedBB.getAABBPool().getAABB(xCoord - 1, yCoord, zCoord - 1, xCoord + 2, yCoord + 2, zCoord + 2);
 		 return bb;
 	 }
-	
+ 
 	public void Spawn(Float Light2){
 		 ItemStack lightStack  = new ItemStack(lib.Items.ItemLightBall, 1);
    	     ItemStack darkStack  = new ItemStack(lib.Items.ItemDarkBall, 1);
@@ -66,4 +66,3 @@ public class TileEntityHarvester extends TileEntity{
 		
 	}
 }
-
