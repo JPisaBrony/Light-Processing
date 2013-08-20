@@ -14,7 +14,6 @@ public class Blocks {
 	public static Block BlockAbsBlock;
 	public static Block BlockHarvester;
 	public static Block BlockAbsComp;
-	public static Block BlockPoweredDarkBlock;
 	
 	public static void InitBlocks(){
 		

@@ -68,6 +68,9 @@ public class BlockDarkBlock extends Block{
 	    
 	public int onBlockPlaced(World par1World, int par2, int par3, int par4, int par5, float par6, float par7, float par8, int par9)
     {
+		if(par1World.getBlockMetadata(par2, par3, par4) == 2){
+			this.setBlockUnbreakable();
+		}
 		if(par1World.getBlockId(par2, par3 - 1, par4) == 2){
 			
 			par1World.setBlock(par2, par3 - 1, par4, 3);
@@ -89,6 +92,7 @@ public class BlockDarkBlock extends Block{
 	}
 	
 	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity){
+		if(par1World.getBlockMetadata(par2, par3, par4) != 2){
 		if(par5Entity instanceof EntityLiving){
 			((EntityLiving)par5Entity).addPotionEffect(new PotionEffect(Potion.blindness.getId(),400,50));
 		}
@@ -103,18 +107,19 @@ public class BlockDarkBlock extends Block{
 		par5Entity.motionY = par5Entity.motionY + 0.05;
 		}
 		}
+		}
 	}
 	
 	 public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5) {
-		if(lib.Methods.isPowered(par1World, par2, par3, par4)){
-			//par1World.setBlock(par2, par3, par4, IDRef.POWERED_DARK_BLOCK_ID);
+		 if(par1World.getBlockMetadata(par2, par3, par4) != 2){
+		 if(lib.Methods.isPowered(par1World, par2, par3, par4)){
 			par1World.setBlockMetadataWithNotify(par2, par3, par4, 1, 3);
 		}
 		else
 		{
 			par1World.setBlockMetadataWithNotify(par2, par3, par4, 0, 3);
 		}
-		
+		 }
 	}
 	
 	public boolean isOpaqueCube()
