@@ -1,5 +1,6 @@
 package lightProcessing.item;
 
+import lib.Methods;
 import lib.Reference;
 import lightProcessing.LightProcessing;
 import cpw.mods.fml.relauncher.Side;
@@ -57,7 +58,7 @@ public class ItemUnstableAbs extends Item{
         	}
         	default:
         	{
-        
+        		break;
         	}
         }
         }
@@ -101,6 +102,6 @@ public class ItemUnstableAbs extends Item{
 	  @SideOnly(Side.CLIENT)
 	    public void registerIcons(IconRegister iconRegister)
 	    {
-	    	itemIcon = iconRegister.registerIcon(Reference.MOD_ID.toLowerCase() + ":" + this.getUnlocalizedName());
+		  itemIcon = iconRegister.registerIcon(Methods.textureName(this.getUnlocalizedName()));
 	}
 	}

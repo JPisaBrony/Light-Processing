@@ -6,6 +6,7 @@ public class IDRef {
 	public static int ABS_BLOCK_ID;
 	public static int DARK_BLOCK_ID;
 	public static int LIGHT_BLOCK_ID;
+	public static int LIGHT_WOOD_ID;
 	public static int HARVESTER_ID;
 	public static int ABS_COMP_ID;
 	
@@ -23,16 +24,17 @@ public class IDRef {
 	public static int ABS_BLOCK_IDD = 3000;
 	public static int DARK_BLOCK_IDD = 3001;
 	public static int LIGHT_BLOCK_IDD = 3002;
-	public static int HARVESTER_IDD = 3003;
-	public static int ABS_COMP_IDD = 3004;
+	public static int LIGHT_WOOD_IDD = 3003;
+	public static int HARVESTER_IDD = 3004;
+	public static int ABS_COMP_IDD = 3005;
 	
 	//items default
-	public static int ABS_INGOT_IDD = 3005;
-	public static int ABS_ROD_IDD = 3006;
-	public static int DARK_BALL_IDD = 3007;
-	public static int DARK_INGOT_IDD = 3008;
-	public static int LIGHT_BALL_IDD = 3009;
-	public static int LIGHT_INGOT_IDD = 3010;
-	public static int UNSTABLE_ABS_IDD = 3011;
+	public static int ABS_INGOT_IDD = 3006;
+	public static int ABS_ROD_IDD = 3007;
+	public static int DARK_BALL_IDD = 3008;
+	public static int DARK_INGOT_IDD = 3009;
+	public static int LIGHT_BALL_IDD = 30010;
+	public static int LIGHT_INGOT_IDD = 3011;
+	public static int UNSTABLE_ABS_IDD = 3012;
 
 }

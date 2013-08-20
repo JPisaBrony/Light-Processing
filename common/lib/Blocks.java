@@ -9,10 +9,12 @@ public class Blocks {
 
 	//vars
 	public static Block BlockLightBlock;
+	public static Block BlockLightWood;
 	public static Block BlockDarkBlock;
 	public static Block BlockAbsBlock;
 	public static Block BlockHarvester;
 	public static Block BlockAbsComp;
+	public static Block BlockPoweredDarkBlock;
 	
 	public static void InitBlocks(){
 		
@@ -22,11 +24,16 @@ public class Blocks {
 		LanguageRegistry.addName(BlockLightBlock, "Block of Light");
 		/////////////
 		
+		//LIGHT WOOD
+		BlockLightWood = (new lightProcessing.block.BlockLightWood(IDRef.LIGHT_WOOD_ID, Material.wood));
+		GameRegistry.registerBlock(BlockLightWood, "LightWood");
+		LanguageRegistry.addName(BlockLightWood,  "Light Wood");
+		
 		//DARK BLOCK
 		BlockDarkBlock = (new lightProcessing.block.BlockDarkBlock(IDRef.DARK_BLOCK_ID, Material.rock));
 		GameRegistry.registerBlock(BlockDarkBlock, "DarkBlock");
 		LanguageRegistry.addName(BlockDarkBlock, "Block of Darkness");
-		/////////////
+		////////////
 		
 		//ABSOLUTION BLOCK
 		BlockAbsBlock = (new lightProcessing.block.BlockAbsBlock(IDRef.ABS_BLOCK_ID, Material.rock));

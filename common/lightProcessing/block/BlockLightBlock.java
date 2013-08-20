@@ -1,5 +1,8 @@
 package lightProcessing.block;
 
+import java.util.Random;
+
+import lib.IDRef;
 import lib.Methods;
 import lib.Reference;
 import cpw.mods.fml.relauncher.Side;
@@ -18,6 +21,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockLightBlock extends Block{
@@ -30,6 +34,98 @@ public class BlockLightBlock extends Block{
 		this.setCreativeTab(lib.BlockTab.blockTab);
 		this.setUnlocalizedName("LightBlock");
 	}
+	
+	private java.util.Random r = new java.util.Random();
+	
+	public int onBlockPlaced(World par1World, int par2, int par3, int par4, int par5, float par6, float par7, float par8, int par9)
+    {
+		if(par1World.getBlockId(par2, par3 - 1, par4) == 3){
+			par1World.setBlock(par2, par3 - 1, par4, 2);
+		}
+		
+        return par9;
+    }
+	 @SideOnly(Side.CLIENT)
+	    public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
+	    {
+	    	if(par1IBlockAccess.isAirBlock(par2, par3, par4)){
+	    		return true;
+	    	}
+	    		return false;
+	    }
+	
+	public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random par5Random) {
+		
+		int randgrass = 0;
+		if(par1World.getBlockId(par2, par3 - 1, par4) == 3){
+			par1World.setBlock(par2, par3 - 1, par4, 2);
+		}
+		  if (!par1World.isRemote)
+	        {
+	        	randgrass = r.nextInt(8);
+	        }
+		  switch(randgrass){
+		  case 0:	
+      	{
+      		if(par1World.getBlockId(par2 - 1, par3 - 1, par4) == 3){
+    			par1World.setBlock(par2 - 1, par3 - 1, par4, 2);
+    			break;
+      		}
+      	}
+      	 case 1:	
+       	{
+       		if(par1World.getBlockId(par2 + 1, par3 - 1, par4) == 3){
+     			par1World.setBlock(par2 + 1, par3 - 1, par4, 2);
+     			break;
+     		}
+      	}
+      	 case 2:	
+        	{
+        		if(par1World.getBlockId(par2, par3 - 1, par4 - 1) == 3){
+      			par1World.setBlock(par2, par3 - 1, par4 - 1, 2);
+      			break;
+      		}
+       	}
+      	case 3:	
+    	{
+    		if(par1World.getBlockId(par2, par3 - 1, par4 + 1) == 3){
+  			par1World.setBlock(par2, par3 - 1, par4 + 1, 2);
+  			break;
+  		}
+   	}
+      	case 4:	
+    	{
+    		if(par1World.getBlockId(par2 - 1, par3 - 1, par4 - 1) == 3){
+  			par1World.setBlock(par2 - 1, par3 - 1, par4 - 1, 2);
+  			break;
+  		}
+   	}
+      	case 5:	
+    	{
+    		if(par1World.getBlockId(par2 - 1, par3 - 1, par4 + 1) == 3){
+  			par1World.setBlock(par2 - 1, par3 - 1, par4 + 1, 2);
+  			break;
+  		}
+   	}
+      	case 6:	
+    	{
+    		if(par1World.getBlockId(par2 + 1, par3 - 1, par4 - 1) == 3){
+  			par1World.setBlock(par2 + 1, par3 - 1, par4 - 1, 2);
+  			break;
+  		}
+    	}
+    	case 7:	
+    	{
+    		if(par1World.getBlockId(par2 + 1, par3 - 1, par4 + 1) == 3){
+  			par1World.setBlock(par2 + 1, par3 - 1, par4 + 1, 2);
+  			break;
+  		}
+   	}
+   	}
+		  }
+			
+		
+	
 
 	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity){
 		
@@ -46,7 +142,6 @@ public class BlockLightBlock extends Block{
 		if(par5Entity instanceof EntityZombie && ((EntityZombie) par5Entity).isVillager()){
 			 EntityVillager entityvillager = new EntityVillager(par5Entity.worldObj);
 		        entityvillager.func_82149_j(par5Entity);
-		        entityvillager.initCreature();
 		        entityvillager.func_82187_q();
 
 		        if (((EntityZombie) par5Entity).isChild())
@@ -71,17 +166,107 @@ public class BlockLightBlock extends Block{
 		//Light Motion (Horizontal)
 		
 		if(lib.Methods.isPowered(par1World, par2, par3, par4)){
-			if(Math.abs(par5Entity.motionX) > Math.abs(par5Entity.motionZ) && par5Entity.motionX > 0){
-				par5Entity.motionX = par5Entity.motionX + 0.1;
+			
+			if(par5Entity.motionX > 1.0 && par5Entity instanceof net.minecraft.entity.item.EntityItem){
+				par5Entity.motionX = 1.0;
+			}
+			if(par5Entity.motionX < -1.0 && par5Entity instanceof net.minecraft.entity.item.EntityItem){
+				par5Entity.motionX = -1.0;
+			}
+			if(par5Entity.motionZ > 1.0 && par5Entity instanceof net.minecraft.entity.item.EntityItem){
+				par5Entity.motionZ = 1.0;
+			}
+			if(par5Entity.motionZ < -1.0 && par5Entity instanceof net.minecraft.entity.item.EntityItem){
+				par5Entity.motionZ = -1.0;
+			}
+			
+			boolean xpos = (par1World.doesBlockHaveSolidTopSurface(par2 + 1, par3, par4));
+			boolean xneg = (par1World.doesBlockHaveSolidTopSurface(par2 - 1, par3, par4));
+			boolean zpos = (par1World.doesBlockHaveSolidTopSurface(par2, par3, par4 + 1));
+			boolean zneg = (par1World.doesBlockHaveSolidTopSurface(par2, par3, par4 - 1));
+			double speed = 0.2;
+			double cSpeed = 0.25;
+			
+			if(xpos && zpos && zneg && !xneg){
+				par5Entity.motionX = -speed;
+			}
+			else if(xneg && zpos && zneg && !xpos){
+				par5Entity.motionX = speed;
+			}
+			else if(zpos && xpos && xneg && !zneg){
+				par5Entity.motionZ = -speed;
+			}
+			
+			else if(zneg && xpos && xneg && !zpos){
+				par5Entity.motionZ = speed;
+			}
+			
+			else if(xpos && zpos){
+				if(par5Entity instanceof net.minecraft.entity.item.EntityItem){
+					par5Entity.motionY = 0;
+				}
+				
+				if(Math.abs(par5Entity.motionX) > Math.abs(par5Entity.motionZ) && par5Entity.motionX > 0){
+					par5Entity.motionX = cSpeed;
+					par5Entity.motionZ = -speed;
+				}
+				else if(Math.abs(par5Entity.motionZ) > Math.abs(par5Entity.motionX) && par5Entity.motionZ > 0){
+					par5Entity.motionX = -speed;
+					par5Entity.motionZ = cSpeed;
+				}
+				
+			}
+			else if(xneg && zneg){
+				if(par5Entity instanceof net.minecraft.entity.item.EntityItem){
+					par5Entity.motionY = 0;
+				}
+				if(Math.abs(par5Entity.motionX) > Math.abs(par5Entity.motionZ) && par5Entity.motionX < 0){
+					par5Entity.motionX = -cSpeed;
+					par5Entity.motionZ = speed;
+				}
+				else if(Math.abs(par5Entity.motionZ) > Math.abs(par5Entity.motionX) && par5Entity.motionZ < 0){
+					par5Entity.motionX = speed;
+					par5Entity.motionZ = -cSpeed;
+				}
+			}
+			else if(xpos && zneg){
+				if(par5Entity instanceof net.minecraft.entity.item.EntityItem){
+					par5Entity.motionY = 0;
+				}
+				if(Math.abs(par5Entity.motionX) > Math.abs(par5Entity.motionZ) && par5Entity.motionX > 0){
+					par5Entity.motionX = cSpeed;
+					par5Entity.motionZ = speed;
+				}
+				else if(Math.abs(par5Entity.motionZ) > Math.abs(par5Entity.motionX) && par5Entity.motionZ < 0){
+					par5Entity.motionX = -speed;
+					par5Entity.motionZ = -cSpeed;
+				}
+			}
+			else if(xneg && zpos){
+				if(par5Entity instanceof net.minecraft.entity.item.EntityItem){
+					par5Entity.motionY = 0;
+				}
+				if(Math.abs(par5Entity.motionX) > Math.abs(par5Entity.motionZ) && par5Entity.motionX < 0){
+					par5Entity.motionX = -cSpeed;
+					par5Entity.motionZ = -speed;
+				}
+				else if(Math.abs(par5Entity.motionZ) > Math.abs(par5Entity.motionX) && par5Entity.motionZ > 0){
+					par5Entity.motionX = speed;
+					par5Entity.motionZ = cSpeed;
+				}
+			}
+			
+			else if(Math.abs(par5Entity.motionX) > Math.abs(par5Entity.motionZ) && par5Entity.motionX > 0){
+				par5Entity.motionX = par5Entity.motionX + speed;
 			}
 			else if(Math.abs(par5Entity.motionX) > Math.abs(par5Entity.motionZ) && par5Entity.motionX < 0){
-				par5Entity.motionX = par5Entity.motionX - 0.1;
+				par5Entity.motionX = par5Entity.motionX - speed;
 			}
 			else if(Math.abs(par5Entity.motionX) < Math.abs(par5Entity.motionZ) && par5Entity.motionZ > 0){
-				par5Entity.motionZ = par5Entity.motionZ + 0.1;
+				par5Entity.motionZ = par5Entity.motionZ + speed;
 			}
-			else{
-				par5Entity.motionZ = par5Entity.motionZ - 0.1;
+			else if(Math.abs(par5Entity.motionX) < Math.abs(par5Entity.motionZ) && par5Entity.motionZ < 0){
+				par5Entity.motionZ = par5Entity.motionZ - speed;
 			}
 		}
 		

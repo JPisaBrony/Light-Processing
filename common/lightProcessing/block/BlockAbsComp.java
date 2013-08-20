@@ -28,6 +28,8 @@ public class BlockAbsComp extends Block{
 		this.setUnlocalizedName("AbsComp");
 	}
 	
+	public static boolean flag1;
+	
 	@Override
 	public boolean canConnectRedstone(IBlockAccess world, int x, int y, int z, int side){
 		return true;
@@ -117,6 +119,7 @@ public class BlockAbsComp extends Block{
 			 particles(par1World, par2, par3, par4);	
 			 if(!par1World.isRemote){
 		     par1World.spawnEntityInWorld(entityitem);
+		     flag1 = true;
 			 }
 			 }
 			 }
@@ -127,6 +130,7 @@ public class BlockAbsComp extends Block{
 			 particles(par1World, par2, par3, par4);	
 			 if(!par1World.isRemote){
 			     par1World.spawnEntityInWorld(entityitem);
+			     flag1 = true;
 				 }
 			 }
 		 }
@@ -137,6 +141,7 @@ public class BlockAbsComp extends Block{
 			 particles(par1World, par2, par3, par4);
 			 if(!par1World.isRemote){
 			     par1World.spawnEntityInWorld(entityitem);
+			     flag1 = true;
 				 }
 			 }
 		 }
@@ -147,6 +152,7 @@ public class BlockAbsComp extends Block{
 			 particles(par1World, par2, par3, par4);	
 			 if(!par1World.isRemote){
 			     par1World.spawnEntityInWorld(entityitem);
+			     flag1 = true;
 				 }
 			 }
 		 }

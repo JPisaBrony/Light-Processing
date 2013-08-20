@@ -18,6 +18,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.Icon;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockAbsBlock extends Block{
@@ -39,6 +40,15 @@ public class BlockAbsBlock extends Block{
 			par5Entity.fallDistance = 0.0F;
 		}
 	}
+
+	@SideOnly(Side.CLIENT)
+    public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
+    {
+    	if(par1IBlockAccess.isAirBlock(par2, par3, par4)){
+    		return true;
+    	}
+    		return false;
+    }
 	
 	public boolean isOpaqueCube()
 	{
