@@ -11,59 +11,63 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
-public class TileEntityHarvester extends TileEntity{
+public class TileEntityHarvester extends TileEntity {
 
 	private java.util.Random r = new java.util.Random();
 	private int chance;
-	
-	
+
 	@Override
-	public void updateEntity(){
-		if (this.worldObj.getBlockId(this.xCoord, this.yCoord + 1, this.zCoord) == IDRef.LIGHT_BLOCK_ID ||this.worldObj.getBlockId(this.xCoord, this.yCoord + 1, this.zCoord) == IDRef.DARK_BLOCK_ID){
-			chance = 500;
-		}
-		else{
-			chance = 800;
+	public void updateEntity() {
+		if (this.worldObj.getBlockId(this.xCoord, this.yCoord + 1, this.zCoord) == IDRef.LIGHT_BLOCK_ID
+				|| this.worldObj.getBlockId(this.xCoord, this.yCoord + 1,
+						this.zCoord) == IDRef.DARK_BLOCK_ID) {
+			if (this.worldObj.getBlockMetadata(this.xCoord, this.yCoord + 1,
+					this.zCoord) == 2) {
+				chance = 150;
+			} else {
+				chance = 500;
 			}
-		 if(r.nextInt(chance) == 0)
-	        {
-	        BlockHarvester.Essence(this.worldObj, this.xCoord, this.yCoord, this.zCoord);
-	        }
+		} else {
+			chance = 800;
+		}
+		if (r.nextInt(chance) == 0) {
+			BlockHarvester.Essence(this.worldObj, this.xCoord, this.yCoord,
+					this.zCoord);
+		}
 	}
-	 @SideOnly(Side.CLIENT)
-	    public AxisAlignedBB getRenderBoundingBox(){
-		 AxisAlignedBB bb = INFINITE_EXTENT_AABB;
-		 bb = AxisAlignedBB.getAABBPool().getAABB(xCoord - 1, yCoord, zCoord - 1, xCoord + 2, yCoord + 2, zCoord + 2);
-		 return bb;
-	 }
-	
-	public void Spawn(Float Light2){
-		 ItemStack lightStack  = new ItemStack(lib.Items.ItemLightBall, 1);
-   	     ItemStack darkStack  = new ItemStack(lib.Items.ItemDarkBall, 1);
-   	     ItemStack stack;
-   	     if(Light2 > 0.7F){
-   	     stack = lightStack;
-   	     }
-   	     else{
-   	    stack = darkStack;
-   	     }
-		
-   	     
+
+	@SideOnly(Side.CLIENT)
+	public AxisAlignedBB getRenderBoundingBox() {
+		AxisAlignedBB bb = INFINITE_EXTENT_AABB;
+		bb = AxisAlignedBB.getAABBPool().getAABB(xCoord - 1, yCoord,
+				zCoord - 1, xCoord + 2, yCoord + 2, zCoord + 2);
+		return bb;
+	}
+
+	public void Spawn(Float Light2) {
+		ItemStack lightStack = new ItemStack(lib.Items.ItemLightBall, 1);
+		ItemStack darkStack = new ItemStack(lib.Items.ItemDarkBall, 1);
+		ItemStack stack;
+		if (Light2 > 0.7F) {
+			stack = lightStack;
+		} else {
+			stack = darkStack;
+		}
+
 		EntityItem entityitem;
-		entityitem = new EntityItem(this.worldObj, this.xCoord + 0.5, this.yCoord + 0.2, this.zCoord + 0.5, stack);
-	
-		 entityitem.motionX = 0;
-   	     entityitem.motionY = 0;
-   	     entityitem.motionZ = 0;
-   	     
-   	     
-   	     
-   	     if(!this.worldObj.isRemote){
-   	    	 if(!lib.Methods.isPoweredIndirect(this.worldObj, this.xCoord, this.yCoord, this.zCoord)){
-   	  this.worldObj.spawnEntityInWorld(entityitem);
-   	     }
-   	     }
-		
+		entityitem = new EntityItem(this.worldObj, this.xCoord + 0.5,
+				this.yCoord + 0.2, this.zCoord + 0.5, stack);
+
+		entityitem.motionX = 0;
+		entityitem.motionY = 0;
+		entityitem.motionZ = 0;
+
+		if (!this.worldObj.isRemote) {
+			if (!lib.Methods.isPoweredIndirect(this.worldObj, this.xCoord,
+					this.yCoord, this.zCoord)) {
+				this.worldObj.spawnEntityInWorld(entityitem);
+			}
+		}
+
 	}
 }
-

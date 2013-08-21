@@ -48,6 +48,7 @@ public class LightProcessing {
 		 //blocks
 		 IDRef.ABS_BLOCK_ID = config.get(config.CATEGORY_BLOCK, "AbsBlock", IDRef.ABS_BLOCK_IDD).getInt();
 		 IDRef.DARK_BLOCK_ID = config.get(config.CATEGORY_BLOCK, "DarkBlock", IDRef.DARK_BLOCK_IDD).getInt();
+		 IDRef.DARK_GEN_ID = config.get(config.CATEGORY_BLOCK, "DarkGen", IDRef.DARK_GEN_IDD).getInt();
 		 IDRef.LIGHT_BLOCK_ID = config.get(config.CATEGORY_BLOCK, "LightBlock", IDRef.LIGHT_BLOCK_IDD).getInt();
 		 IDRef.LIGHT_WOOD_ID = config.get(config.CATEGORY_BLOCK, "LightWood", IDRef.LIGHT_WOOD_IDD).getInt();
 		 IDRef.HARVESTER_ID = config.get(config.CATEGORY_BLOCK, "Harvester", IDRef.HARVESTER_IDD).getInt();

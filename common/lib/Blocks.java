@@ -7,50 +7,64 @@ import net.minecraft.block.material.Material;
 
 public class Blocks {
 
-	//vars
+	// vars
 	public static Block BlockLightBlock;
 	public static Block BlockLightWood;
 	public static Block BlockDarkBlock;
+	public static Block BlockDarkGen;
 	public static Block BlockAbsBlock;
 	public static Block BlockHarvester;
 	public static Block BlockAbsComp;
-	
-	public static void InitBlocks(){
-		
-		//LIGHT BLOCK
-		BlockLightBlock = (new lightProcessing.block.BlockLightBlock(IDRef.LIGHT_BLOCK_ID, Material.rock));
+
+	public static void InitBlocks() {
+
+		// LIGHT BLOCK
+		BlockLightBlock = (new lightProcessing.block.BlockLightBlock(
+				IDRef.LIGHT_BLOCK_ID, Material.rock));
 		GameRegistry.registerBlock(BlockLightBlock, "LightBlock");
 		LanguageRegistry.addName(BlockLightBlock, "Block of Light");
-		/////////////
-		
-		//LIGHT WOOD
-		BlockLightWood = (new lightProcessing.block.BlockLightWood(IDRef.LIGHT_WOOD_ID, Material.wood));
+		// ///////////
+
+		// LIGHT WOOD
+		BlockLightWood = (new lightProcessing.block.BlockLightWood(
+				IDRef.LIGHT_WOOD_ID, Material.wood));
 		GameRegistry.registerBlock(BlockLightWood, "LightWood");
-		LanguageRegistry.addName(BlockLightWood,  "Light Wood");
-		
-		//DARK BLOCK
-		BlockDarkBlock = (new lightProcessing.block.BlockDarkBlock(IDRef.DARK_BLOCK_ID, Material.rock));
+		LanguageRegistry.addName(BlockLightWood, "Light Wood");
+
+		// DARK BLOCK
+		BlockDarkBlock = (new lightProcessing.block.BlockDarkBlock(
+				IDRef.DARK_BLOCK_ID, Material.rock));
 		GameRegistry.registerBlock(BlockDarkBlock, "DarkBlock");
 		LanguageRegistry.addName(BlockDarkBlock, "Block of Darkness");
-		////////////
-		
-		//ABSOLUTION BLOCK
-		BlockAbsBlock = (new lightProcessing.block.BlockAbsBlock(IDRef.ABS_BLOCK_ID, Material.rock));
+		// //////////
+
+		// DARK GEN
+		BlockDarkGen = (new lightProcessing.block.BlockDarkGen(
+				IDRef.DARK_GEN_ID, Material.rock));
+		GameRegistry.registerBlock(BlockDarkGen, "DarkGen");
+		LanguageRegistry.addName(BlockDarkGen, "Darkness Generator");
+		// //////////
+
+		// ABSOLUTION BLOCK
+		BlockAbsBlock = (new lightProcessing.block.BlockAbsBlock(
+				IDRef.ABS_BLOCK_ID, Material.rock));
 		GameRegistry.registerBlock(BlockAbsBlock, "AbsBlock");
 		LanguageRegistry.addName(BlockAbsBlock, "Block of Absolution");
-		/////////////
-		
-		//HARVESTER
-		BlockHarvester = (new lightProcessing.block.BlockHarvester(IDRef.HARVESTER_ID, Material.rock));
+		// ///////////
+
+		// HARVESTER
+		BlockHarvester = (new lightProcessing.block.BlockHarvester(
+				IDRef.HARVESTER_ID, Material.rock));
 		GameRegistry.registerBlock(BlockHarvester, "Harvester");
 		LanguageRegistry.addName(BlockHarvester, "Harvester");
-		/////////////
-		
-		//ABSOLUTION COMPRESSOR
-		BlockAbsComp = (new lightProcessing.block.BlockAbsComp(IDRef.ABS_COMP_ID, Material.rock));
+		// ///////////
+
+		// ABSOLUTION COMPRESSOR
+		BlockAbsComp = (new lightProcessing.block.BlockAbsComp(
+				IDRef.ABS_COMP_ID, Material.rock));
 		GameRegistry.registerBlock(BlockAbsComp, "AbsComp");
 		LanguageRegistry.addName(BlockAbsComp, "Absolution Compressor");
-		/////////////
+		// ///////////
 	}
-	
+
 }

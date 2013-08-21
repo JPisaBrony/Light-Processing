@@ -6,5 +6,6 @@ public class Tiles {
 public static void registerTiles(){
 	GameRegistry.registerTileEntity(lightProcessing.tile.TileEntityHarvester.class, "Harvester");
 	GameRegistry.registerTileEntity(lightProcessing.tile.TileEntityAbsComp.class, "Abs Comp");
+	GameRegistry.registerTileEntity(lightProcessing.tile.TileEntityDarkGen.class, "Dark Gen");
 }
 }
