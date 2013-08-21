@@ -46,6 +46,15 @@ public class BlockAbsBlock extends Block{
     {
     	if(par1IBlockAccess.isAirBlock(par2, par3, par4)){
     		return true;
+    		}
+    	if(par1IBlockAccess.getBlockId(par2, par3, par4) == IDRef.ABS_BLOCK_ID){
+    		return false;
+    	}
+    	if(!par1IBlockAccess.doesBlockHaveSolidTopSurface(par2, par3, par4)){
+    	return true;
+    	}
+    	if(par5 == 0 && par1IBlockAccess.getBlockId(par2, par3, par4) != IDRef.ABS_BLOCK_ID){
+    		return true;
     	}
     		return false;
     }

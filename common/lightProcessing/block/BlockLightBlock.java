@@ -45,14 +45,23 @@ public class BlockLightBlock extends Block{
 		
         return par9;
     }
-	 @SideOnly(Side.CLIENT)
-	    public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
-	    {
-	    	if(par1IBlockAccess.isAirBlock(par2, par3, par4)){
-	    		return true;
-	    	}
-	    		return false;
-	    }
+	@SideOnly(Side.CLIENT)
+    public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
+    {
+    	if(par1IBlockAccess.isAirBlock(par2, par3, par4)){
+    		return true;
+    		}
+    	if(par1IBlockAccess.getBlockId(par2, par3, par4) == IDRef.LIGHT_BLOCK_ID){
+    		return false;
+    	}
+    	if(!par1IBlockAccess.doesBlockHaveSolidTopSurface(par2, par3, par4)){
+    	return true;
+    	}
+    	if(par5 == 0 && par1IBlockAccess.getBlockId(par2, par3, par4) != IDRef.LIGHT_BLOCK_ID){
+    		return true;
+    	}
+    		return false;
+    }
 	
 	public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random par5Random) {
 		
