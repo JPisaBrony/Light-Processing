@@ -1,10 +1,11 @@
-package lib;
+package LightProcessing.common.lib;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import LightProcessing.common.lightProcessing.tile.*;
 
 public class Tiles {
 public static void registerTiles(){
-	GameRegistry.registerTileEntity(lightProcessing.tile.TileEntityHarvester.class, "Harvester");
-	GameRegistry.registerTileEntity(lightProcessing.tile.TileEntityAbsComp.class, "Abs Comp");
-}
+	GameRegistry.registerTileEntity(TileEntityHarvester.class, "Harvester");
+	GameRegistry.registerTileEntity(TileEntityAbsComp.class, "Abs Comp");
+	}
 }

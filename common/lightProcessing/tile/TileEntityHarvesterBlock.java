@@ -1,8 +1,8 @@
-package lightProcessing.tile;
+package LightProcessing.common.lightProcessing.tile;
 
 import java.util.Random;
 
-import lib.Reference;
+import LightProcessing.common.lib.*;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -16,7 +16,7 @@ public class TileEntityHarvesterBlock extends BlockContainer{
 	
 	   public TileEntityHarvesterBlock(int id) {
            super(id, Material.iron);
-           this.setCreativeTab(lib.BlockTab.blockTab);
+           this.setCreativeTab(BlockTab.blockTab);
            this.setUnlocalizedName("Harvester");
    }
 	   

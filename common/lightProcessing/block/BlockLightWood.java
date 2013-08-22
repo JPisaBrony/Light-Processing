@@ -1,9 +1,8 @@
-package lightProcessing.block;
+package LightProcessing.common.lightProcessing.block;
 
 import java.util.Random;
 
-import lib.IDRef;
-import lib.Reference;
+import LightProcessing.common.lib.*;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -17,9 +16,8 @@ public class BlockLightWood extends Block {
 
 	public BlockLightWood(int par1, Material par2Material) {
 		super(par1, par2Material);
-		// TODO Auto-generated constructor stub
 		this.setUnlocalizedName("LightWood");
-		this.setCreativeTab(lib.BlockTab.blockTab);
+		this.setCreativeTab(BlockTab.blockTab);
 		this.setHardness(2.0F);
 		this.setStepSound(soundWoodFootstep);
 		this.setLightValue(1.0F);
@@ -50,7 +48,7 @@ public class BlockLightWood extends Block {
 	 @Override
 	    @SideOnly(Side.CLIENT)
 	    public void registerIcons(IconRegister iconRegister) {
-	        blockIcon = iconRegister.registerIcon(Reference.MOD_ID.toLowerCase() + ":" + this.getUnlocalizedName2());
+	        blockIcon = iconRegister.registerIcon(Methods.textureName(this.getUnlocalizedName()));
 	        blockIcon2 = iconRegister.registerIcon("tree_top");
 	 }
 

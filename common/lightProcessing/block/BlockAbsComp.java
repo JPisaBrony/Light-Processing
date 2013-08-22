@@ -1,12 +1,11 @@
-package lightProcessing.block;
+package LightProcessing.common.lightProcessing.block;
 
 import java.util.Random;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import lib.IDRef;
-import lib.Reference;
-import lightProcessing.tile.TileEntityAbsComp;
+import LightProcessing.common.lib.*;
+import LightProcessing.common.lightProcessing.tile.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -24,7 +23,7 @@ public class BlockAbsComp extends Block{
 	public BlockAbsComp(int par1, Material par2Material) {
 		super(par1, par2Material);
 		this.setHardness(10);
-		this.setCreativeTab(lib.BlockTab.blockTab);
+		this.setCreativeTab(BlockTab.blockTab);
 		this.setUnlocalizedName("AbsComp");
 	}
 	
@@ -38,7 +37,7 @@ public class BlockAbsComp extends Block{
 	 @Override
 	    @SideOnly(Side.CLIENT)
 	    public void registerIcons(IconRegister iconRegister) {
-	        blockIcon = iconRegister.registerIcon(Reference.MOD_ID.toLowerCase() + ":" + this.getUnlocalizedName2());
+	        blockIcon = iconRegister.registerIcon(Methods.textureName(this.getUnlocalizedName()));
 	 }
 	 
 	 @Override
@@ -105,7 +104,7 @@ public class BlockAbsComp extends Block{
 		 int light = IDRef.LIGHT_BLOCK_ID;
 		 int dark = IDRef.DARK_BLOCK_ID;
 		 
-		 ItemStack unAbStack  = new ItemStack(lib.Items.ItemUnstableAbs, 1);
+		 ItemStack unAbStack  = new ItemStack(Items.ItemUnstableAbs, 1);
 	     EntityItem entityitem = new EntityItem(par1World, par2 + 0.5, par3 + 1.15, par4 + 0.5, unAbStack);
 	     entityitem.motionX = 0;
 	     entityitem.motionY = 0;

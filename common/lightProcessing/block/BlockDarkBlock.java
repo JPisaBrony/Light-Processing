@@ -1,10 +1,8 @@
-package lightProcessing.block;
+package LightProcessing.common.lightProcessing.block;
 
 import java.util.Random;
 
-import lib.IDRef;
-import lib.Methods;
-import lib.Reference;
+import LightProcessing.common.lib.*;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -29,7 +27,7 @@ public class BlockDarkBlock extends Block{
 		this.setHardness(10);
 		this.setResistance(500000);
 		this.setLightOpacity(255);
-		this.setCreativeTab(lib.BlockTab.blockTab);
+		this.setCreativeTab(BlockTab.blockTab);
 		this.setUnlocalizedName("DarkBlock");
 	}
 public boolean coll = true;
@@ -110,7 +108,7 @@ public boolean coll = true;
 		if(par1World.getBlockId(par2, par3 - 1, par4) == 2){
 			par1World.setBlock(par2, par3 - 1, par4, 3);
 		}
-		if(lib.Methods.isPowered(par1World, par2, par3, par4)){
+		if(Methods.isPowered(par1World, par2, par3, par4)){
 			par1World.setBlockMetadataWithNotify(par2, par3, par4, 1, 3);
 		}
 		else
@@ -145,7 +143,7 @@ public boolean coll = true;
 				coll = true;
 			}
 		 
-		 if(lib.Methods.isPowered(par1World, par2, par3, par4)){
+		 if(Methods.isPowered(par1World, par2, par3, par4)){
 			par1World.setBlockMetadataWithNotify(par2, par3, par4, 1, 3);
 		}
 		else
@@ -179,6 +177,6 @@ public boolean coll = true;
 	 @Override
 	    @SideOnly(Side.CLIENT)
 	    public void registerIcons(IconRegister iconRegister) {
-	        blockIcon = iconRegister.registerIcon(Reference.MOD_ID.toLowerCase() + ":" + this.getUnlocalizedName2());
+	        blockIcon = iconRegister.registerIcon(Methods.textureName(this.getUnlocalizedName()));
 	    }
 }

@@ -1,14 +1,10 @@
-package lightProcessing;
+package LightProcessing.common.lightProcessing;
 
 import java.util.logging.Level;
 
 import net.minecraftforge.common.Configuration;
-import lib.BlockTab;
-import lib.IDRef;
-import lib.ItemTab;
-import lib.Reference;
-import lightProcessing.network.CommonProxy;
-import lightProcessing.tile.TileEntityAbsComp;
+import LightProcessing.common.lib.*;
+import LightProcessing.common.lightProcessing.network.*;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
@@ -36,7 +32,7 @@ public class LightProcessing {
 	@Instance("LightProcessing")
 	public static LightProcessing instance;
 	
-	@SidedProxy(clientSide="lightProcessing.network.ClientProxy", serverSide="lightProcessing.network.CommonProxy")
+	@SidedProxy(clientSide="LightProcessing.common.lightProcessing.network.ClientProxy", serverSide="lightProcessing.network.CommonProxy")
 	public static CommonProxy proxy;
 	
 	@PreInit
@@ -67,14 +63,11 @@ public class LightProcessing {
 		 proxy.registerRenderThings();
 		 ItemTab.InitTab();
 		 BlockTab.InitTab();
-	   	 lib.Blocks.InitBlocks();
-		 lib.Items.InitItems();
-		 lib.Recipes.InitRecipes();
-		 lib.Tiles.registerTiles();
-			
-			
-		
-		
+	   	 Blocks.InitBlocks();
+		 Items.InitItems();
+		 Recipes.InitRecipes();
+		 Tiles.registerTiles();
+		 
 		
 	}
 	

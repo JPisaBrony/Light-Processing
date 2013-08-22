@@ -1,8 +1,6 @@
-package lightProcessing.item;
+package LightProcessing.common.lightProcessing.item;
 
-import lib.Methods;
-import lib.Reference;
-import lightProcessing.LightProcessing;
+import LightProcessing.common.lib.*;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -15,7 +13,7 @@ public class ItemLightBall extends Item{
 	public ItemLightBall(int par1){
 	super(par1);
 	this.setUnlocalizedName("LightBall");
-	this.setCreativeTab(lib.ItemTab.itemTab);
+	this.setCreativeTab(ItemTab.itemTab);
 	}
 	@Override
 	public boolean hasEffect(ItemStack par1ItemStack){

@@ -1,9 +1,7 @@
-package lightProcessing.item;
+package LightProcessing.common.lightProcessing.item;
 
-import lightProcessing.tile.TileEntityAbsComp;
-import lightProcessing.tile.TileEntityHarvester;
-import mods.ltp.models.ModelAbsComp;
-import mods.ltp.models.ModelHarvester;
+import LightProcessing.common.lightProcessing.tile.*;
+import LightProcessing.resources.mods.ltp.models.*;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.IItemRenderer;
@@ -33,4 +31,4 @@ public class ItemHarvesterRenderer implements IItemRenderer {
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
 	TileEntityRenderer.instance.renderTileEntityAt(new TileEntityHarvester(), 0.0D, 0.0D, 0.0D, 0.0F);
 	}
-	}
+}

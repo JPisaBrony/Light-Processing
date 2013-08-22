@@ -1,9 +1,9 @@
-package lightProcessing.tile;
+package LightProcessing.common.lightProcessing.tile;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import lib.IDRef;
-import lightProcessing.block.BlockHarvester;
+import LightProcessing.common.lib.*;
+import LightProcessing.common.lightProcessing.block.*;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -38,8 +38,8 @@ public class TileEntityHarvester extends TileEntity{
 	 }
 	
 	public void Spawn(Float Light2){
-		 ItemStack lightStack  = new ItemStack(lib.Items.ItemLightBall, 1);
-   	     ItemStack darkStack  = new ItemStack(lib.Items.ItemDarkBall, 1);
+		 ItemStack lightStack  = new ItemStack(Items.ItemLightBall, 1);
+   	     ItemStack darkStack  = new ItemStack(Items.ItemDarkBall, 1);
    	     ItemStack stack;
    	     if(Light2 > 0.7F){
    	     stack = lightStack;
@@ -59,9 +59,9 @@ public class TileEntityHarvester extends TileEntity{
    	     
    	     
    	     if(!this.worldObj.isRemote){
-   	    	 if(!lib.Methods.isPoweredIndirect(this.worldObj, this.xCoord, this.yCoord, this.zCoord)){
-   	  this.worldObj.spawnEntityInWorld(entityitem);
-   	     }
+   	    	 if(!Methods.isPoweredIndirect(this.worldObj, this.xCoord, this.yCoord, this.zCoord)){
+   	    		 this.worldObj.spawnEntityInWorld(entityitem);
+   	    	 }
    	     }
 		
 	}

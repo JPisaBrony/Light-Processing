@@ -1,10 +1,8 @@
-package lightProcessing.block;
+package LightProcessing.common.lightProcessing.block;
 
 import java.util.Random;
 
-import lib.IDRef;
-import lib.Methods;
-import lib.Reference;
+import LightProcessing.common.lib.*;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -31,7 +29,7 @@ public class BlockLightBlock extends Block{
 		this.setLightValue(1.0F);
 		this.setHardness(10);
 		this.setResistance(500000);
-		this.setCreativeTab(lib.BlockTab.blockTab);
+		this.setCreativeTab(BlockTab.blockTab);
 		this.setUnlocalizedName("LightBlock");
 	}
 	
@@ -150,7 +148,7 @@ public class BlockLightBlock extends Block{
 		
 		if(par5Entity instanceof EntityZombie && ((EntityZombie) par5Entity).isVillager()){
 			 EntityVillager entityvillager = new EntityVillager(par5Entity.worldObj);
-		        entityvillager.func_82149_j(par5Entity);
+		        entityvillager.func_85031_j(par5Entity);
 		        entityvillager.func_82187_q();
 
 		        if (((EntityZombie) par5Entity).isChild())
@@ -174,7 +172,7 @@ public class BlockLightBlock extends Block{
 		
 		//Light Motion (Horizontal)
 		
-		if(lib.Methods.isPowered(par1World, par2, par3, par4)){
+		if(Methods.isPowered(par1World, par2, par3, par4)){
 			
 			if(par5Entity.motionX > 1.0 && par5Entity instanceof net.minecraft.entity.item.EntityItem){
 				par5Entity.motionX = 1.0;
@@ -301,10 +299,10 @@ public class BlockLightBlock extends Block{
 	    return false;
 	}
 	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IconRegister iconRegister) {
+		blockIcon = iconRegister.registerIcon(Methods.textureName(this.getUnlocalizedName()));
+	}
 	
-	 @Override
-	    @SideOnly(Side.CLIENT)
-	    public void registerIcons(IconRegister iconRegister) {
-	        blockIcon = iconRegister.registerIcon(Reference.MOD_ID.toLowerCase() + ":" + this.getUnlocalizedName2());
-	    }
 }

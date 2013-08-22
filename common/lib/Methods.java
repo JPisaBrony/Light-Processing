@@ -1,4 +1,4 @@
-package lib;
+package LightProcessing.common.lib;
 
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.util.Icon;
@@ -54,6 +54,6 @@ public class Methods {
 	}
 	
 	public static String textureName(String unLocNam){
-		return Reference.MOD_ID.toLowerCase() + ":" + unLocNam;
+		return Reference.MOD_ID.toLowerCase() + ":" + (unLocNam.substring(5));
 	}
 }

@@ -1,6 +1,6 @@
-package mods.ltp.models;
+package LightProcessing.resources.mods.ltp.models;
 
-import lightProcessing.tile.TileEntityAbsComp;
+import LightProcessing.common.lightProcessing.tile.TileEntityAbsComp;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
