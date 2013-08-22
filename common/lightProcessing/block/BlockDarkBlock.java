@@ -79,6 +79,15 @@ public boolean coll = true;
 	    }
 	    
 	    
+	    public boolean isBlockReplaceable(World world, int x, int y, int z)
+	    {
+	    	if(world.getBlockMetadata(x, y, z) == 2){
+	    		return true;
+	    	}
+	    	return false;
+	    }
+	    
+	    
 	    
 	public int onBlockPlaced(World par1World, int par2, int par3, int par4, int par5, float par6, float par7, float par8, int par9)
     {
@@ -108,10 +117,10 @@ public boolean coll = true;
 		if(par1World.getBlockId(par2, par3 - 1, par4) == 2){
 			par1World.setBlock(par2, par3 - 1, par4, 3);
 		}
-		if(Methods.isPowered(par1World, par2, par3, par4)){
+		if(Methods.isPowered(par1World, par2, par3, par4 && par1World.getBlockMetadata(par2, par3, par4) == 0)){
 			par1World.setBlockMetadataWithNotify(par2, par3, par4, 1, 3);
 		}
-		else
+		if(!lib.Methods.isPowered(par1World, par2, par3, par4) && par1World.getBlockMetadata(par2, par3, par4) == 1)
 		{
 			par1World.setBlockMetadataWithNotify(par2, par3, par4, 0, 3);
 		}
@@ -143,10 +152,10 @@ public boolean coll = true;
 				coll = true;
 			}
 		 
-		 if(Methods.isPowered(par1World, par2, par3, par4)){
+		 if(Methods.isPowered(par1World, par2, par3, par4) && par1World.getBlockMetadata(par2, par3, par4) == 0){
 			par1World.setBlockMetadataWithNotify(par2, par3, par4, 1, 3);
 		}
-		else
+		if(!lib.Methods.isPowered(par1World, par2, par3, par4) && par1World.getBlockMetadata(par2, par3, par4) == 1)
 		{
 			par1World.setBlockMetadataWithNotify(par2, par3, par4, 0, 3);
 		}
