@@ -1,14 +1,11 @@
-package lightProcessing.block;
+package LightProcessing.common.lightProcessing.block;
 
 import java.util.List;
 import java.util.Random;
-
+import LightProcessing.common.lightProcessing.tile.TileEntityDarkGen;
+import LightProcessing.common.lib.*;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import lib.IDRef;
-import lib.Reference;
-import lightProcessing.tile.TileEntityAbsComp;
-import lightProcessing.tile.TileEntityDarkGen;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -31,7 +28,7 @@ public class BlockDarkGen extends Block {
 	public BlockDarkGen(int par1, Material par2Material) {
 		super(par1, par2Material);
 		this.setHardness(10);
-		this.setCreativeTab(lib.BlockTab.blockTab);
+		this.setCreativeTab(BlockTab.blockTab);
 		this.setUnlocalizedName("DarkGen");
 	}
 
@@ -98,7 +95,8 @@ public class BlockDarkGen extends Block {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister iconRegister) {
-		blockIcon = iconRegister.registerIcon(Methods.textureName(this.getUnlocalizedName()));
+		blockIcon = iconRegister.registerIcon(Methods.textureName(this
+				.getUnlocalizedName()));
 	}
 
 	public boolean onBlockActivated(World par1World, int par2, int par3,

@@ -1,7 +1,8 @@
-package lightProcessing.item;
+package LightProcessing.common.lightProcessing.item;
 
-import lightProcessing.tile.TileEntityDarkGen;
-import mods.ltp.models.ModelDarkGen;
+
+import LightProcessing.common.lightProcessing.tile.TileEntityDarkGen;
+import LightProcessing.resources.mods.ltp.models.ModelDarkGen;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.IItemRenderer;

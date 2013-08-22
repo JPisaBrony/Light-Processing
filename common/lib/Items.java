@@ -7,8 +7,6 @@ import net.minecraft.item.Item;
 import LightProcessing.common.lightProcessing.item.*;
 
 public class Items {
-
-	
 	
 	public static Item ItemDarkBall;
 	public static Item ItemLightBall;

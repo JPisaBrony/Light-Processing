@@ -45,8 +45,8 @@ public class TileEntityHarvester extends TileEntity {
 	}
 
 	public void Spawn(Float Light2) {
-		 ItemStack lightStack  = new ItemStack(Items.ItemLightBall, 1);
-   	     ItemStack darkStack  = new ItemStack(Items.ItemDarkBall, 1);
+		ItemStack lightStack = new ItemStack(Items.ItemLightBall, 1);
+		ItemStack darkStack = new ItemStack(Items.ItemDarkBall, 1);
 		ItemStack stack;
 		if (Light2 > 0.7F) {
 			stack = lightStack;
@@ -63,10 +63,10 @@ public class TileEntityHarvester extends TileEntity {
 		entityitem.motionZ = 0;
 
 		if (!this.worldObj.isRemote) {
-   	    	 if(!Methods.isPoweredIndirect(this.worldObj, this.xCoord, this.yCoord, this.zCoord)){
+			if (!Methods.isPoweredIndirect(this.worldObj, this.xCoord,
 					this.yCoord, this.zCoord)) {
-   	    		 this.worldObj.spawnEntityInWorld(entityitem);
-   	    	 }
+				this.worldObj.spawnEntityInWorld(entityitem);
+			}
 		}
 
 	}

@@ -1,8 +1,6 @@
-package lightProcessing.tile;
+package LightProcessing.common.lightProcessing.tile;
 
-import lib.IDRef;
-import lightProcessing.block.BlockAbsComp;
-import lightProcessing.block.BlockDarkGen;
+import LightProcessing.common.lib.*;
 import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityDarkGen extends TileEntity {

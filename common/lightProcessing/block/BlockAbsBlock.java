@@ -19,7 +19,7 @@ import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockAbsBlock extends Block{
+public class BlockAbsBlock extends Block {
 
 	public BlockAbsBlock(int par1, Material par2Material) {
 		super(par1, par2Material);
@@ -29,10 +29,13 @@ public class BlockAbsBlock extends Block{
 		this.setCreativeTab(BlockTab.blockTab);
 		this.setUnlocalizedName("AbsBlock");
 	}
-	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity){
-		if(par5Entity instanceof EntityLiving){
-			((EntityLiving)par5Entity).curePotionEffects(new ItemStack(Item.bucketMilk));
-			if(par5Entity.isBurning()){
+
+	public void onEntityCollidedWithBlock(World par1World, int par2, int par3,
+			int par4, Entity par5Entity) {
+		if (par5Entity instanceof EntityLiving) {
+			((EntityLiving) par5Entity).curePotionEffects(new ItemStack(
+					Item.bucketMilk));
+			if (par5Entity.isBurning()) {
 				par5Entity.extinguish();
 			}
 			par5Entity.fallDistance = 0.0F;
@@ -40,46 +43,46 @@ public class BlockAbsBlock extends Block{
 	}
 
 	@SideOnly(Side.CLIENT)
-    public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
-    {
-    	if(par1IBlockAccess.isAirBlock(par2, par3, par4)){
-    		return true;
-    		}
-    	if(par1IBlockAccess.getBlockId(par2, par3, par4) == IDRef.ABS_BLOCK_ID){
-    		return false;
-    	}
-    	if(!par1IBlockAccess.doesBlockHaveSolidTopSurface(par2, par3, par4)){
-    	return true;
-    	}
-    	if(par5 == 0 && par1IBlockAccess.getBlockId(par2, par3, par4) != IDRef.ABS_BLOCK_ID){
-    		return true;
-    	}
-    		return false;
-    }
-	
-	public boolean isOpaqueCube()
-	{
-	    return false;
+	public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess,
+			int par2, int par3, int par4, int par5) {
+		if (par1IBlockAccess.isAirBlock(par2, par3, par4)) {
+			return true;
+		}
+		if (par1IBlockAccess.getBlockId(par2, par3, par4) == IDRef.ABS_BLOCK_ID) {
+			return false;
+		}
+		if (!par1IBlockAccess.doesBlockHaveSolidTopSurface(par2, par3, par4)) {
+			return true;
+		}
+		if (par5 == 0
+				&& par1IBlockAccess.getBlockId(par2, par3, par4) != IDRef.ABS_BLOCK_ID) {
+			return true;
+		}
+		return false;
 	}
-	
-	@SideOnly(Side.CLIENT)	
-	public int getRenderBlockPass()
-    {
-        return 1;
-    }
-	
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4)
-	{
-	    return null;
+
+	public boolean isOpaqueCube() {
+		return false;
 	}
-	public boolean renderAsNormalBlock()
-	{
-	    return false;
+
+	@SideOnly(Side.CLIENT)
+	public int getRenderBlockPass() {
+		return 1;
 	}
-	
-	 @Override
-	 @SideOnly(Side.CLIENT)
-	 public void registerIcons(IconRegister iconRegister) {
-	        blockIcon = iconRegister.registerIcon(Methods.textureName(this.getUnlocalizedName()));
-	 }
+
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World,
+			int par2, int par3, int par4) {
+		return null;
+	}
+
+	public boolean renderAsNormalBlock() {
+		return false;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IconRegister iconRegister) {
+		blockIcon = iconRegister.registerIcon(Methods.textureName(this
+				.getUnlocalizedName()));
+	}
 }

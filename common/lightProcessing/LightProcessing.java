@@ -1,7 +1,6 @@
 package LightProcessing.common.lightProcessing;
 
 import java.util.logging.Level;
-
 import net.minecraftforge.common.Configuration;
 import LightProcessing.common.lib.*;
 import LightProcessing.common.lightProcessing.network.*;
@@ -18,69 +17,60 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-@Mod(
-		modid = Reference.MOD_ID,
-		name = Reference.NAME, 
-		version = Reference.VERSION)
-
+@Mod(modid = Reference.MOD_ID, name = Reference.NAME, version = Reference.VERSION)
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
-
-
-
 public class LightProcessing {
 
 	@Instance("LightProcessing")
 	public static LightProcessing instance;
-	
-	@SidedProxy(clientSide="LightProcessing.common.lightProcessing.network.ClientProxy", serverSide="lightProcessing.network.CommonProxy")
+
+	@SidedProxy(clientSide = "LightProcessing.common.lightProcessing.network.ClientProxy", serverSide = "lightProcessing.network.CommonProxy")
 	public static CommonProxy proxy;
-	
+
 	@PreInit
-	public void preInit(FMLPreInitializationEvent event){
-		//CONFIG
-		 Configuration config = new Configuration(event.getSuggestedConfigurationFile());
-		 config.load();
-		 
-		 //blocks
-		 IDRef.ABS_BLOCK_ID = config.get(config.CATEGORY_BLOCK, "AbsBlock", IDRef.ABS_BLOCK_IDD).getInt();
-		 IDRef.DARK_BLOCK_ID = config.get(config.CATEGORY_BLOCK, "DarkBlock", IDRef.DARK_BLOCK_IDD).getInt();
-		 IDRef.DARK_GEN_ID = config.get(config.CATEGORY_BLOCK, "DarkGen", IDRef.DARK_GEN_IDD).getInt();
-		 IDRef.LIGHT_BLOCK_ID = config.get(config.CATEGORY_BLOCK, "LightBlock", IDRef.LIGHT_BLOCK_IDD).getInt();
-		 IDRef.LIGHT_WOOD_ID = config.get(config.CATEGORY_BLOCK, "LightWood", IDRef.LIGHT_WOOD_IDD).getInt();
-		 IDRef.HARVESTER_ID = config.get(config.CATEGORY_BLOCK, "Harvester", IDRef.HARVESTER_IDD).getInt();
-		 IDRef.ABS_COMP_ID = config.get(config.CATEGORY_BLOCK, "AbsComp", IDRef.ABS_COMP_IDD).getInt();
-		 
-		 //items
-		 IDRef.ABS_INGOT_ID = config.get(config.CATEGORY_ITEM, "AbsIngot", IDRef.ABS_INGOT_IDD).getInt();
-		 IDRef.ABS_ROD_ID = config.get(config.CATEGORY_ITEM, "AbsRod", IDRef.ABS_ROD_IDD).getInt();
-		 IDRef.DARK_BALL_ID = config.get(config.CATEGORY_ITEM, "DarkBall", IDRef.DARK_BALL_IDD).getInt();
-		 IDRef.DARK_INGOT_ID = config.get(config.CATEGORY_ITEM, "DarkIngot", IDRef.DARK_INGOT_IDD).getInt();
-		 IDRef.LIGHT_BALL_ID = config.get(config.CATEGORY_ITEM, "LightBall", IDRef.LIGHT_BALL_IDD).getInt();
-		 IDRef.LIGHT_INGOT_ID = config.get(config.CATEGORY_ITEM, "LightIngot", IDRef.LIGHT_INGOT_IDD).getInt();
-		 IDRef.UNSTABLE_ABS_ID = config.get(config.CATEGORY_ITEM, "UnstableAbs", IDRef.UNSTABLE_ABS_IDD).getInt();
-		 config.save();
-	
-		 
-		 proxy.registerRenderThings();
-		 ItemTab.InitTab();
-		 BlockTab.InitTab();
-	   	 Blocks.InitBlocks();
-		 Items.InitItems();
-		 Recipes.InitRecipes();
-		 Tiles.registerTiles();
-		 
-		
+	public void preInit(FMLPreInitializationEvent event) {
+		// CONFIG
+		Configuration config = new Configuration(
+				event.getSuggestedConfigurationFile());
+		config.load();
+
+		// blocks
+		IDRef.ABS_BLOCK_ID = config.get(config.CATEGORY_BLOCK, "AbsBlock", IDRef.ABS_BLOCK_IDD).getInt();
+		IDRef.DARK_BLOCK_ID = config.get(config.CATEGORY_BLOCK, "DarkBlock",IDRef.DARK_BLOCK_IDD).getInt();
+		IDRef.DARK_GEN_ID = config.get(config.CATEGORY_BLOCK, "DarkGen",IDRef.DARK_GEN_IDD).getInt();
+		IDRef.LIGHT_BLOCK_ID = config.get(config.CATEGORY_BLOCK, "LightBlock",IDRef.LIGHT_BLOCK_IDD).getInt();
+		IDRef.LIGHT_WOOD_ID = config.get(config.CATEGORY_BLOCK, "LightWood",IDRef.LIGHT_WOOD_IDD).getInt();
+		IDRef.HARVESTER_ID = config.get(config.CATEGORY_BLOCK, "Harvester",IDRef.HARVESTER_IDD).getInt();
+		IDRef.ABS_COMP_ID = config.get(config.CATEGORY_BLOCK, "AbsComp",IDRef.ABS_COMP_IDD).getInt();
+
+		// items
+		IDRef.ABS_INGOT_ID = config.get(config.CATEGORY_ITEM, "AbsIngot",IDRef.ABS_INGOT_IDD).getInt();
+		IDRef.ABS_ROD_ID = config.get(config.CATEGORY_ITEM, "AbsRod",IDRef.ABS_ROD_IDD).getInt();
+		IDRef.DARK_BALL_ID = config.get(config.CATEGORY_ITEM, "DarkBall",IDRef.DARK_BALL_IDD).getInt();
+		IDRef.DARK_INGOT_ID = config.get(config.CATEGORY_ITEM, "DarkIngot",IDRef.DARK_INGOT_IDD).getInt();
+		IDRef.LIGHT_BALL_ID = config.get(config.CATEGORY_ITEM, "LightBall",IDRef.LIGHT_BALL_IDD).getInt();
+		IDRef.LIGHT_INGOT_ID = config.get(config.CATEGORY_ITEM, "LightIngot",IDRef.LIGHT_INGOT_IDD).getInt();
+		IDRef.UNSTABLE_ABS_ID = config.get(config.CATEGORY_ITEM, "UnstableAbs",IDRef.UNSTABLE_ABS_IDD).getInt();
+		config.save();
+
+		proxy.registerRenderThings();
+		ItemTab.InitTab();
+		BlockTab.InitTab();
+		Blocks.InitBlocks();
+		Items.InitItems();
+		Recipes.InitRecipes();
+		Tiles.registerTiles();
+
 	}
-	
+
 	@Init
-	public void load(FMLInitializationEvent event){
-		
+	public void load(FMLInitializationEvent event) {
+
 	}
-	
+
 	@PostInit
-	public void PostInit(FMLInitializationEvent event){
-		
+	public void PostInit(FMLInitializationEvent event) {
+
 	}
-	
-	
+
 }
