@@ -1,4 +1,4 @@
-package lib;
+package LightProcessing.common.lib;
 
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.creativetab.CreativeTabs;
@@ -12,7 +12,7 @@ public class BlockTab extends CreativeTabs{
 	
 	@Override
 	public ItemStack getIconItemStack(){
-		return new ItemStack(lib.Blocks.BlockAbsBlock);
+		return new ItemStack(LightProcessing.common.lib.Blocks.BlockAbsBlock);
 	}
 	
 	

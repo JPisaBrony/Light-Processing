@@ -1,15 +1,12 @@
-package lightProcessing.block;
+package LightProcessing.common.lightProcessing.block;
 
 import java.util.List;
 import java.util.Random;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-import lib.BlockTab;
-import lib.Reference;
-import lightProcessing.LightProcessing;
-import lightProcessing.tile.TileEntityAbsComp;
-import lightProcessing.tile.TileEntityHarvester;
+import LightProcessing.common.lib.*;
+import LightProcessing.common.lightProcessing.tile.*;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -45,10 +42,11 @@ public class BlockHarvester extends BlockContainer{
 	}
 	
 	
+	@Override
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister)
+	public void registerIcons(IconRegister IconRegister)
 	{
-		this.blockIcon = par1IconRegister.registerIcon(Reference.MOD_ID + ":" + this.getUnlocalizedName2() + "Top");
+		this.blockIcon = IconRegister.registerIcon(Methods.textureName(this.getUnlocalizedName()));
 	}
 	
 	

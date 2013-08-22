@@ -1,7 +1,6 @@
-package lightProcessing.item;
+package LightProcessing.common.lightProcessing.item;
 
-import lib.Reference;
-import lightProcessing.LightProcessing;
+import LightProcessing.common.lib.*;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -20,7 +19,7 @@ public class ItemUnstableAbs extends Item{
 	public ItemUnstableAbs(int par1){
 	super(par1);
 	this.setUnlocalizedName("UnstableAbs");
-	this.setCreativeTab(lib.ItemTab.itemTab);
+	this.setCreativeTab(ItemTab.itemTab);
 	}
 	private java.util.Random r = new java.util.Random();
 	
@@ -57,7 +56,7 @@ public class ItemUnstableAbs extends Item{
         	}
         	default:
         	{
-        
+        		break;
         	}
         }
         }
@@ -66,7 +65,7 @@ public class ItemUnstableAbs extends Item{
         
         if (!par3EntityPlayer.capabilities.isCreativeMode)
         {
-        return new ItemStack(lib.Items.ItemUnstableAbs, par1ItemStack.stackSize - 1);
+        return new ItemStack(Items.ItemUnstableAbs, par1ItemStack.stackSize - 1);
         }
         else return par1ItemStack;
     }
@@ -101,6 +100,6 @@ public class ItemUnstableAbs extends Item{
 	  @SideOnly(Side.CLIENT)
 	    public void registerIcons(IconRegister iconRegister)
 	    {
-	    	itemIcon = iconRegister.registerIcon(Reference.MOD_ID.toLowerCase() + ":" + this.getUnlocalizedName());
+		  itemIcon = iconRegister.registerIcon(Methods.textureName(this.getUnlocalizedName()));
 	}
 	}

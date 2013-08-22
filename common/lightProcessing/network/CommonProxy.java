@@ -1,4 +1,4 @@
-package lightProcessing.network;
+package LightProcessing.common.lightProcessing.network;
 
 import net.minecraftforge.client.MinecraftForgeClient;
 import cpw.mods.fml.common.registry.TickRegistry;

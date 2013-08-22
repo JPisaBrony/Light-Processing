@@ -1,14 +1,10 @@
-package lightProcessing;
+package LightProcessing.common.lightProcessing;
 
 import java.util.logging.Level;
 
 import net.minecraftforge.common.Configuration;
-import lib.BlockTab;
-import lib.IDRef;
-import lib.ItemTab;
-import lib.Reference;
-import lightProcessing.network.CommonProxy;
-import lightProcessing.tile.TileEntityAbsComp;
+import LightProcessing.common.lib.*;
+import LightProcessing.common.lightProcessing.network.*;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
@@ -36,7 +32,7 @@ public class LightProcessing {
 	@Instance("LightProcessing")
 	public static LightProcessing instance;
 	
-	@SidedProxy(clientSide="lightProcessing.network.ClientProxy", serverSide="lightProcessing.network.CommonProxy")
+	@SidedProxy(clientSide="LightProcessing.common.lightProcessing.network.ClientProxy", serverSide="lightProcessing.network.CommonProxy")
 	public static CommonProxy proxy;
 	
 	@PreInit
@@ -48,9 +44,11 @@ public class LightProcessing {
 		 //blocks
 		 IDRef.ABS_BLOCK_ID = config.get(config.CATEGORY_BLOCK, "AbsBlock", IDRef.ABS_BLOCK_IDD).getInt();
 		 IDRef.DARK_BLOCK_ID = config.get(config.CATEGORY_BLOCK, "DarkBlock", IDRef.DARK_BLOCK_IDD).getInt();
+		 IDRef.DARK_GEN_ID = config.get(config.CATEGORY_BLOCK, "DarkGen", IDRef.DARK_GEN_IDD).getInt();
 		 IDRef.LIGHT_BLOCK_ID = config.get(config.CATEGORY_BLOCK, "LightBlock", IDRef.LIGHT_BLOCK_IDD).getInt();
+		 IDRef.LIGHT_WOOD_ID = config.get(config.CATEGORY_BLOCK, "LightWood", IDRef.LIGHT_WOOD_IDD).getInt();
 		 IDRef.HARVESTER_ID = config.get(config.CATEGORY_BLOCK, "Harvester", IDRef.HARVESTER_IDD).getInt();
-		 IDRef.ABS_COMP_ID = config.get(config.CATEGORY_BLOCK, "AbsComp", IDRef.ABS_COMP_ID).getInt();
+		 IDRef.ABS_COMP_ID = config.get(config.CATEGORY_BLOCK, "AbsComp", IDRef.ABS_COMP_IDD).getInt();
 		 
 		 //items
 		 IDRef.ABS_INGOT_ID = config.get(config.CATEGORY_ITEM, "AbsIngot", IDRef.ABS_INGOT_IDD).getInt();
@@ -66,14 +64,11 @@ public class LightProcessing {
 		 proxy.registerRenderThings();
 		 ItemTab.InitTab();
 		 BlockTab.InitTab();
-	   	 lib.Blocks.InitBlocks();
-		 lib.Items.InitItems();
-		 lib.Recipes.InitRecipes();
-		 lib.Tiles.registerTiles();
-			
-			
-		
-		
+	   	 Blocks.InitBlocks();
+		 Items.InitItems();
+		 Recipes.InitRecipes();
+		 Tiles.registerTiles();
+		 
 		
 	}
 	

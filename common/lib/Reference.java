@@ -1,4 +1,4 @@
-package lib;
+package LightProcessing.common.lib;
 
 public class Reference {
 

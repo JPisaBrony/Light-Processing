@@ -1,6 +1,6 @@
-package lightProcessing.tile;
+package LightProcessing.common.lightProcessing.tile;
 
-import lib.Reference;
+import LightProcessing.common.lib.*;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -11,7 +11,7 @@ public class TileEntityAbsCompBlock extends BlockContainer{
 	
 	   public TileEntityAbsCompBlock(int id) {
            super(id, Material.iron);
-           this.setCreativeTab(lib.BlockTab.blockTab);
+           this.setCreativeTab(BlockTab.blockTab);
            this.setBlockBounds(0.4F, 0.0F, 0.4F, 0.6F, 3.0F, 0.6F);
            this.setUnlocalizedName("AbsComp");
    }

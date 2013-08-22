@@ -1,4 +1,4 @@
-package lightProcessing.network;
+package LightProcessing.common.lightProcessing.network;
 
 import java.util.EnumSet;
 

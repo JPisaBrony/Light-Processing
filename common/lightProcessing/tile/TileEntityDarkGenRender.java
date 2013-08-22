@@ -1,30 +1,24 @@
-package LightProcessing.common.lightProcessing.tile;
+package lightProcessing.tile;
 
 import org.lwjgl.opengl.GL11;
 
-import LightProcessing.common.lib.Reference;
-import LightProcessing.resources.mods.ltp.models.ModelAbsComp;
+import mods.ltp.models.ModelDarkGen;
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 
-public class TileEntityAbsCompRender extends TileEntitySpecialRenderer {
+public class TileEntityDarkGenRender extends TileEntitySpecialRenderer {
         
         //The model of your block
-        private final ModelAbsComp model;
-        public static final ResourceLocation AbsComp = new ResourceLocation(Reference.MOD_ID.toLowerCase(),"/textures/models/ModelAbsComp.png");
-        private static TextureManager textureManager = Minecraft.getMinecraft().func_110434_K();
+        private final ModelDarkGen model;
         
-        public TileEntityAbsCompRender() {
-                this.model = new ModelAbsComp();
+        public TileEntityDarkGenRender() {
+                this.model = new ModelDarkGen();
         }
         
         private void adjustRotatePivotViaMeta(World world, int x, int y, int z) {
@@ -41,7 +35,7 @@ public class TileEntityAbsCompRender extends TileEntitySpecialRenderer {
         //This is setting the initial location.
                 GL11.glTranslatef((float) x + 0.5F, (float) y + 1.5F, (float) z + 0.5F);
         //This is the texture of your block. It's pathed to be the same place as your other blocks here.
-                Minecraft.getMinecraft().renderEngine.func_110577_a(AbsComp);
+                bindTextureByName("/mods/ltp/textures/models/ModelDarkGen.png");
         //This rotation part is very important! Without it, your model will render upside-down! And for some reason you DO need PushMatrix again!                       
                 GL11.glPushMatrix();
                 GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);

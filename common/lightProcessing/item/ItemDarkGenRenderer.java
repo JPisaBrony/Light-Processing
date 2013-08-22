@@ -1,18 +1,18 @@
-package LightProcessing.common.lightProcessing.item;
+package lightProcessing.item;
 
-import LightProcessing.common.lightProcessing.tile.*;
-import LightProcessing.resources.mods.ltp.models.*;
+import lightProcessing.tile.TileEntityDarkGen;
+import mods.ltp.models.ModelDarkGen;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.IItemRenderer;
 
-public class ItemHarvesterRenderer implements IItemRenderer {
+public class ItemDarkGenRenderer implements IItemRenderer {
 	
-	private ModelHarvester HarvesterModel;
+	private ModelDarkGen DarkGenModel;
 
-	public ItemHarvesterRenderer() {
+	public ItemDarkGenRenderer() {
 
-	HarvesterModel = new ModelHarvester();
+	DarkGenModel = new ModelDarkGen();
 	}
 
 	@Override
@@ -29,6 +29,6 @@ public class ItemHarvesterRenderer implements IItemRenderer {
 
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
-	TileEntityRenderer.instance.renderTileEntityAt(new TileEntityHarvester(), 0.0D, 0.0D, 0.0D, 0.0F);
+	TileEntityRenderer.instance.renderTileEntityAt(new TileEntityDarkGen(), 0.0D, 0.0D, 0.0D, 0.0F);
 	}
-}
+	}

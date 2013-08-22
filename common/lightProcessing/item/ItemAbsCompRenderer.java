@@ -1,7 +1,7 @@
-package lightProcessing.item;
+package LightProcessing.common.lightProcessing.item;
 
-import lightProcessing.tile.TileEntityAbsComp;
-import mods.ltp.models.ModelAbsComp;
+import LightProcessing.common.lightProcessing.tile.*;
+import LightProcessing.resources.mods.ltp.models.ModelAbsComp;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.IItemRenderer;
