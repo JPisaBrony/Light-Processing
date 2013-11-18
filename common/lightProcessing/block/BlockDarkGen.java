@@ -57,7 +57,7 @@ public class BlockDarkGen extends Block {
 			int par5, int par6) {
 		int ID2 = IDRef.DARK_BLOCK_ID;
 		for (int i = -10; i < 10; i++) {
-			for (int j = -10; j < 10; j++) {
+			for (int j = 0; j < 10; j++) {
 				for (int k = -10; k < 10; k++) {
 					if (par1World.getBlockId(par2 + k, par3 + j, par4 + i) == ID2
 							&& par1World.getBlockMetadata(par2 + k, par3 + j,
@@ -95,8 +95,7 @@ public class BlockDarkGen extends Block {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister iconRegister) {
-		blockIcon = iconRegister.registerIcon(Methods.textureName(this
-				.getUnlocalizedName()));
+		this.blockIcon = iconRegister.registerIcon(Methods.textureName(this.getUnlocalizedName()));
 	}
 
 	public boolean onBlockActivated(World par1World, int par2, int par3,
@@ -109,7 +108,7 @@ public class BlockDarkGen extends Block {
 			int ID2 = IDRef.DARK_BLOCK_ID;
 			if (par1World.getBlockMetadata(par2, par3, par4) == 0) {
 				for (int i = -10; i < 10; i++) {
-					for (int j = -10; j < 10; j++) {
+					for (int j = 0; j < 10; j++) {
 						for (int k = -10; k < 10; k++) {
 							if (par1World.isAirBlock(par2 + k, par3 + j, par4
 									+ i)) {
@@ -123,7 +122,7 @@ public class BlockDarkGen extends Block {
 				par1World.setBlockMetadataWithNotify(par2, par3, par4, 1, 2);
 			} else if (par1World.getBlockMetadata(par2, par3, par4) == 1) {
 				for (int i = -10; i < 10; i++) {
-					for (int j = -10; j < 10; j++) {
+					for (int j = 0; j < 10; j++) {
 						for (int k = -10; k < 10; k++) {
 							if (par1World.getBlockId(par2 + k, par3 + j, par4
 									+ i) == ID2

@@ -2,6 +2,7 @@ package LightProcessing.common.lightProcessing;
 
 import java.util.logging.Level;
 import net.minecraftforge.common.Configuration;
+import net.minecraftforge.common.MinecraftForge;
 import LightProcessing.common.lib.*;
 import LightProcessing.common.lightProcessing.network.*;
 import cpw.mods.fml.common.FMLLog;
@@ -41,8 +42,12 @@ public class LightProcessing {
 		IDRef.LIGHT_BLOCK_ID = config.get(config.CATEGORY_BLOCK, "LightBlock",IDRef.LIGHT_BLOCK_IDD).getInt();
 		IDRef.LIGHT_WOOD_ID = config.get(config.CATEGORY_BLOCK, "LightWood",IDRef.LIGHT_WOOD_IDD).getInt();
 		IDRef.HARVESTER_ID = config.get(config.CATEGORY_BLOCK, "Harvester",IDRef.HARVESTER_IDD).getInt();
-		IDRef.ABS_COMP_ID = config.get(config.CATEGORY_BLOCK, "AbsComp",IDRef.ABS_COMP_IDD).getInt();
-
+		IDRef.COMPRESSOR_ID = config.get(config.CATEGORY_BLOCK, "AbsComp",IDRef.COMPRESSOR_IDD).getInt();
+		IDRef.DARK_LEAF_ID = config.get(config.CATEGORY_BLOCK, "DarkLeaf", IDRef.DARK_LEAF_IDD).getInt();
+		IDRef.MACHINE_CORE_ID = config.get(config.CATEGORY_BLOCK, "MachineCore", IDRef.MACHINE_CORE_IDD).getInt();
+		IDRef.EXTRACTOR_ID = config.get(config.CATEGORY_BLOCK, "Extractor", IDRef.EXTRACTOR_IDD).getInt();
+		
+		
 		// items
 		IDRef.ABS_INGOT_ID = config.get(config.CATEGORY_ITEM, "AbsIngot",IDRef.ABS_INGOT_IDD).getInt();
 		IDRef.ABS_ROD_ID = config.get(config.CATEGORY_ITEM, "AbsRod",IDRef.ABS_ROD_IDD).getInt();
@@ -54,6 +59,7 @@ public class LightProcessing {
 		config.save();
 
 		proxy.registerRenderThings();
+		proxy.registerServerTickHandler();
 		ItemTab.InitTab();
 		BlockTab.InitTab();
 		Blocks.InitBlocks();

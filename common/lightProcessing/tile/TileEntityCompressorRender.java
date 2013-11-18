@@ -3,27 +3,27 @@ package LightProcessing.common.lightProcessing.tile;
 import org.lwjgl.opengl.GL11;
 
 import LightProcessing.common.lib.Reference;
-import LightProcessing.resources.mods.ltp.models.ModelDarkGen;
+import LightProcessing.resources.mods.ltp.models.ModelCompressor;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
-public class TileEntityDarkGenRender extends TileEntitySpecialRenderer {
+public class TileEntityCompressorRender extends TileEntitySpecialRenderer {
 
 	// The model of your block
-	private final ModelDarkGen model;
-	public static final ResourceLocation DarkGen = new ResourceLocation(
-			Reference.MOD_ID.toLowerCase(),
-			"/textures/models/ModelDarkGen.png");
+	private final ModelCompressor model;
+	public static final ResourceLocation AbsComp = new ResourceLocation(
+			Reference.MOD_ID.toLowerCase(), "/textures/models/ModelAbsComp.png");
 
-	public TileEntityDarkGenRender() {
-		this.model = new ModelDarkGen();
+	public TileEntityCompressorRender() {
+		this.model = new ModelCompressor();
 	}
 
 	private void adjustRotatePivotViaMeta(World world, int x, int y, int z) {
@@ -42,7 +42,7 @@ public class TileEntityDarkGenRender extends TileEntitySpecialRenderer {
 		GL11.glTranslatef((float) x + 0.5F, (float) y + 1.5F, (float) z + 0.5F);
 		// This is the texture of your block. It's pathed to be the same place
 		// as your other blocks here.
-		Minecraft.getMinecraft().renderEngine.func_110577_a(DarkGen);
+		Minecraft.getMinecraft().renderEngine.func_110577_a(AbsComp);
 		// This rotation part is very important! Without it, your model will
 		// render upside-down! And for some reason you DO need PushMatrix again!
 		GL11.glPushMatrix();

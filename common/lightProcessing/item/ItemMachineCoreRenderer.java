@@ -1,18 +1,18 @@
 package LightProcessing.common.lightProcessing.item;
 
 import LightProcessing.common.lightProcessing.tile.*;
-import LightProcessing.resources.mods.ltp.models.ModelCompressor;
+import LightProcessing.resources.mods.ltp.models.ModelMachineCore;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.IItemRenderer;
 
-public class ItemAbsCompRenderer implements IItemRenderer {
+public class ItemMachineCoreRenderer implements IItemRenderer {
 	
-	private ModelCompressor AbsCompModel;
+	private ModelMachineCore MachineCoreModel;
 
-	public ItemAbsCompRenderer() {
+	public ItemMachineCoreRenderer() {
 
-	AbsCompModel = new ModelCompressor();
+	MachineCoreModel = new ModelMachineCore();
 	}
 
 	@Override
@@ -29,6 +29,6 @@ public class ItemAbsCompRenderer implements IItemRenderer {
 
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
-	TileEntityRenderer.instance.renderTileEntityAt(new TileEntityCompressor(), 0.0D, 0.0D, 0.0D, 0.0F);
+	TileEntityRenderer.instance.renderTileEntityAt(new TileEntityMachineCore(), 0.0D, 0.0D, 0.0D, 0.0F);
 	}
 	}

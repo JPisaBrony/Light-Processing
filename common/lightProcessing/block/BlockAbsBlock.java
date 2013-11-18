@@ -30,8 +30,24 @@ public class BlockAbsBlock extends Block {
 		this.setUnlocalizedName("AbsBlock");
 	}
 
+	@Override
+	public void setBlockBoundsBasedOnState(IBlockAccess par1IBlockAccess,
+			int par2, int par3, int par4) {
+		if(!par1IBlockAccess.isAirBlock(par2, par3 - 1, par4) && par1IBlockAccess.getBlockId(par2, par3 - 1, par4) != IDRef.ABS_BLOCK_ID){
+			this.setBlockBounds(0.0F, 0.0001F, 0.0F, 1.0F, 1.0F, 1.0F);
+			}
+	}
+	
 	public void onEntityCollidedWithBlock(World par1World, int par2, int par3,
 			int par4, Entity par5Entity) {
+		if (par5Entity instanceof EntityPlayer) {
+			((EntityPlayer) par5Entity).curePotionEffects(new ItemStack(
+					Item.bucketMilk));
+			if (par5Entity.isBurning()) {
+				par5Entity.extinguish();
+			}
+			par5Entity.fallDistance = 0F;
+		}
 		if (par5Entity instanceof EntityLiving) {
 			((EntityLiving) par5Entity).curePotionEffects(new ItemStack(
 					Item.bucketMilk));
@@ -69,7 +85,6 @@ public class BlockAbsBlock extends Block {
 	public int getRenderBlockPass() {
 		return 1;
 	}
-
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World,
 			int par2, int par3, int par4) {
 		return null;

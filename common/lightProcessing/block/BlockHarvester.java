@@ -138,7 +138,7 @@ public class BlockHarvester extends BlockContainer {
 			TileEntityHarvester te = (TileEntityHarvester) par1World
 					.getBlockTileEntity(par2, par3, par4);
 			float Light = par1World.getLightBrightness(par2, par3 + 1, par4);
-			te.Spawn(Light);
+			//te.Spawn(Light);
 
 		}
 		return false;

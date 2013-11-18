@@ -24,7 +24,15 @@ public class BlockLightWood extends Block {
 	}
 
 	public Icon blockIcon2;
-
+	
+	@Override
+	public boolean isWood(World world, int x, int y, int z)
+	{
+	return true;
+	}
+	
+	
+	
 	public int onBlockPlaced(World par1World, int par2, int par3, int par4,
 			int par5, float par6, float par7, float par8, int par9) {
 		int j1 = par9 & 3;
@@ -69,11 +77,11 @@ public class BlockLightWood extends Block {
 	 * blockIcon2; } else{ return blockIcon; } }
 	 */
 	public int idDropped(int par1, Random par2Random, int par3) {
-		return IDRef.LIGHT_BALL_ID + 256;
+		return IDRef.LIGHT_WOOD_ID;
 	}
 
 	public int quantityDropped(Random par1Random) {
-		return par1Random.nextInt(2) + 1;
+		return 1;
 	}
 
 	@Override
