@@ -11,6 +11,7 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
@@ -36,7 +37,13 @@ public class BlockDarkBlock extends Block {
 	public boolean canProvidePower() {
 		return true;
 	}
-
+	@Override
+	public void setBlockBoundsBasedOnState(IBlockAccess par1IBlockAccess,
+			int par2, int par3, int par4) {
+		if(!par1IBlockAccess.isAirBlock(par2, par3 - 1, par4) && par1IBlockAccess.getBlockId(par2, par3 - 1, par4) != IDRef.DARK_BLOCK_ID){
+		this.setBlockBounds(0.0F, 0.0001F, 0.0F, 1.0F, 1.0F, 1.0F);
+		}
+		}
 	public boolean isCollidable() {
 		return coll;
 	}
@@ -111,21 +118,19 @@ public class BlockDarkBlock extends Block {
 		if (par1World.getBlockId(par2, par3 - 1, par4) == 2) {
 			par1World.setBlock(par2, par3 - 1, par4, 3);
 		}
-		if (Methods.isPowered(par1World, par2, par3, par4)) {
+		if (Methods.isPowered(par1World, par2, par3, par4) && par1World.getBlockMetadata(par2, par3, par4) == 0) {
 			par1World.setBlockMetadataWithNotify(par2, par3, par4, 1, 3);
 		}
-		if (!Methods.isPowered(par1World, par2, par3, par4)
-				&& par1World.getBlockMetadata(par2, par3, par4) == 1) {
+		if (!Methods.isPowered(par1World, par2, par3, par4) && par1World.getBlockMetadata(par2, par3, par4) == 1) {
 			par1World.setBlockMetadataWithNotify(par2, par3, par4, 0, 3);
 		}
 	}
-
-	public void onEntityCollidedWithBlock(World par1World, int par2, int par3,
-			int par4, Entity par5Entity) {
-		if (par5Entity instanceof EntityLiving
-				&& par1World.getBlockMetadata(par2, par3, par4) != 2) {
-			((EntityLiving) par5Entity).addPotionEffect(new PotionEffect(
-					Potion.blindness.getId(), 400, 50));
+	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity) {
+		if (par5Entity instanceof EntityPlayer && par1World.getBlockMetadata(par2, par3, par4) < 2) {
+			((EntityPlayer)par5Entity).addPotionEffect(new PotionEffect(Potion.blindness.getId(), 400, 50));
+		}
+		if (par5Entity instanceof EntityLiving && par1World.getBlockMetadata(par2, par3, par4) < 2) {
+			((EntityLiving)par5Entity).addPotionEffect(new PotionEffect(Potion.blindness.getId(), 400, 50));
 		}
 		if (par1World.getBlockMetadata(par2, par3, par4) == 1) {
 			if (par5Entity.motionY > 1.0

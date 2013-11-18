@@ -16,6 +16,9 @@ public class Blocks {
 	public static Block BlockHarvester;
 	public static Block BlockAbsComp;
 	public static Block BlockDarkGen;
+	public static Block BlockDarkLeaf;
+	public static Block BlockMachineCore;
+	public static Block BlockExtractor;
 
 	public static void InitBlocks() {
 
@@ -37,6 +40,12 @@ public class Blocks {
 		LanguageRegistry.addName(BlockDarkBlock, "Block of Darkness");
 		////////////
 
+		// DARK LEAF
+		BlockDarkLeaf = (new BlockDarkLeaf(IDRef.DARK_LEAF_ID, Material.clay));
+		GameRegistry.registerBlock(BlockDarkLeaf, "DarkLeaf");
+		LanguageRegistry.addName(BlockDarkLeaf, "Dark Leaf");
+		////////////
+		
 		// ABSOLUTION BLOCK
 		BlockAbsBlock = (new BlockAbsBlock(IDRef.ABS_BLOCK_ID, Material.rock));
 		GameRegistry.registerBlock(BlockAbsBlock, "AbsBlock");
@@ -50,9 +59,9 @@ public class Blocks {
 		/////////////
 
 		// ABSOLUTION COMPRESSOR
-		BlockAbsComp = (new BlockAbsComp(IDRef.ABS_COMP_ID, Material.rock));
+		BlockAbsComp = (new BlockCompressor(IDRef.COMPRESSOR_ID, Material.rock));
 		GameRegistry.registerBlock(BlockAbsComp, "AbsComp");
-		LanguageRegistry.addName(BlockAbsComp, "Absolution Compressor");
+		LanguageRegistry.addName(BlockAbsComp, "Compressor");
 		/////////////
 		
 		//DARKNESS GENERATOR
@@ -60,6 +69,18 @@ public class Blocks {
 		GameRegistry.registerBlock(BlockDarkGen, "DarkGen");
 		LanguageRegistry.addName(BlockDarkGen, "Darkness Generator");
 		/////////////
+		
+		//MACHINE CORE
+		BlockMachineCore = (new BlockMachineCore(IDRef.MACHINE_CORE_ID, Material.rock));
+		GameRegistry.registerBlock(BlockMachineCore, "MachineCore");
+		LanguageRegistry.addName(BlockMachineCore, "Machine Core");
+		/////////////
+		
+		//EXTRACTOR
+		BlockExtractor = (new BlockExtractor(IDRef.EXTRACTOR_ID, Material.rock));
+		GameRegistry.registerBlock(BlockExtractor, "Extractor");
+		LanguageRegistry.addName(BlockExtractor, "Extractor");
+		/////////
 	}
 
 }

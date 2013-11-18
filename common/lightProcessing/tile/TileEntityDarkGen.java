@@ -8,7 +8,7 @@ public class TileEntityDarkGen extends TileEntity {
 		if (this.worldObj.getBlockMetadata(this.xCoord, this.yCoord,
 				this.zCoord) == 1) {
 			for (int i = -10; i < 10; i++) {
-				for (int j = -10; j < 10; j++) {
+				for (int j = 0; j < 10; j++) {
 					for (int k = -10; k < 10; k++) {
 						if (this.worldObj.isAirBlock(this.xCoord + k,
 								this.yCoord + j, this.zCoord + i)) {

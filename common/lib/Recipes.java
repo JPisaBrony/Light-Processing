@@ -20,6 +20,7 @@ public class Recipes {
 	GameRegistry.addRecipe(new ItemStack(Items.ItemAbsIngot, 4), "A", 'A', Blocks.BlockAbsBlock);
 	GameRegistry.addRecipe(new ItemStack(Blocks.BlockAbsComp), "SSS", "LSD", "SSS", 'S', Block.stone, 'L', Items.ItemLightIngot, 'D', Items.ItemDarkIngot);
 	GameRegistry.addRecipe(new ItemStack(Blocks.BlockHarvester), "SGS", "LDO", "SSS", 'S', Block.stone, 'G', Block.glass, 'L', Block.glowStone, 'O', Block.obsidian, 'D', Item.diamond);
+	GameRegistry.addRecipe(new ItemStack(Items.ItemDarkBall, 3), "D", 'D', Blocks.BlockDarkLeaf);
 	//TEMPORARY
 	GameRegistry.addRecipe(new ItemStack(Items.ItemAbsIngot), "DLD", "LUL", "DLD", 'D', Items.ItemDarkIngot, 'L', Items.ItemLightIngot, 'U', Items.ItemUnstableAbs);
 	GameRegistry.addRecipe(new ItemStack(Items.ItemAbsIngot), "LDL", "DUD", "LDL", 'D', Items.ItemDarkIngot, 'L', Items.ItemLightIngot, 'U', Items.ItemUnstableAbs);
