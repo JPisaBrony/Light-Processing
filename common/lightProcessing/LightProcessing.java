@@ -24,7 +24,7 @@ public class LightProcessing {
 	@Instance("LightProcessing")
 	public static LightProcessing instance;
 
-	@SidedProxy(clientSide = "LightProcessing.common.lightProcessing.network.ClientProxy", serverSide = "lightProcessing.network.CommonProxy")
+	@SidedProxy(clientSide = "LightProcessing.common.lightProcessing.network.ClientProxy", serverSide = "LightProcessing.common.lightProcessing.network.CommonProxy")
 	public static CommonProxy proxy;
 
 	@PreInit
