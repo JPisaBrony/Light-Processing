@@ -9,19 +9,21 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class Methods {
 
 	public static boolean isPowered(World world, int x, int y, int z) {
-		if (world.getBlockPowerInput(x, y, z) > 0)
+		if (world.getBlockPowerInput(x, y, z) > 0) {
 			return true;
-		else if (world.isBlockIndirectlyGettingPowered(x, y, z)) 
+		} else if (world.isBlockIndirectlyGettingPowered(x, y, z)) {
 			return true;
-		else if (world.isBlockIndirectlyGettingPowered(x + 1, y, z))
+		} else if (world.isBlockIndirectlyGettingPowered(x + 1, y, z)) {
 			return true;
-		else if (world.isBlockIndirectlyGettingPowered(x - 1, y, z))
+		} else if (world.isBlockIndirectlyGettingPowered(x - 1, y, z)) {
 			return true;
-		else if (world.isBlockIndirectlyGettingPowered(x, y, z + 1))
+		} else if (world.isBlockIndirectlyGettingPowered(x, y, z + 1)) {
 			return true;
-		else if (world.isBlockIndirectlyGettingPowered(x, y, z - 1))
+		} else if (world.isBlockIndirectlyGettingPowered(x, y, z - 1)) {
 			return true;
-		return false;
+		} else {
+			return false;
+		}
 	}
 
 	public static int xPosMeta(World world, int x, int y, int z){
@@ -65,17 +67,21 @@ public class Methods {
 	
 
 	public static boolean isPoweredDirect(World world, int x, int y, int z) {
-		if (world.getBlockPowerInput(x, y, z) > 0)
+		if (world.getBlockPowerInput(x, y, z) > 0) {
 			return true;
-		return false;
+		} else {
+			return false;
+		}
 	}
 
 	public static boolean isPoweredIndirect(World world, int x, int y, int z) {
-		if (world.getBlockPowerInput(x, y, z) > 0)
+		if (world.getBlockPowerInput(x, y, z) > 0) {
 			return true;
-		else if (world.isBlockIndirectlyGettingPowered(x, y, z))
+		} else if (world.isBlockIndirectlyGettingPowered(x, y, z)) {
 			return true;
-		return false;
+		} else {
+			return false;
+		}
 	}
 
 	public static String textureName(String unLocNam) {
