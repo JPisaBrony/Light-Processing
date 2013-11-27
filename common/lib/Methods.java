@@ -81,4 +81,37 @@ public class Methods {
 	public static String textureName(String unLocNam) {
 		return Reference.MOD_ID.toLowerCase() + ":" + (unLocNam.substring(5));
 	}
+	
+	/*	This Method accepts a world location, x, y, z, and a 2 dimensional Array
+	 * 	it will check the 2 dimensional Array in a flat plane with the block's world location
+	 * 	at the center of the checking and if successful, returns true
+	 */
+	public static boolean checkArea(World world, int x, int y, int z, int Array[][]) {
+		int num = 0, i, j;
+		for(i = -1*(Array[0].length / 2); i <= Array[0].length / 2; i++) {
+			for(j = -1*(Array[1].length / 2); j <= Array[1].length / 2; j++) {
+				if(world.getBlockId(x + j, y, z + i) == Array[i+2][j+2])
+					num++;
+			}
+		}
+		
+		if(Array[0].length * Array[1].length == num)
+			return true;
+		else
+			return false;
+	}
+	
+	public static boolean setArea(World world, int x, int y, int z, int Array[][]) {
+		int i, j;
+		if(checkArea(world, x, y, z, Array)){
+			for(i = -1*(Array[0].length / 2); i <= Array[0].length / 2; i++) {
+				for(j = -1*(Array[1].length / 2); j <= Array[1].length / 2; j++) {
+					if(world.getBlockId(x + j, y, z + i) == Array[i+2][j+2])
+						world.setBlock(x + j, y, z + i, 0);
+				}
+			}
+			return true;
+		}
+		return false;
+	}
 }
