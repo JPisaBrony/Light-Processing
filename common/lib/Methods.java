@@ -65,7 +65,6 @@ public class Methods {
 		world.setBlockMetadataWithNotify(x, y, z - 1, meta, 3);
 	}
 	
-
 	public static boolean isPoweredDirect(World world, int x, int y, int z) {
 		if (world.getBlockPowerInput(x, y, z) > 0) {
 			return true;
@@ -88,7 +87,7 @@ public class Methods {
 		return Reference.MOD_ID.toLowerCase() + ":" + (unLocNam.substring(5));
 	}
 	
-	/*	This Method accepts a world location, x, y, z, and a 2 dimensional Array
+	/**	This Method accepts a world location, x, y, z, and a 2 dimensional Array
 	 * 	it will check the 2 dimensional Array in a flat plane with the block's world location
 	 * 	at the center of the checking and if successful, returns true
 	 */
@@ -107,13 +106,17 @@ public class Methods {
 			return false;
 	}
 	
-	public static boolean setArea(World world, int x, int y, int z, int Array[][]) {
+	/**	This Method accepts a world location, x, y, z, a 2 dimensional Array and a block id
+	 * 	it will first check with the checkArea method to make sure it is a valid array
+	 * 	then set the area to the block id
+	 */
+	public static boolean setArea(World world, int x, int y, int z, int Array[][], int block) {
 		int i, j;
 		if(checkArea(world, x, y, z, Array)){
 			for(i = -1*(Array[0].length / 2); i <= Array[0].length / 2; i++) {
 				for(j = -1*(Array[1].length / 2); j <= Array[1].length / 2; j++) {
 					if(world.getBlockId(x + j, y, z + i) == Array[i+2][j+2])
-						world.setBlock(x + j, y, z + i, 0);
+						world.setBlock(x + j, y, z + i, block);
 				}
 			}
 			return true;

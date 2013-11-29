@@ -68,7 +68,7 @@ public class BlockMachineCore extends Block{
 					{DL,0,0,0,DL},
 					{LW,DL,DL,DL,LW}
 				};
-			if(Methods.setArea(par1World, par2, par3, par4, harvester))
+			if(Methods.setArea(par1World, par2, par3, par4, harvester, 0))
 				par1World.setBlock(par2, par3, par4, HV);
 				
 		}

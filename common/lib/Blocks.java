@@ -64,23 +64,28 @@ public class Blocks {
 		LanguageRegistry.addName(BlockAbsComp, "Compressor");
 		/////////////
 		
-		//DARKNESS GENERATOR
+		// DARKNESS GENERATOR
 		BlockDarkGen = (new BlockDarkGen(IDRef.DARK_GEN_ID, Material.rock));
 		GameRegistry.registerBlock(BlockDarkGen, "DarkGen");
 		LanguageRegistry.addName(BlockDarkGen, "Darkness Generator");
 		/////////////
 		
-		//MACHINE CORE
+		// MACHINE CORE
 		BlockMachineCore = (new BlockMachineCore(IDRef.MACHINE_CORE_ID, Material.rock));
 		GameRegistry.registerBlock(BlockMachineCore, "MachineCore");
 		LanguageRegistry.addName(BlockMachineCore, "Machine Core");
 		/////////////
 		
-		//EXTRACTOR
+		// EXTRACTOR
 		BlockExtractor = (new BlockExtractor(IDRef.EXTRACTOR_ID, Material.rock));
 		GameRegistry.registerBlock(BlockExtractor, "Extractor");
 		LanguageRegistry.addName(BlockExtractor, "Extractor");
 		/////////
+		
+		// LIGHT TREE
+		LightTreeManager LightTree = new LightTreeManager();
+		GameRegistry.registerWorldGenerator(LightTree);
+		/////////////
 	}
 
 }
