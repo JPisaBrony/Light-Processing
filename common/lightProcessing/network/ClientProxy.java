@@ -11,7 +11,7 @@ public class ClientProxy extends CommonProxy{
 	
 	  public void registerRenderThings() {
           ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCompressor.class, new TileEntityCompressorRender());
-          MinecraftForgeClient.registerItemRenderer(IDRef.COMPRESSOR_ID, new ItemAbsCompRenderer());
+          MinecraftForgeClient.registerItemRenderer(IDRef.COMPRESSOR_ID, new ItemCompressorRenderer());
           ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHarvester.class, new TileEntityHarvesterRender());
           MinecraftForgeClient.registerItemRenderer(IDRef.HARVESTER_ID, new ItemHarvesterRenderer());
           ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDarkGen.class, new TileEntityDarkGenRender());

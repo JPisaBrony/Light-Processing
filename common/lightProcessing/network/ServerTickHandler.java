@@ -17,7 +17,7 @@ public class ServerTickHandler implements ITickHandler {
 	public static int LS = 0;
 	private void onPlayerTick(EntityPlayer player){
 		ModelMachineCore.rotate();
-		ModelExtractor.pump();
+		//ModelExtractor.pump();
 
 	}
 	@Override

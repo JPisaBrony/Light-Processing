@@ -76,7 +76,7 @@ public class ModelExtractor extends ModelBase
       funnel.mirror = true;
       setRotation(funnel, 0F, 0F, 0F);
       beam = new ModelRenderer(this, 0, 40);
-      beam.addBox(-3F, 0F, -3F, 6, 13, 6);
+      beam.addBox(-3F, -1F, -3F, 6, 13, 6);
       beam.setRotationPoint(0F, 11F, 0F);
       beam.setTextureSize(64, 128);
       beam.mirror = true;
@@ -185,24 +185,6 @@ public class ModelExtractor extends ModelBase
   {
     super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
   }
-static boolean down = false;
-  public static void pump(){
-	  if(slider1.offsetY > -0.0){
-	down = true;
-	  }
-	  if(slider1.offsetY < -0.49){
-		  down = false;
-	  }
-	  if(down){
-		  slider1.offsetY -= 0.01;
-	  }
-	  if(!down){
-		  slider1.offsetY += 0.01;
-	  }
-	  slider2.offsetY = slider1.offsetY;
-	  if(slider1.offsetY == 0.0){
-		  
-	  }
-  }
+
   
 }
