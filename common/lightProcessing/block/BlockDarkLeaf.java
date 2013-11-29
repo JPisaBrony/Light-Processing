@@ -60,6 +60,9 @@ this.setUnlocalizedName("DarkLeaf");
 		if (!par1World.isRemote
 				&& par5EntityPlayer.getCurrentItemOrArmor(0) == null) {
 			EntityFallingSand entityfallingsand = new EntityFallingSand(par1World, (double)((float)par2 + 0.5F), (double)((float)par3 + 0.5F), (double)((float)par4 + 0.5F), IDRef.DARK_LEAF_ID, par1World.getBlockMetadata(par2, par3, par4));
+			entityfallingsand.motionX = 0;
+			entityfallingsand.motionY = 0.5;
+			entityfallingsand.motionZ = 0;
 			par1World.spawnEntityInWorld(entityfallingsand);
 		}
 		return false;
