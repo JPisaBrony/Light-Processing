@@ -43,30 +43,30 @@ public class BlockLightBlock extends Block{
 	}
 	
 	public void metaTestSet(World world, int x, int y, int z, int test, int set){
-		if(Methods.xPosMeta(world,x,y,z) == test && Methods.xPosID(world,x,y,z) == IDRef.LIGHT_BLOCK_ID){
-			Methods.xPosMetaSet(world,x,y,z,set);
+		if(Methods.getMeta(world,x,y,z,0) == test && Methods.getID(world,x,y,z,0) == IDRef.LIGHT_BLOCK_ID){
+			Methods.metaSet(world,x,y,z,set,0);
 		}
-		if(Methods.xNegMeta(world,x,y,z) == test && Methods.xNegID(world,x,y,z) == IDRef.LIGHT_BLOCK_ID){
-			Methods.xNegMetaSet(world,x,y,z,set);
+		if(Methods.getMeta(world,x,y,z,1) == test && Methods.getID(world,x,y,z,1) == IDRef.LIGHT_BLOCK_ID){
+			Methods.metaSet(world,x,y,z,set,1);
 		}
-		if(Methods.zPosMeta(world,x,y,z) == test && Methods.xPosID(world,x,y,z) == IDRef.LIGHT_BLOCK_ID){
-			Methods.zPosMetaSet(world,x,y,z,set);
+		if(Methods.getMeta(world,x,y,z,4) == test && Methods.getID(world,x,y,z,4) == IDRef.LIGHT_BLOCK_ID){
+			Methods.metaSet(world,x,y,z,set,4);
 		}
-		if(Methods.zNegMeta(world,x,y,z) == test && Methods.xNegID(world,x,y,z) == IDRef.LIGHT_BLOCK_ID){
-			Methods.zNegMetaSet(world,x,y,z,set);
+		if(Methods.getMeta(world,x,y,z,5) == test && Methods.getID(world,x,y,z,5) == IDRef.LIGHT_BLOCK_ID){
+			Methods.metaSet(world,x,y,z,set,5);
 		}
 	}
 	public boolean metaTest(World world, int x, int y, int z, int test){
-		if(Methods.xPosMeta(world,x,y,z) == test && Methods.xPosID(world,x,y,z) == IDRef.LIGHT_BLOCK_ID){
+		if(Methods.getMeta(world,x,y,z,0) == test && Methods.getID(world,x,y,z,0) == IDRef.LIGHT_BLOCK_ID){
 			return true;
 		}
-		if(Methods.xNegMeta(world,x,y,z) == test && Methods.xNegID(world,x,y,z) == IDRef.LIGHT_BLOCK_ID){
+		if(Methods.getMeta(world,x,y,z,1) == test && Methods.getID(world,x,y,z,1) == IDRef.LIGHT_BLOCK_ID){
 			return true;
 		}
-		if(Methods.zPosMeta(world,x,y,z) == test && Methods.xPosID(world,x,y,z) == IDRef.LIGHT_BLOCK_ID){
+		if(Methods.getMeta(world,x,y,z,4) == test && Methods.getID(world,x,y,z,4) == IDRef.LIGHT_BLOCK_ID){
 			return true;
 		}
-		if(Methods.zNegMeta(world,x,y,z) == test && Methods.xNegID(world,x,y,z) == IDRef.LIGHT_BLOCK_ID){
+		if(Methods.getMeta(world,x,y,z,5) == test && Methods.getID(world,x,y,z,5) == IDRef.LIGHT_BLOCK_ID){
 			return true;
 		}
 		return false;

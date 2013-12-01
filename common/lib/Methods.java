@@ -26,43 +26,103 @@ public class Methods {
 		}
 	}
 
-	public static int xPosMeta(World world, int x, int y, int z){
-		return world.getBlockMetadata(x + 1, y, z);
-	}
-	public static int xNegMeta(World world, int x, int y, int z){
-		return world.getBlockMetadata(x - 1, y, z);
-	}
-	public static int zPosMeta(World world, int x, int y, int z){
-		return world.getBlockMetadata(x, y, z + 1);
-	}
-	public static int zNegMeta(World world, int x, int y, int z){
-		return world.getBlockMetadata(x, y, z - 1);
+	/**Checks the metadata of a block neighboring x, y, z.
+	 * 0 = +x, 1 = -x, 2 = +y, 3 = -y, 4 = +z, 5 = -z 
+	 */
+	public static int getMeta(World world, int x, int y, int z, int dir){
+		switch(dir){
+		case 0:
+		{
+			return world.getBlockMetadata(x + 1, y, z);
+		}
+		case 1:
+		{
+			return world.getBlockMetadata(x - 1, y, z);
+		}
+		case 2:
+		{
+			return world.getBlockMetadata(x, y + 1, z);
+		}
+		case 3:
+		{
+			return world.getBlockMetadata(x, y - 1, z);
+		}
+		case 4:
+		{
+			return world.getBlockMetadata(x, y, z + 1);
+		}
+		case 5:
+		{
+			return world.getBlockMetadata(x, y, z - 1);
+		}
+		default:
+		return 0;
+		}
 	}
 	
-	public static int xPosID(World world, int x, int y, int z){
+	/**Checks the ID of a block neighboring x, y, z.
+	 * 0 = +x, 1 = -x, 2 = +y, 3 = -y, 4 = +z, 5 = -z 
+	 */
+	public static int getID(World world, int x, int y, int z, int dir){
+	switch(dir){
+	case 0:
+	{
 		return world.getBlockId(x + 1, y, z);
 	}
-	public static int xNegID(World world, int x, int y, int z){
+	case 1:
+	{
 		return world.getBlockId(x - 1, y, z);
 	}
-	public static int zPosID(World world, int x, int y, int z){
+	case 2:
+	{
+		return world.getBlockId(x, y + 1, z);
+	}
+	case 3:
+	{
+		return world.getBlockId(x, y - 1, z);
+	}
+	case 4:
+	{
 		return world.getBlockId(x, y, z + 1);
 	}
-	public static int zNegID(World world, int x, int y, int z){
+	case 5:
+	{
 		return world.getBlockId(x, y, z - 1);
 	}
-	
-	public static void xPosMetaSet(World world, int x, int y, int z, int meta){
-		world.setBlockMetadataWithNotify(x + 1, y, z, meta, 3);
 	}
-	public static void xNegMetaSet(World world, int x, int y, int z, int meta){
-		world.setBlockMetadataWithNotify(x - 1, y, z, meta, 3);
+	return 0;
 	}
-	public static void zPosMetaSet(World world, int x, int y, int z, int meta){
-		world.setBlockMetadataWithNotify(x, y, z + 1, meta, 3);
-	}
-	public static void zNegMetaSet(World world, int x, int y, int z, int meta){
-		world.setBlockMetadataWithNotify(x, y, z - 1, meta, 3);
+
+	/**Sets the metadata of a block neighboring x, y, z to "meta."
+	 * 0 = +x, 1 = -x, 2 = +y, 3 = -y, 4 = +z, 5 = -z 
+	 */
+	public static void metaSet(World world, int x, int y, int z, int meta, int dir){
+		switch(dir){
+			case 0:
+			{
+				world.setBlockMetadataWithNotify(x + 1, y, z, meta, 3);
+			}
+			case 1:
+			{
+				world.setBlockMetadataWithNotify(x + 1, y, z, meta, 3);				
+			}
+			case 2:
+			{	
+				world.setBlockMetadataWithNotify(x, y + 1, z, meta, 3);
+			}
+			case 3:
+			{	
+				world.setBlockMetadataWithNotify(x, y - 1, z, meta, 3);
+			}
+			case 4:
+			{	
+				world.setBlockMetadataWithNotify(x, y, z + 1, meta, 3);
+			}
+			case 5:
+			{	
+				world.setBlockMetadataWithNotify(x, y, z - 1, meta, 3);
+			}
+		}
 	}
 	
 	public static boolean isPoweredDirect(World world, int x, int y, int z) {

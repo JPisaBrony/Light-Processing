@@ -22,7 +22,7 @@ public class TileEntityExtractorRender extends TileEntitySpecialRenderer {
 	public static final ResourceLocation Extractor = new ResourceLocation(
 			Reference.MOD_ID.toLowerCase(),
 			"/textures/models/ModelExtractor.png");
-
+	static boolean running = false;
 	public TileEntityExtractorRender() {
 		this.model = new ModelExtractor();
 	}
@@ -33,7 +33,7 @@ public class TileEntityExtractorRender extends TileEntitySpecialRenderer {
 		GL11.glRotatef(meta * (-90), 0.0F, 0.0F, 1.0F);
 		GL11.glPopMatrix();
 	}
-
+	boolean down = false;
 	@Override
 	public void renderTileEntityAt(TileEntity te, double x, double y, double z,
 		float scale) {
@@ -49,6 +49,20 @@ public class TileEntityExtractorRender extends TileEntitySpecialRenderer {
 		GL11.glPushMatrix();
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
 		// A reference to your Model file. Again, very important.
+			  if(this.model.slider1.offsetY > 0.0){
+			down = true;
+			  }
+			  if(this.model.slider1.offsetY < -0.49){
+				  down = false;
+			  }
+			  long time = System.currentTimeMillis() % 40000L;
+			  if(down){
+				  this.model.slider1.offsetY -= 0.001;
+			  }
+			  if(!down){
+				  this.model.slider1.offsetY += 0.001;
+			  }
+			  this.model.slider2.offsetY = this.model.slider1.offsetY;
 		this.model.render((Entity) null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 		// Tell it to stop rendering for both the PushMatrix's
 		GL11.glPopMatrix();

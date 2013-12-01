@@ -6,11 +6,11 @@ import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.IItemRenderer;
 
-public class ItemAbsCompRenderer implements IItemRenderer {
+public class ItemCompressorRenderer implements IItemRenderer {
 	
 	private ModelCompressor AbsCompModel;
 
-	public ItemAbsCompRenderer() {
+	public ItemCompressorRenderer() {
 
 	AbsCompModel = new ModelCompressor();
 	}
