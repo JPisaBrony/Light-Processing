@@ -7,7 +7,6 @@ import net.minecraft.entity.Entity;
 
 public class ModelExtractor extends ModelBase
 {
-  //fields
     ModelRenderer top;
     ModelRenderer bottom;
     ModelRenderer wall1;
@@ -185,6 +184,4 @@ public class ModelExtractor extends ModelBase
   {
     super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
   }
-
-  
 }

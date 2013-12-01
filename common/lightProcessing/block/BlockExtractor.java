@@ -1,6 +1,7 @@
 package LightProcessing.common.lightProcessing.block;
 
 import java.util.List;
+
 import java.util.Random;
 
 import cpw.mods.fml.relauncher.Side;
@@ -12,12 +13,14 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.dispenser.IPosition;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -29,15 +32,29 @@ public class BlockExtractor extends Block {
 		this.setCreativeTab(BlockTab.blockTab);
 		this.setUnlocalizedName("Extractor");
 	}
-
-	public static boolean flag1;
-
+	
+	
 	@Override
 	public boolean canConnectRedstone(IBlockAccess world, int x, int y, int z,
 			int side) {
 		return true;
 	}
+	  
+	@Override
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack stack)
+	{
+	if (entity == null)
+	{
+	return;
+	}
 
+
+	TileEntityExtractor tile = (TileEntityExtractor) world.getBlockTileEntity(x, y, z);
+	if(!world.isRemote){
+   world.setBlockMetadataWithNotify(x, y, z, MathHelper.floor_double((double)(entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3, 3);
+	}
+	}
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister iconRegister) {
@@ -87,23 +104,69 @@ public class BlockExtractor extends Block {
 	public boolean onBlockActivated(World par1World, int par2, int par3,
 			int par4, EntityPlayer par5EntityPlayer, int par6, float par7,
 			float par8, float par9) {
+		if(par5EntityPlayer.getCurrentEquippedItem() == null){
 		extract(par1World,par2,par3,par4);
+		}
 		return false;
 	}
 	public static void extract(World world, int x, int y, int z){
+		
+		double posx = 0;
+		double posz = 0;
+		double velx = 0;
+		double velz = 0;
+		
+		if(!world.isRemote){
+			switch(world.getBlockMetadata(x, y, z)){
+			case 0:
+		{
+			posx = x + 0.5;
+			posz = z - 0.6;
+			velz = -1;
+			velx = 0;
+		};
+		break;
+			case 1:
+		{
+			posx = x + 1.5;
+			posz = z + 0.5;
+			velx = 1;
+			velz = 0;
+		};
+		break;
+			case 2:
+		{
+			posx = x + 0.5;
+			posz = z + 1.5;
+			velz = 1;
+			velx = 0;
+		}
+		break;
+			case 3:
+		{
+			posx = x - 0.6;
+			posz = z + 0.5;
+			velx = -1;
+			velz = 0;
+		}
+		break;
+			}
+		}
+		
 		ItemStack LightStack = new ItemStack(Items.ItemLightBall, 1);
-		EntityItem LightItem = new EntityItem(world, x + 0.5,
-				y + 0.5, z - 0.6, LightStack);
-		LightItem.motionX = 0;
+		EntityItem LightItem = new EntityItem(world, posx,
+				y + 0.5, posz, LightStack);
+		LightItem.motionX = velx;
 		LightItem.motionY = 0;
-		LightItem.motionZ = -1;
+		LightItem.motionZ = velz;
 		
 		ItemStack DarkStack = new ItemStack(Items.ItemDarkBall, 1);
-		EntityItem DarkItem = new EntityItem(world, x + 0.5,
-				y + 0.5, z - 0.6, DarkStack);
-		DarkItem.motionX = 0;
+		EntityItem DarkItem = new EntityItem(world, posx,
+				y + 0.5, posz, DarkStack);
+		DarkItem.motionX = velx;
 		DarkItem.motionY = 0;
-		DarkItem.motionZ = -1;
+		DarkItem.motionZ = velz;
+		
 		int ID = world.getBlockId(x, y + 1, z);	
 		if(!world.isRemote){
 		if(ID == IDRef.LIGHT_WOOD_ID){

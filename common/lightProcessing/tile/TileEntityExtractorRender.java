@@ -17,7 +17,6 @@ import net.minecraft.world.World;
 
 public class TileEntityExtractorRender extends TileEntitySpecialRenderer {
 
-	// The model of your block
 	private final ModelExtractor model;
 	public static final ResourceLocation Extractor = new ResourceLocation(
 			Reference.MOD_ID.toLowerCase(),
@@ -33,43 +32,24 @@ public class TileEntityExtractorRender extends TileEntitySpecialRenderer {
 		GL11.glRotatef(meta * (-90), 0.0F, 0.0F, 1.0F);
 		GL11.glPopMatrix();
 	}
-	boolean down = false;
+	
 	@Override
 	public void renderTileEntityAt(TileEntity te, double x, double y, double z,
 		float scale) {
-		// The PushMatrix tells the renderer to "start" doing something.
 		GL11.glPushMatrix();
-		// This is setting the initial location.
 		GL11.glTranslatef((float) x + 0.5F, (float) y + 1.5F, (float) z + 0.5F);
-		// This is the texture of your block. It's pathed to be the same place
-		// as your other blocks here.
 		Minecraft.getMinecraft().renderEngine.func_110577_a(Extractor);
-		// This rotation part is very important! Without it, your model will
-		// render upside-down! And for some reason you DO need PushMatrix again!
 		GL11.glPushMatrix();
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-		// A reference to your Model file. Again, very important.
-			  if(this.model.slider1.offsetY > 0.0){
-			down = true;
-			  }
-			  if(this.model.slider1.offsetY < -0.49){
-				  down = false;
-			  }
-			  long time = System.currentTimeMillis() % 40000L;
-			  if(down){
-				  this.model.slider1.offsetY -= 0.001;
-			  }
-			  if(!down){
-				  this.model.slider1.offsetY += 0.001;
-			  }
-			  this.model.slider2.offsetY = this.model.slider1.offsetY;
+		TileEntityExtractor tile = (TileEntityExtractor) te;
+		GL11.glRotatef(te.blockMetadata * 90, 0.0F, 1.0F, 0.0F);
+		this.model.slider1.offsetY = TileEntityExtractor.offset;
+		this.model.slider2.offsetY = this.model.slider1.offsetY;
 		this.model.render((Entity) null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-		// Tell it to stop rendering for both the PushMatrix's
 		GL11.glPopMatrix();
 		GL11.glPopMatrix();
 	}
-
-	// Set the lighting stuff, so it changes it's brightness properly.
+	
 	private void adjustLightFixture(World world, int i, int j, int k,
 			Block block) {
 		Tessellator tess = Tessellator.instance;

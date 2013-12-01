@@ -6,6 +6,7 @@ public class WorldCrafting {
 	static int HV = IDRef.HARVESTER_ID;
 	static int MC = IDRef.MACHINE_CORE_ID;
 	static int DB = IDRef.DARK_BLOCK_ID;
+	static int EX = IDRef.EXTRACTOR_ID;
 	public static int harvester[][] = {
 			{LW,DL,DL,DL,LW},
 			{DL,0 ,0 ,0 ,DL},
