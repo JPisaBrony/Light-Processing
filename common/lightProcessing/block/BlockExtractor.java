@@ -91,13 +91,8 @@ public class BlockExtractor extends Block {
 		return false;
 	}
 	public static void extract(World world, int x, int y, int z){
-		ItemStack LightStack = new ItemStack(Items.ItemLightBall, 1);
-		EntityItem LightItem = new EntityItem(world, x + 0.5,
-				y + 0.5, z - 0.6, LightStack);
-		LightItem.motionX = 0;
-		LightItem.motionY = 0;
-		LightItem.motionZ = -1;
-		
+		int count = 0;
+
 		ItemStack DarkStack = new ItemStack(Items.ItemDarkBall, 1);
 		EntityItem DarkItem = new EntityItem(world, x + 0.5,
 				y + 0.5, z - 0.6, DarkStack);
@@ -106,9 +101,20 @@ public class BlockExtractor extends Block {
 		DarkItem.motionZ = -1;
 		int ID = world.getBlockId(x, y + 1, z);	
 		if(!world.isRemote){
-		if(ID == IDRef.LIGHT_WOOD_ID){
-			world.setBlockToAir(x, y + 1, z);
-			world.spawnEntityInWorld(LightItem);
+		if(ID == IDRef.LIGHT_WOOD_ID) {
+			for(int i = 0; i <= 10; i++) {
+				if(count == 10) {
+					world.setBlockToAir(x, y + 1, z);
+					break;
+				}
+				ItemStack LightStack = new ItemStack(Items.ItemLightBall, 1);
+				EntityItem LightItem = new EntityItem(world, x + 0.5,y + 0.5, z - 0.6, LightStack);
+				LightItem.motionX = 0;
+				LightItem.motionY = 0;
+				LightItem.motionZ = -1;
+				count++;
+			}
+			
 		}
 		if(ID == IDRef.DARK_LEAF_ID){
 			world.setBlockToAir(x, y + 1, z);

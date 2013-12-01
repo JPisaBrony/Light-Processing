@@ -57,20 +57,54 @@ public class BlockMachineCore extends Block{
 	@Override
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
 		if (par5EntityPlayer.getCurrentItemOrArmor(0) == null) {
+			
+			int DL = IDRef.DARK_LEAF_ID;
+			int LW = IDRef.LIGHT_WOOD_ID;
+			int HV = IDRef.HARVESTER_ID;
+			int MC = IDRef.MACHINE_CORE_ID;
+			int harvester[][][] = {
+					{
+						{LW,DL,DL,DL,LW},
+						{DL,-1,-1,-1,DL},
+						{DL,-1,-1,-1,DL},
+						{DL,-1,-1,-1,DL},
+						{LW,DL,DL,DL,LW},
+					},
+					{
+						{LW,DL,DL,DL,LW},
+						{DL,-1,-1,-1,DL},
+						{DL,-1,-1,-1,DL},
+						{DL,-1,-1,-1,DL},
+						{LW,DL,DL,DL,LW},
+					},
+					{
+						{LW,DL,DL,DL,LW},
+						{DL,-1,-1,-1,DL},
+						{DL,-1,-1,-1,DL},
+						{DL,-1,-1,-1,DL},
+						{LW,DL,DL,DL,LW},
+					}
+				};
+			if(Methods.setArea(par1World, par2, par3, par4, harvester, 0))
+				par1World.setBlock(par2, par3, par4, HV);
+		
+		/*
+		if (par5EntityPlayer.getCurrentItemOrArmor(0) == null) {
 			int DL = IDRef.DARK_LEAF_ID;
 			int LW = IDRef.LIGHT_WOOD_ID;
 			int HV = IDRef.HARVESTER_ID;
 			int MC = IDRef.MACHINE_CORE_ID;
 			int harvester[][] = {
 					{LW,DL,DL,DL,LW},
-					{DL,0,0,0,DL},
-					{DL,0,MC,0,DL},
-					{DL,0,0,0,DL},
-					{LW,DL,DL,DL,LW}
+					{DL,-1,-1,-1,DL},
+					{DL,-1,-1,-1,DL},
+					{DL,-1,-1,-1,DL},
+					{LW,DL,DL,DL,LW},
 				};
 			if(Methods.setArea(par1World, par2, par3, par4, harvester, 0))
 				par1World.setBlock(par2, par3, par4, HV);
 				
+		}*/
 		}
 		return false;
 	}
