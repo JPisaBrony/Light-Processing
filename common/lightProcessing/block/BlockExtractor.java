@@ -39,7 +39,6 @@ public class BlockExtractor extends Block {
 			int side) {
 		return true;
 	}
-	  
 	@Override
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack stack)
 	{
@@ -104,8 +103,17 @@ public class BlockExtractor extends Block {
 	public boolean onBlockActivated(World par1World, int par2, int par3,
 			int par4, EntityPlayer par5EntityPlayer, int par6, float par7,
 			float par8, float par9) {
+		if(!par1World.isRemote){
 		if(par5EntityPlayer.getCurrentEquippedItem() == null){
-		extract(par1World,par2,par3,par4);
+			int meta = par1World.getBlockMetadata(par2, par3, par4);
+			if(meta < 4){
+				 meta += 4;	
+			}
+			else{
+				meta -= 4;
+			}
+		par1World.setBlockMetadataWithNotify(par2, par3, par4, meta, 3);
+		}
 		}
 		return false;
 	}

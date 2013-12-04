@@ -184,4 +184,19 @@ public class ModelExtractor extends ModelBase
   {
     super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
   }
+  public void pump(long animationOffset){
+	  final long CYCLE_TIME_IN_MS = 2000;
+	  final long HALF_CYCLE_TIME_IN_MS = CYCLE_TIME_IN_MS / 2;
+	  final float START_SLIDER_POS = 0.0F;
+	  final float MID_CYCLE_SLIDER_POS = -0.5F;
+	  long time = (System.currentTimeMillis() + animationOffset) % CYCLE_TIME_IN_MS;
+	  if (time < HALF_CYCLE_TIME_IN_MS) {
+	    slider1.offsetY = START_SLIDER_POS + (time / (float)HALF_CYCLE_TIME_IN_MS) * (MID_CYCLE_SLIDER_POS - START_SLIDER_POS);
+	  } else {
+	    time -= HALF_CYCLE_TIME_IN_MS; 
+	    slider1.offsetY = MID_CYCLE_SLIDER_POS + (time / (float)HALF_CYCLE_TIME_IN_MS) * (START_SLIDER_POS - MID_CYCLE_SLIDER_POS); 
+	  }
+	  slider2.offsetY = slider1.offsetY;
+	}
+  
 }

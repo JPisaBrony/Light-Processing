@@ -43,8 +43,13 @@ public class TileEntityExtractorRender extends TileEntitySpecialRenderer {
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
 		TileEntityExtractor tile = (TileEntityExtractor) te;
 		GL11.glRotatef(te.blockMetadata * 90, 0.0F, 1.0F, 0.0F);
-		this.model.slider1.offsetY = TileEntityExtractor.offset;
-		this.model.slider2.offsetY = this.model.slider1.offsetY;
+		if(tile.blockMetadata > 3){
+		this.model.pump(tile.animationOffset);
+		}
+		else{
+			this.model.slider1.offsetY = 0;
+			this.model.slider2.offsetY = 0;
+		}
 		this.model.render((Entity) null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 		GL11.glPopMatrix();
 		GL11.glPopMatrix();
