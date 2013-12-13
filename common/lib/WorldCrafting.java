@@ -6,6 +6,8 @@ public class WorldCrafting {
 	static int HV = IDRef.HARVESTER_ID;
 	static int MC = IDRef.MACHINE_CORE_ID;
 	static int DB = IDRef.DARK_BLOCK_ID;
+	static int EX = IDRef.EXTRACTOR_ID;
+	static int SK = -1;
 	public static int harvester[][] = {
 			{LW,DL,DL,DL,LW},
 			{DL,0 ,0 ,0 ,DL},
@@ -14,17 +16,17 @@ public class WorldCrafting {
 			{LW,DL,DL,DL,LW}
 		};
 	public static int darkGen[][] = {
-		{0 ,0 ,DB,0 ,0 },
-		{0 ,DB,0 ,DB,0 },
+		{SK,SK,DB,SK,SK},
+		{SK,DB,0 ,DB,SK},
 		{DB,0 ,MC,0 ,DB},
-		{0 ,DB,0 ,DB,0 },
-		{0 ,0 ,DB,0 ,0 }
+		{SK,DB,0 ,DB,SK},
+		{SK,SK,DB,SK,SK}
 	};
 	public static int darkGen2[][] = {
-		{0 ,0 ,0 ,0 ,0 },
-		{0 ,0 ,0 ,0 ,0 },
-		{0 ,0 ,DB,0 ,0 },
-		{0 ,0 ,0 ,0 ,0 },
-		{0 ,0 ,0 ,0 ,0 }
+		{SK,SK,SK,SK,SK},
+		{SK,SK,SK,SK,SK},
+		{SK,SK,DB,SK,SK},
+		{SK,SK,SK,SK,SK},
+		{SK,SK,SK,SK,SK}
 	};
 }

@@ -67,7 +67,7 @@ public class BlockMachineCore extends Block{
 			Methods.setArea(par1World, par2, par3 + 1, par4, WorldCrafting.darkGen2, 0);
 			par1World.setBlock(par2, par3, par4, IDRef.DARK_GEN_ID);
  		}
-
+		
 	}
 		return false;
 	}

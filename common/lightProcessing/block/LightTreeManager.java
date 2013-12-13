@@ -27,7 +27,7 @@ private void generateEnd(World world, Random random, int x, int z) {
 private void generateSurface(World world, Random random, int x, int z) {
 	for (int i = 0; i < 20; i++){
 		int Xcoord1 = x + random.nextInt(16); //where in chuck it generates
-		int Ycoord1 = random.nextInt(100); //how high it generates
+		int Ycoord1 = random.nextInt(70); //how high it generates
 		int Zcoord1 = z + random.nextInt(16); //where in chunk it generates
 		
 		new LightTreeGen(false, 4, 0, 0, false).generate(world, random, Xcoord1, Ycoord1, Zcoord1);
