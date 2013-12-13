@@ -2,7 +2,9 @@ package LightProcessing.common.lightProcessing.tile;
 
 import org.lwjgl.opengl.GL11;
 
+import LightProcessing.common.lib.ExtractionList;
 import LightProcessing.common.lib.Reference;
+import LightProcessing.common.lightProcessing.block.BlockExtractor;
 import LightProcessing.resources.mods.ltp.models.ModelDarkGen;
 import LightProcessing.resources.mods.ltp.models.ModelExtractor;
 import net.minecraft.block.Block;
@@ -44,11 +46,18 @@ public class TileEntityExtractorRender extends TileEntitySpecialRenderer {
 		TileEntityExtractor tile = (TileEntityExtractor) te;
 		GL11.glRotatef(te.blockMetadata * 90, 0.0F, 1.0F, 0.0F);
 		if(tile.blockMetadata > 3){
-		this.model.pump(tile.animationOffset);
+			if(tile.flag){
+				    tile.animationOffset = System.currentTimeMillis() * -1;
+					tile.flag = false;
+				  }
+		if(!(ExtractionList.getEssence(tile.worldObj, tile.xCoord, tile.yCoord + 1, tile.zCoord) == 0)){
+			this.model.pump(tile.animationOffset, tile.worldObj, tile.xCoord, tile.yCoord, tile.zCoord, tile);
+		}
 		}
 		else{
 			this.model.slider1.offsetY = 0;
 			this.model.slider2.offsetY = 0;
+			tile.flag = true;
 		}
 		this.model.render((Entity) null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 		GL11.glPopMatrix();

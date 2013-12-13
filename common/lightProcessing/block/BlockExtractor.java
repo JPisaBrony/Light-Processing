@@ -86,14 +86,6 @@ public class BlockExtractor extends Block {
 		return -1;
 	}
 
-	public void addCollisionBoxesToList(World par1World, int par2, int par3,
-			int par4, AxisAlignedBB par5AxisAlignedBB, List par6List,
-			Entity par7Entity) {
-		this.setBlockBounds(-0.065F, 0.0F, -0.065F, 1.045F, 1.1F, 1.045F);
-		super.addCollisionBoxesToList(par1World, par2, par3, par4,
-				par5AxisAlignedBB, par6List, par7Entity);
-	}
-	
 	@Override
 	public void setBlockBoundsBasedOnState(IBlockAccess par1IBlockAccess,
 			int par2, int par3, int par4) {
@@ -103,8 +95,9 @@ public class BlockExtractor extends Block {
 	public boolean onBlockActivated(World par1World, int par2, int par3,
 			int par4, EntityPlayer par5EntityPlayer, int par6, float par7,
 			float par8, float par9) {
-		if(!par1World.isRemote){
+		
 		if(par5EntityPlayer.getCurrentEquippedItem() == null){
+			if(!par1World.isRemote){
 			int meta = par1World.getBlockMetadata(par2, par3, par4);
 			if(meta < 4){
 				 meta += 4;	
@@ -117,75 +110,75 @@ public class BlockExtractor extends Block {
 		}
 		return false;
 	}
-	public static void extract(World world, int x, int y, int z){
-		
-		double posx = 0;
-		double posz = 0;
-		double velx = 0;
-		double velz = 0;
-		
-		if(!world.isRemote){
-			switch(world.getBlockMetadata(x, y, z)){
-			case 0:
-		{
-			posx = x + 0.5;
-			posz = z - 0.6;
-			velz = -1;
-			velx = 0;
-		};
-		break;
-			case 1:
-		{
-			posx = x + 1.5;
-			posz = z + 0.5;
-			velx = 1;
-			velz = 0;
-		};
-		break;
-			case 2:
-		{
-			posx = x + 0.5;
-			posz = z + 1.5;
-			velz = 1;
-			velx = 0;
-		}
-		break;
-			case 3:
-		{
-			posx = x - 0.6;
-			posz = z + 0.5;
-			velx = -1;
-			velz = 0;
-		}
-		break;
+	
+	
+	 public static void extract(World world, int x, int y, int z){
+			int stack = ExtractionList.getEssence(world, x, y + 1, z);
+			double posx = 0;
+			double posz = 0;
+			double velx = 0;
+			double velz = 0;
+			
+				switch(world.getBlockMetadata(x, y, z)){
+				case 0:
+				case 4:
+			{
+				posx = x + 0.5;
+				posz = z - 0.6;
+				velz = -1;
+				velx = 0;
+			};
+			break;
+				case 1:
+				case 5:
+			{
+				posx = x + 1.5;
+				posz = z + 0.5;
+				velx = 1;
+				velz = 0;
+			};
+			break;
+				case 2:
+				case 6:
+			{
+				posx = x + 0.5;
+				posz = z + 1.5;
+				velz = 1;
+				velx = 0;
 			}
-		}
-		
-		ItemStack LightStack = new ItemStack(Items.ItemLightBall, 1);
-		EntityItem LightItem = new EntityItem(world, posx,
-				y + 0.5, posz, LightStack);
-		LightItem.motionX = velx;
-		LightItem.motionY = 0;
-		LightItem.motionZ = velz;
-		
-		ItemStack DarkStack = new ItemStack(Items.ItemDarkBall, 1);
-		EntityItem DarkItem = new EntityItem(world, posx,
-				y + 0.5, posz, DarkStack);
-		DarkItem.motionX = velx;
-		DarkItem.motionY = 0;
-		DarkItem.motionZ = velz;
-		
-		int ID = world.getBlockId(x, y + 1, z);	
-		if(!world.isRemote){
-		if(ID == IDRef.LIGHT_WOOD_ID){
-			world.setBlockToAir(x, y + 1, z);
-			world.spawnEntityInWorld(LightItem);
-		}
-		if(ID == IDRef.DARK_LEAF_ID){
-			world.setBlockToAir(x, y + 1, z);
-			world.spawnEntityInWorld(DarkItem);
-		}
+			break;
+				case 3:
+				case 7:
+			{
+				posx = x - 0.6;
+				posz = z + 0.5;
+				velx = -1;
+				velz = 0;
+			}
+			break;
+			
+				}
+				
+				EntityItem OutputItem = null;
+				ItemStack Output = null;
+				if(stack > 0){
+					System.out.println(stack);
+					Output = new ItemStack(Items.ItemLightBall,stack);
+				}
+				else if(stack < 0){
+					Output = new ItemStack(Items.ItemDarkBall,stack);
+				}
+				OutputItem = new EntityItem(world, posx,y + 0.5, posz, Output);
+			OutputItem.motionX = velx;
+			OutputItem.motionY = 0;
+			OutputItem.motionZ = velz;
+				world.setBlockToAir(x, y + 1, z);
+				if(!world.isRemote)
+				{
+					world.spawnEntityInWorld(OutputItem);
+				}
 	}
-	}
+	  
+	
 	
 }

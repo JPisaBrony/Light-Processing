@@ -1,9 +1,17 @@
 
 package LightProcessing.resources.mods.ltp.models;
 
+import LightProcessing.common.lib.ExtractionList;
+import LightProcessing.common.lib.IDRef;
+import LightProcessing.common.lib.Items;
+import LightProcessing.common.lightProcessing.block.BlockExtractor;
+import LightProcessing.common.lightProcessing.tile.TileEntityExtractor;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 
 public class ModelExtractor extends ModelBase
 {
@@ -123,10 +131,11 @@ public class ModelExtractor extends ModelBase
       output4.mirror = true;
       setRotation(output4, 0F, 0F, 0F);
       base1 = new ModelRenderer(this, 0, 102);
+      base1.mirror = true;
       base1.addBox(0F, 0F, -8F, 2, 1, 14);
       base1.setRotationPoint(5F, 22F, 1F);
       base1.setTextureSize(64, 128);
-      base1.mirror = true;
+      base1.mirror = false;
       setRotation(base1, 0F, 0F, 0F);
       base2 = new ModelRenderer(this, 0, 102);
       base2.addBox(0F, 0F, -8F, 2, 1, 14);
@@ -184,12 +193,24 @@ public class ModelExtractor extends ModelBase
   {
     super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
   }
-  public void pump(long animationOffset){
-	  final long CYCLE_TIME_IN_MS = 2000;
+  public void pump(long animationOffset, World world, int x, int y, int z, TileEntityExtractor tile){
+	  final long CYCLE_TIME_IN_MS = 3000;
 	  final long HALF_CYCLE_TIME_IN_MS = CYCLE_TIME_IN_MS / 2;
 	  final float START_SLIDER_POS = 0.0F;
 	  final float MID_CYCLE_SLIDER_POS = -0.5F;
+	  int meta = world.getBlockMetadata(x, y, z);
+	  int ID = world.getBlockId(x, y + 1, z);
+	  int cycles = ExtractionList.getEssence(world, x, y + 1, z);
+	  long numberOfCyclesSinceStart = (System.currentTimeMillis() + animationOffset) / CYCLE_TIME_IN_MS;
 	  long time = (System.currentTimeMillis() + animationOffset) % CYCLE_TIME_IN_MS;
+	  if(cycles == 0){
+		  numberOfCyclesSinceStart = 0;
+		  time = 0;
+		  
+	  }
+	  if(numberOfCyclesSinceStart > Math.abs(cycles) - 1){
+		  time = 0;
+		  }
 	  if (time < HALF_CYCLE_TIME_IN_MS) {
 	    slider1.offsetY = START_SLIDER_POS + (time / (float)HALF_CYCLE_TIME_IN_MS) * (MID_CYCLE_SLIDER_POS - START_SLIDER_POS);
 	  } else {
@@ -198,5 +219,4 @@ public class ModelExtractor extends ModelBase
 	  }
 	  slider2.offsetY = slider1.offsetY;
 	}
-  
 }

@@ -14,6 +14,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingData;
 import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.entity.monster.EntityPigZombie;
+import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
@@ -122,6 +124,7 @@ public class BlockLightBlock extends Block{
 		
 		if(par5Entity instanceof EntityLiving){
 			((EntityLiving)par5Entity).addPotionEffect(new PotionEffect(Potion.nightVision.getId(),400,50));
+			//((EntityLiving)par5Entity).addPotionEffect(new PotionEffect(Potion.moveSpeed.getId(),400,50));
 		}
 		if(par5Entity instanceof EntityPlayer){
 			((EntityPlayer)par5Entity).addPotionEffect(new PotionEffect(Potion.nightVision.getId(),400,50));
@@ -152,7 +155,8 @@ public class BlockLightBlock extends Block{
 		//sets hostile mobs on fire
 		
 		if(par5Entity.isCreatureType(EnumCreatureType.monster, true)){
-		par5Entity.setFire(5);
+			par5Entity.attackEntityFrom(DamageSource.magic, 200);
+			par5Entity.setFire(5);
 		}
 		
 		//Light Motion (Horizontal)
