@@ -66,6 +66,7 @@ public class LightProcessing {
 		Items.InitItems();
 		Recipes.InitRecipes();
 		Tiles.registerTiles();
+		ExtractionList.setList();
 
 	}
 

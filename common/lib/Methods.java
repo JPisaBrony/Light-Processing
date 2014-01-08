@@ -294,4 +294,32 @@ public class Methods {
 		}
 		return false;
 	}
+	
+	
+	
+	public static boolean testArea(World world, int x, int y, int z, int ox, int oy, int oz, int Array[][][]) {
+		int num = 0, i, j, k;
+		int valX = Array[0][0].length;
+		int valY = Array[0].length;
+		int valZ = Array.length;
+		for(i = 0; i <= valZ; i++) {
+			for(j = 0; j <= valY; j++) {
+				for(k = 0; k <= valX; k++) {
+					if(world.getBlockId(x + j - ox, y + i - oy, z + k - oz) == Array[i+valZ][j+valY][k+valX]  || Array[i+valZ][j+valY][k+valX] == -1)
+						num++;
+					
+					System.out.println(world.getBlockId(x + j - ox, y + i - oy, z + k - oz));
+				}
+				
+			}
+		}
+		
+		if(Array[0][0].length * Array[0].length * Array.length == num)
+			return true;
+		else
+			return false;
+	}
+	
+	
+	
 }

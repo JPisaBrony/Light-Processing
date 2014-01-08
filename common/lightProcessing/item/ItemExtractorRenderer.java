@@ -1,5 +1,7 @@
 package LightProcessing.common.lightProcessing.item;
 
+import org.lwjgl.opengl.GL11;
+
 import LightProcessing.common.lightProcessing.tile.*;
 import LightProcessing.resources.mods.ltp.models.ModelCompressor;
 import LightProcessing.resources.mods.ltp.models.ModelExtractor;
@@ -30,6 +32,8 @@ public class ItemExtractorRenderer implements IItemRenderer {
 
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
+		GL11.glRotatef(90, 0, 1, 0);
+		GL11.glTranslatef(-1F, -0.1F, 0F);
 	TileEntityRenderer.instance.renderTileEntityAt(new TileEntityExtractor(), 0.0D, 0.0D, 0.0D, 0.0F);
 	}
 	}
