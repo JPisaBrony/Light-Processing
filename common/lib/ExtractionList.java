@@ -5,7 +5,7 @@ import net.minecraft.world.World;
 public class ExtractionList {
 	public static int[] list = new int[4096];
 	public static int[][] list2 = new int[4096][16];
-	  public static void setList() {
+	public static void setList() {
 	    list[0] = 0;
 	    list[1] = -3;
 	    list[2] = 3;
@@ -149,26 +149,19 @@ public class ExtractionList {
 	    list2[IDRef.LIGHT_BLOCK_ID] = lb;
 	    list2[IDRef.ABS_BLOCK_ID] = ab;
 	    list2[IDRef.LIGHT_WOOD_ID] = lw;
-	    
-	    
-	   }
-	   
-	   public static int getEssence(World world, int x, int y, int z)
-	   {
-	   int ID = world.getBlockId(x, y, z);
-	   int meta = world.getBlockMetadata(x, y, z);
-	   if(!(meta == 0)){
-		   if(list2[ID][meta] == 0){
+	}
+	  	
+	public static int getEssence(World world, int x, int y, int z) {
+		int ID = world.getBlockId(x, y, z);
+		int meta = world.getBlockMetadata(x, y, z);
+		if(!(meta == 0)){
+		   if(list2[ID][meta] == 0)
 			   return list[ID];
-		   }
 		   return list2[ID][meta];
 	   }
-	   else if(meta == 0){
+	   else if(meta == 0)
 		   return list[ID];
-	   }
-	   else{
+	   else
 		   return 0;
-	   }
-	   }
-	   
+	}
 }

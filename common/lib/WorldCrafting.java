@@ -15,7 +15,6 @@ public class WorldCrafting {
 		{DL,-1 ,-1 ,-1 ,DL},
 		{LW,DL,DL,DL,LW}
 	};
-		
 	public static int darkGen[][] = {
 		{SK,SK,DB,SK,SK},
 		{SK,DB,0 ,DB,SK},

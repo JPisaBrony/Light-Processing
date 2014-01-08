@@ -32,7 +32,6 @@ public class Items {
 		LanguageRegistry.addName(ItemAbsIngot, "Stabilized Absolution");
 		LanguageRegistry.addName(ItemUnstableAbs, "Unstable Absolution");
 		LanguageRegistry.addName(ItemAbsRod, "Absolution Rod");
-	
 	}
-	
+
 }

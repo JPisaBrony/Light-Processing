@@ -21,66 +21,55 @@ public class Blocks {
 	public static Block BlockExtractor;
 
 	public static void InitBlocks() {
-
 		// LIGHT BLOCK
 		BlockLightBlock = (new BlockLightBlock(IDRef.LIGHT_BLOCK_ID, Material.rock));
 		GameRegistry.registerBlock(BlockLightBlock, "LightBlock");
 		LanguageRegistry.addName(BlockLightBlock, "Block of Light");
-		/////////////
 
 		// LIGHT WOOD
 		BlockLightWood = (new BlockLightWood(IDRef.LIGHT_WOOD_ID, Material.wood));
 		GameRegistry.registerBlock(BlockLightWood, "LightWood");
 		LanguageRegistry.addName(BlockLightWood, "Light Wood");
-		/////////////
 
 		// DARK BLOCK
 		BlockDarkBlock = (new BlockDarkBlock(IDRef.DARK_BLOCK_ID, Material.rock));
 		GameRegistry.registerBlock(BlockDarkBlock, "DarkBlock");
 		LanguageRegistry.addName(BlockDarkBlock, "Block of Darkness");
-		////////////
 
 		// DARK LEAF
 		BlockDarkLeaf = (new BlockDarkLeaf(IDRef.DARK_LEAF_ID, Material.clay));
 		GameRegistry.registerBlock(BlockDarkLeaf, "DarkLeaf");
 		LanguageRegistry.addName(BlockDarkLeaf, "Dark Leaf");
-		////////////
 		
 		// ABSOLUTION BLOCK
 		BlockAbsBlock = (new BlockAbsBlock(IDRef.ABS_BLOCK_ID, Material.rock));
 		GameRegistry.registerBlock(BlockAbsBlock, "AbsBlock");
 		LanguageRegistry.addName(BlockAbsBlock, "Block of Absolution");
-		/////////////
 
 		// HARVESTER
 		BlockHarvester = (new BlockHarvester(IDRef.HARVESTER_ID, Material.rock));
 		GameRegistry.registerBlock(BlockHarvester, "Harvester");
 		LanguageRegistry.addName(BlockHarvester, "Harvester");
-		/////////////
 
 		// ABSOLUTION COMPRESSOR
 		BlockAbsComp = (new BlockCompressor(IDRef.COMPRESSOR_ID, Material.rock));
 		GameRegistry.registerBlock(BlockAbsComp, "AbsComp");
 		LanguageRegistry.addName(BlockAbsComp, "Compressor");
-		/////////////
 		
-		//DARKNESS GENERATOR
+		// DARKNESS GENERATOR
 		BlockDarkGen = (new BlockDarkGen(IDRef.DARK_GEN_ID, Material.rock));
 		GameRegistry.registerBlock(BlockDarkGen, "DarkGen");
 		LanguageRegistry.addName(BlockDarkGen, "Darkness Generator");
-		/////////////
 		
-		//MACHINE CORE
+		// MACHINE CORE
 		BlockMachineCore = (new BlockMachineCore(IDRef.MACHINE_CORE_ID, Material.rock));
 		GameRegistry.registerBlock(BlockMachineCore, "MachineCore");
 		LanguageRegistry.addName(BlockMachineCore, "Machine Core");
-		/////////////
 		
-		//EXTRACTOR
+		// EXTRACTOR
 		BlockExtractor = (new BlockExtractor(IDRef.EXTRACTOR_ID, Material.rock));
 		GameRegistry.registerBlock(BlockExtractor, "Extractor");
 		LanguageRegistry.addName(BlockExtractor, "Extractor");
-		/////////
 	}
 
 }

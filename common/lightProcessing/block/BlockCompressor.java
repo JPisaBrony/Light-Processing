@@ -19,6 +19,8 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockCompressor extends Block {
+	
+	public static boolean flag1;
 
 	public BlockCompressor(int par1, Material par2Material) {
 		super(par1, par2Material);
@@ -26,8 +28,6 @@ public class BlockCompressor extends Block {
 		this.setCreativeTab(BlockTab.blockTab);
 		this.setUnlocalizedName("AbsComp");
 	}
-
-	public static boolean flag1;
 
 	@Override
 	public boolean canConnectRedstone(IBlockAccess world, int x, int y, int z,

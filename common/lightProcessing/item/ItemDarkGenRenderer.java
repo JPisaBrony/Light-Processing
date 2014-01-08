@@ -32,4 +32,5 @@ public class ItemDarkGenRenderer implements IItemRenderer {
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
 	TileEntityRenderer.instance.renderTileEntityAt(new TileEntityDarkGen(), 0.0D, 0.0D, 0.0D, 0.0F);
 	}
-	}
+	
+}

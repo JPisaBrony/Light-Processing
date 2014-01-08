@@ -22,7 +22,9 @@ import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 
 public class BlockDarkBlock extends Block {
-
+	
+	public boolean coll = true;
+	
 	public BlockDarkBlock(int par1, Material par2Material) {
 		super(par1, par2Material);
 		this.setHardness(10);
@@ -31,8 +33,6 @@ public class BlockDarkBlock extends Block {
 		this.setCreativeTab(BlockTab.blockTab);
 		this.setUnlocalizedName("DarkBlock");
 	}
-
-	public boolean coll = true;
 
 	public boolean canProvidePower() {
 		return true;
