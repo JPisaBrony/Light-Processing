@@ -7,12 +7,13 @@ public class WorldCrafting {
 	static int MC = IDRef.MACHINE_CORE_ID;
 	static int DB = IDRef.DARK_BLOCK_ID;
 	public static int harvester[][] = {
-			{LW,DL,DL,DL,LW},
-			{DL,0 ,0 ,0 ,DL},
-			{DL,0 ,MC,0 ,DL},
-			{DL,0 ,0 ,0 ,DL},
-			{LW,DL,DL,DL,LW}
-		};
+		{LW,DL,DL,DL,LW},
+		{DL,-1 ,-1 ,-1 ,DL},
+		{DL,-1 ,MC ,-1 ,DL},
+		{DL,-1 ,-1 ,-1 ,DL},
+		{LW,DL,DL,DL,LW}
+	};
+		
 	public static int darkGen[][] = {
 		{0 ,0 ,DB,0 ,0 },
 		{0 ,DB,0 ,DB,0 },
