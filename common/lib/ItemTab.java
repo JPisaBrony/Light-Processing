@@ -5,6 +5,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 
 public class ItemTab extends CreativeTabs {
+
 	public ItemTab(String label) {
 		super(label);
 	}
@@ -18,8 +19,7 @@ public class ItemTab extends CreativeTabs {
 
 	public static void InitTab() {
 		itemTab = new ItemTab("itemTab");
-		LanguageRegistry.instance().addStringLocalization("itemGroup.itemTab",
-				"en_US", "Light Processing Items");
+		LanguageRegistry.instance().addStringLocalization("itemGroup.itemTab", "en_US", "Light Processing Items");
 	}
 
 }

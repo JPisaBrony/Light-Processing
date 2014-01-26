@@ -13,45 +13,46 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatMessageComponent;
 import net.minecraft.world.World;
 
-public class ItemAbsRod extends Item{
+public class ItemAbsRod extends Item {
 
-	public ItemAbsRod(int par1){
+	public ItemAbsRod(int par1) {
 		super(par1);
 		this.setUnlocalizedName("AbsRod");
 		this.setCreativeTab(ItemTab.itemTab);
 		this.setMaxDamage(50);
 		this.maxStackSize = 1;
+	}
+
+	@Override
+	public boolean hasEffect(ItemStack par1ItemStack) {
+		return true;
+	}
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public EnumRarity getRarity(ItemStack par1ItemStack) {
+		return EnumRarity.epic;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IconRegister iconRegister) {
+		itemIcon = iconRegister.registerIcon(Methods.textureName(this.getUnlocalizedName()));
+	}
+
+	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
+		if (!par3World.isRemote) {
+			int essence = ExtractionList.getEssence(par3World, par4, par5, par6);
+			if (essence > 0) {
+				par2EntityPlayer.addChatMessage("Worth " + Integer.toString(essence) + " light essence.");
+			}
+			else if (essence < 0)
+				par2EntityPlayer.addChatMessage("Worth " + Integer.toString(essence * -1) + " dark essence.");
+			else
+				par2EntityPlayer.addChatMessage("Worth 0 essence.");
 		}
-		@Override
-		public boolean hasEffect(ItemStack par1ItemStack){
-			return true;
-		}
-		@Override
-		@SideOnly(Side.CLIENT)
-		public EnumRarity getRarity(ItemStack par1ItemStack){
-			return EnumRarity.epic;
-		}
-		  @SideOnly(Side.CLIENT)
-		    public void registerIcons(IconRegister iconRegister)
-		    {
-			  itemIcon = iconRegister.registerIcon(Methods.textureName(this.getUnlocalizedName()));
-		}
-		  public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10)
-		    {
-			  if(!par3World.isRemote){
-				  int essence = ExtractionList.getEssence(par3World, par4, par5, par6);
-				  if(essence > 0){
-					  par2EntityPlayer.addChatMessage("Worth " + Integer.toString(essence) + " light essence.");
-				  }
-				  else if(essence < 0)
-					  par2EntityPlayer.addChatMessage("Worth " + Integer.toString(essence * -1) + " dark essence.");
-				  else{
-					  par2EntityPlayer.addChatMessage("Worth 0 essence.");
-				  }
-				  }
-			  par1ItemStack.useItemRightClick(par3World, par2EntityPlayer);
-			  par1ItemStack.damageItem(1, par2EntityPlayer);
-			  return true;
-			  
-		    }
-		}
+		par1ItemStack.useItemRightClick(par3World, par2EntityPlayer);
+		par1ItemStack.damageItem(1, par2EntityPlayer);
+		return true;
+	}
+
+}

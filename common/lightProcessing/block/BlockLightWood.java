@@ -1,7 +1,6 @@
 package LightProcessing.common.lightProcessing.block;
 
 import java.util.Random;
-
 import LightProcessing.common.lib.*;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -24,17 +23,13 @@ public class BlockLightWood extends Block {
 	}
 
 	public Icon blockIcon2;
-	
+
 	@Override
-	public boolean isWood(World world, int x, int y, int z)
-	{
-	return true;
+	public boolean isWood(World world, int x, int y, int z) {
+		return true;
 	}
-	
-	
-	
-	public int onBlockPlaced(World par1World, int par2, int par3, int par4,
-			int par5, float par6, float par7, float par8, int par9) {
+
+	public int onBlockPlaced(World par1World, int par2, int par3, int par4, int par5, float par6, float par7, float par8, int par9) {
 		int j1 = par9 & 3;
 		byte b0 = 0;
 
@@ -58,17 +53,14 @@ public class BlockLightWood extends Block {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister iconRegister) {
-		blockIcon = iconRegister.registerIcon(Methods.textureName(this
-				.getUnlocalizedName()));
+		blockIcon = iconRegister.registerIcon(Methods.textureName(this.getUnlocalizedName()));
 		blockIcon2 = iconRegister.registerIcon("log_oak_top");
 	}
 
 	public Icon getIcon(int par1, int par2) {
 		int k = par2 & 12;
 		int l = par2 & 3;
-		return k == 0 && (par1 == 1 || par1 == 0) ? blockIcon2 : (k == 4
-				&& (par1 == 5 || par1 == 4) ? blockIcon2 : (k == 8
-				&& (par1 == 2 || par1 == 3) ? blockIcon2 : this.blockIcon));
+		return k == 0 && (par1 == 1 || par1 == 0) ? blockIcon2 : (k == 4 && (par1 == 5 || par1 == 4) ? blockIcon2 : (k == 8 && (par1 == 2 || par1 == 3) ? blockIcon2 : this.blockIcon));
 	}
 
 	/*

@@ -1,7 +1,6 @@
 package LightProcessing.common.lightProcessing.tile;
 
 import org.lwjgl.opengl.GL11;
-
 import LightProcessing.common.lib.Reference;
 import LightProcessing.resources.mods.ltp.models.ModelHarvester;
 import net.minecraft.block.Block;
@@ -18,9 +17,7 @@ public class TileEntityHarvesterRender extends TileEntitySpecialRenderer {
 
 	// The model of your block
 	private final ModelHarvester model;
-	public static final ResourceLocation Harvester = new ResourceLocation(
-			Reference.MOD_ID.toLowerCase(),
-			"/textures/models/ModelHarvester.png");
+	public static final ResourceLocation Harvester = new ResourceLocation(Reference.MOD_ID.toLowerCase(), "/textures/models/ModelHarvester.png");
 
 	public TileEntityHarvesterRender() {
 		this.model = new ModelHarvester();
@@ -34,8 +31,7 @@ public class TileEntityHarvesterRender extends TileEntitySpecialRenderer {
 	}
 
 	@Override
-	public void renderTileEntityAt(TileEntity te, double x, double y, double z,
-		float scale) {
+	public void renderTileEntityAt(TileEntity te, double x, double y, double z, float scale) {
 		// The PushMatrix tells the renderer to "start" doing something.
 		GL11.glPushMatrix();
 		// This is setting the initial location.
@@ -55,14 +51,14 @@ public class TileEntityHarvesterRender extends TileEntitySpecialRenderer {
 	}
 
 	// Set the lighting stuff, so it changes it's brightness properly.
-	private void adjustLightFixture(World world, int i, int j, int k,
-			Block block) {
+	private void adjustLightFixture(World world, int i, int j, int k, Block block) {
 		Tessellator tess = Tessellator.instance;
 		float brightness = block.getBlockBrightness(world, i, j, k);
 		int skyLight = world.getLightBrightnessForSkyBlocks(i, j, k, 0);
 		int modulousModifier = skyLight % 65536;
 		int divModifier = skyLight / 65536;
 		tess.setColorOpaque_F(brightness, brightness, brightness);
-		OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit,(float) modulousModifier, divModifier);
+		OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, (float) modulousModifier, divModifier);
 	}
+	
 }

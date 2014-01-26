@@ -1,7 +1,6 @@
 package LightProcessing.common.lightProcessing.block;
 
 import java.util.Random;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import LightProcessing.common.lib.*;
@@ -19,7 +18,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockCompressor extends Block {
-	
+
 	public static boolean flag1;
 
 	public BlockCompressor(int par1, Material par2Material) {
@@ -30,16 +29,14 @@ public class BlockCompressor extends Block {
 	}
 
 	@Override
-	public boolean canConnectRedstone(IBlockAccess world, int x, int y, int z,
-			int side) {
+	public boolean canConnectRedstone(IBlockAccess world, int x, int y, int z, int side) {
 		return true;
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister iconRegister) {
-		blockIcon = iconRegister.registerIcon(Methods.textureName(this
-				.getUnlocalizedName()));
+		blockIcon = iconRegister.registerIcon(Methods.textureName(this.getUnlocalizedName()));
 	}
 
 	@Override
@@ -77,26 +74,16 @@ public class BlockCompressor extends Block {
 		float f4 = random.nextFloat() * 0.6F - 0.3F;
 		float f5 = random.nextFloat() * -0.6F - -0.3F;
 
-		world.playSoundEffect((double) f1, (double) f2, (double) f3,
-				"mob.irongolem.death", 1.0F,
-				world.rand.nextFloat() * 0.1F + 0.9F);
+		world.playSoundEffect((double) f1, (double) f2, (double) f3, "mob.irongolem.death", 1.0F, world.rand.nextFloat() * 0.1F + 0.9F);
 
-		world.spawnParticle("largeexplode", (double) (f1), (double) f2,
-				(double) (f3), 0.0D, 0.0D, 0.0D);
-		world.spawnParticle("largesmoke", (double) (f1), (double) f2,
-				(double) (f3), 0.0D, 0.0D, 0.0D);
-		world.spawnParticle("largesmoke", (double) (f1), (double) f2,
-				(double) (f3), 0.0D, 0.0D, 0.0D);
-		world.spawnParticle("largesmoke", (double) (f1), (double) f2,
-				(double) (f3), 0.0D, 0.0D, 0.0D);
-		world.spawnParticle("largesmoke", (double) (f1), (double) f2,
-				(double) (f3), 0.0D, 0.0D, 0.0D);
-		world.spawnParticle("largesmoke", (double) (f1), (double) f2,
-				(double) (f3), 0.0D, 0.0D, 0.0D);
-		world.spawnParticle("largesmoke", (double) (f1), (double) f2,
-				(double) (f3), 0.0D, 0.0D, 0.0D);
-		world.spawnParticle("largesmoke", (double) (f1), (double) f2,
-				(double) (f3), 0.0D, 0.0D, 0.0D);
+		world.spawnParticle("largeexplode", (double) (f1), (double) f2, (double) (f3), 0.0D, 0.0D, 0.0D);
+		world.spawnParticle("largesmoke", (double) (f1), (double) f2, (double) (f3), 0.0D, 0.0D, 0.0D);
+		world.spawnParticle("largesmoke", (double) (f1), (double) f2, (double) (f3), 0.0D, 0.0D, 0.0D);
+		world.spawnParticle("largesmoke", (double) (f1), (double) f2, (double) (f3), 0.0D, 0.0D, 0.0D);
+		world.spawnParticle("largesmoke", (double) (f1), (double) f2, (double) (f3), 0.0D, 0.0D, 0.0D);
+		world.spawnParticle("largesmoke", (double) (f1), (double) f2, (double) (f3), 0.0D, 0.0D, 0.0D);
+		world.spawnParticle("largesmoke", (double) (f1), (double) f2, (double) (f3), 0.0D, 0.0D, 0.0D);
+		world.spawnParticle("largesmoke", (double) (f1), (double) f2, (double) (f3), 0.0D, 0.0D, 0.0D);
 	}
 
 	public static void compress(World par1World, int par2, int par3, int par4) {
@@ -113,8 +100,7 @@ public class BlockCompressor extends Block {
 		int dark = IDRef.DARK_BLOCK_ID;
 
 		ItemStack unAbStack = new ItemStack(Items.ItemUnstableAbs, 1);
-		EntityItem UnAbsItem = new EntityItem(par1World, par2 + 0.5,
-				par3 + 1.15, par4 + 0.5, unAbStack);
+		EntityItem UnAbsItem = new EntityItem(par1World, par2 + 0.5, par3 + 1.15, par4 + 0.5, unAbStack);
 		UnAbsItem.motionX = 0;
 		UnAbsItem.motionY = 0;
 		UnAbsItem.motionZ = 0;
@@ -129,7 +115,8 @@ public class BlockCompressor extends Block {
 					flag1 = true;
 				}
 			}
-		} else if (id == dark && id2 == light && met != 2) {
+		}
+		else if (id == dark && id2 == light && met != 2) {
 			if (id5 == 0) {
 				par1World.setBlock(par2 - 1, par3, par4, 0);
 				par1World.setBlock(par2 + 1, par3, par4, 0);
@@ -139,7 +126,8 @@ public class BlockCompressor extends Block {
 					flag1 = true;
 				}
 			}
-		} else if (id3 == light && id4 == dark && met4 != 2) {
+		}
+		else if (id3 == light && id4 == dark && met4 != 2) {
 			if (id5 == 0) {
 				par1World.setBlock(par2, par3, par4 - 1, 0);
 				par1World.setBlock(par2, par3, par4 + 1, 0);
@@ -149,7 +137,8 @@ public class BlockCompressor extends Block {
 					flag1 = true;
 				}
 			}
-		} else if (id3 == dark && id4 == light && met3 != 2) {
+		}
+		else if (id3 == dark && id4 == light && met3 != 2) {
 			if (id5 == 0) {
 				par1World.setBlock(par2, par3, par4 - 1, 0);
 				par1World.setBlock(par2, par3, par4 + 1, 0);
@@ -162,9 +151,7 @@ public class BlockCompressor extends Block {
 		}
 	}
 
-	public boolean onBlockActivated(World par1World, int par2, int par3,
-			int par4, EntityPlayer par5EntityPlayer, int par6, float par7,
-			float par8, float par9) {
+	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
 
 		if (par5EntityPlayer.getCurrentItemOrArmor(0) == null) {
 			compress(par1World, par2, par3, par4);

@@ -18,29 +18,26 @@ public class TileEntityHarvester extends TileEntity {
 
 	@Override
 	public void updateEntity() {
-		if (this.worldObj.getBlockId(this.xCoord, this.yCoord + 1, this.zCoord) == IDRef.LIGHT_BLOCK_ID
-				|| this.worldObj.getBlockId(this.xCoord, this.yCoord + 1,
-						this.zCoord) == IDRef.DARK_BLOCK_ID) {
-			if (this.worldObj.getBlockMetadata(this.xCoord, this.yCoord + 1,
-					this.zCoord) == 2) {
+		if (this.worldObj.getBlockId(this.xCoord, this.yCoord + 1, this.zCoord) == IDRef.LIGHT_BLOCK_ID || this.worldObj.getBlockId(this.xCoord, this.yCoord + 1, this.zCoord) == IDRef.DARK_BLOCK_ID) {
+			if (this.worldObj.getBlockMetadata(this.xCoord, this.yCoord + 1, this.zCoord) == 2) {
 				chance = 150;
-			} else {
+			}
+			else {
 				chance = 500;
 			}
-		} else {
+		}
+		else {
 			chance = 800;
 		}
 		if (r.nextInt(chance) == 0) {
-			BlockHarvester.Essence(this.worldObj, this.xCoord, this.yCoord,
-					this.zCoord);
+			BlockHarvester.Essence(this.worldObj, this.xCoord, this.yCoord, this.zCoord);
 		}
 	}
 
 	@SideOnly(Side.CLIENT)
 	public AxisAlignedBB getRenderBoundingBox() {
 		AxisAlignedBB bb = INFINITE_EXTENT_AABB;
-		bb = AxisAlignedBB.getAABBPool().getAABB(xCoord - 1, yCoord,
-				zCoord - 1, xCoord + 2, yCoord + 2, zCoord + 2);
+		bb = AxisAlignedBB.getAABBPool().getAABB(xCoord - 1, yCoord, zCoord - 1, xCoord + 2, yCoord + 2, zCoord + 2);
 		return bb;
 	}
 
@@ -50,24 +47,24 @@ public class TileEntityHarvester extends TileEntity {
 		ItemStack stack;
 		if (Light2 > 0.7F) {
 			stack = lightStack;
-		} else {
+		}
+		else {
 			stack = darkStack;
 		}
 
 		EntityItem entityitem;
-		entityitem = new EntityItem(this.worldObj, this.xCoord + 0.5,
-				this.yCoord + 0.2, this.zCoord + 0.5, stack);
+		entityitem = new EntityItem(this.worldObj, this.xCoord + 0.5, this.yCoord + 0.2, this.zCoord + 0.5, stack);
 
 		entityitem.motionX = 0;
 		entityitem.motionY = 0;
 		entityitem.motionZ = 0;
 
 		if (!this.worldObj.isRemote) {
-			if (!Methods.isPoweredIndirect(this.worldObj, this.xCoord,
-					this.yCoord, this.zCoord)) {
+			if (!Methods.isPoweredIndirect(this.worldObj, this.xCoord, this.yCoord, this.zCoord)) {
 				this.worldObj.spawnEntityInWorld(entityitem);
 			}
 		}
 
 	}
+	
 }

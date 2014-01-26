@@ -16,7 +16,7 @@ import LightProcessing.common.lightProcessing.LightProcessing;
 import LightProcessing.common.lightProcessing.tile.TileEntityCompressor;
 import LightProcessing.common.lightProcessing.tile.TileEntityMachineCore;
 
-public class BlockMachineCore extends Block{
+public class BlockMachineCore extends Block {
 
 	public BlockMachineCore(int par1, Material par2Material) {
 		super(par1, par2Material);
@@ -24,13 +24,13 @@ public class BlockMachineCore extends Block{
 		this.setCreativeTab(BlockTab.blockTab);
 		this.setUnlocalizedName("MachineCore");
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister iconRegister) {
 		blockIcon = iconRegister.registerIcon(Methods.textureName(this.getUnlocalizedName()));
 	}
-	
+
 	@Override
 	public boolean hasTileEntity(int metadata) {
 		return true;
@@ -55,11 +55,11 @@ public class BlockMachineCore extends Block{
 	public int getRenderType() {
 		return -1;
 	}
-	
+
 	@Override
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
 		if (par5EntityPlayer.getCurrentItemOrArmor(0) == null) {
-			if(Methods.setArea(par1World, par2, par3, par4, WorldCrafting.harvester, 0, IDRef.MACHINE_CORE_ID))
+			if (Methods.setArea(par1World, par2, par3, par4, WorldCrafting.harvester, 0, IDRef.MACHINE_CORE_ID))
 				par1World.setBlock(par2, par3, par4, IDRef.HARVESTER_ID);
 		}
 		return false;

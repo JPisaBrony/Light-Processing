@@ -13,6 +13,7 @@ import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 
 public class ItemLightBall extends Item {
+
 	public ItemLightBall(int par1) {
 		super(par1);
 		this.setUnlocalizedName("LightBall");

@@ -31,31 +31,29 @@ public class LightProcessing {
 	@PreInit
 	public void preInit(FMLPreInitializationEvent event) {
 		// CONFIG
-		Configuration config = new Configuration(
-				event.getSuggestedConfigurationFile());
+		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
 		config.load();
 
 		// blocks
 		IDRef.ABS_BLOCK_ID = config.get(config.CATEGORY_BLOCK, "AbsBlock", IDRef.ABS_BLOCK_IDD).getInt();
-		IDRef.DARK_BLOCK_ID = config.get(config.CATEGORY_BLOCK, "DarkBlock",IDRef.DARK_BLOCK_IDD).getInt();
-		IDRef.DARK_GEN_ID = config.get(config.CATEGORY_BLOCK, "DarkGen",IDRef.DARK_GEN_IDD).getInt();
-		IDRef.LIGHT_BLOCK_ID = config.get(config.CATEGORY_BLOCK, "LightBlock",IDRef.LIGHT_BLOCK_IDD).getInt();
-		IDRef.LIGHT_WOOD_ID = config.get(config.CATEGORY_BLOCK, "LightWood",IDRef.LIGHT_WOOD_IDD).getInt();
-		IDRef.HARVESTER_ID = config.get(config.CATEGORY_BLOCK, "Harvester",IDRef.HARVESTER_IDD).getInt();
-		IDRef.COMPRESSOR_ID = config.get(config.CATEGORY_BLOCK, "AbsComp",IDRef.COMPRESSOR_IDD).getInt();
+		IDRef.DARK_BLOCK_ID = config.get(config.CATEGORY_BLOCK, "DarkBlock", IDRef.DARK_BLOCK_IDD).getInt();
+		IDRef.DARK_GEN_ID = config.get(config.CATEGORY_BLOCK, "DarkGen", IDRef.DARK_GEN_IDD).getInt();
+		IDRef.LIGHT_BLOCK_ID = config.get(config.CATEGORY_BLOCK, "LightBlock", IDRef.LIGHT_BLOCK_IDD).getInt();
+		IDRef.LIGHT_WOOD_ID = config.get(config.CATEGORY_BLOCK, "LightWood", IDRef.LIGHT_WOOD_IDD).getInt();
+		IDRef.HARVESTER_ID = config.get(config.CATEGORY_BLOCK, "Harvester", IDRef.HARVESTER_IDD).getInt();
+		IDRef.COMPRESSOR_ID = config.get(config.CATEGORY_BLOCK, "AbsComp", IDRef.COMPRESSOR_IDD).getInt();
 		IDRef.DARK_LEAF_ID = config.get(config.CATEGORY_BLOCK, "DarkLeaf", IDRef.DARK_LEAF_IDD).getInt();
 		IDRef.MACHINE_CORE_ID = config.get(config.CATEGORY_BLOCK, "MachineCore", IDRef.MACHINE_CORE_IDD).getInt();
 		IDRef.EXTRACTOR_ID = config.get(config.CATEGORY_BLOCK, "Extractor", IDRef.EXTRACTOR_IDD).getInt();
-		
-		
+
 		// items
-		IDRef.ABS_INGOT_ID = config.get(config.CATEGORY_ITEM, "AbsIngot",IDRef.ABS_INGOT_IDD).getInt();
-		IDRef.ABS_ROD_ID = config.get(config.CATEGORY_ITEM, "AbsRod",IDRef.ABS_ROD_IDD).getInt();
-		IDRef.DARK_BALL_ID = config.get(config.CATEGORY_ITEM, "DarkBall",IDRef.DARK_BALL_IDD).getInt();
-		IDRef.DARK_INGOT_ID = config.get(config.CATEGORY_ITEM, "DarkIngot",IDRef.DARK_INGOT_IDD).getInt();
-		IDRef.LIGHT_BALL_ID = config.get(config.CATEGORY_ITEM, "LightBall",IDRef.LIGHT_BALL_IDD).getInt();
-		IDRef.LIGHT_INGOT_ID = config.get(config.CATEGORY_ITEM, "LightIngot",IDRef.LIGHT_INGOT_IDD).getInt();
-		IDRef.UNSTABLE_ABS_ID = config.get(config.CATEGORY_ITEM, "UnstableAbs",IDRef.UNSTABLE_ABS_IDD).getInt();
+		IDRef.ABS_INGOT_ID = config.get(config.CATEGORY_ITEM, "AbsIngot", IDRef.ABS_INGOT_IDD).getInt();
+		IDRef.ABS_ROD_ID = config.get(config.CATEGORY_ITEM, "AbsRod", IDRef.ABS_ROD_IDD).getInt();
+		IDRef.DARK_BALL_ID = config.get(config.CATEGORY_ITEM, "DarkBall", IDRef.DARK_BALL_IDD).getInt();
+		IDRef.DARK_INGOT_ID = config.get(config.CATEGORY_ITEM, "DarkIngot", IDRef.DARK_INGOT_IDD).getInt();
+		IDRef.LIGHT_BALL_ID = config.get(config.CATEGORY_ITEM, "LightBall", IDRef.LIGHT_BALL_IDD).getInt();
+		IDRef.LIGHT_INGOT_ID = config.get(config.CATEGORY_ITEM, "LightIngot", IDRef.LIGHT_INGOT_IDD).getInt();
+		IDRef.UNSTABLE_ABS_ID = config.get(config.CATEGORY_ITEM, "UnstableAbs", IDRef.UNSTABLE_ABS_IDD).getInt();
 		config.save();
 
 		proxy.registerRenderThings();

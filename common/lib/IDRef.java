@@ -35,7 +35,7 @@ public class IDRef {
 	public static int DARK_LEAF_IDD = 3007;
 	public static int MACHINE_CORE_IDD = 3008;
 	public static int EXTRACTOR_IDD = 3009;
-	
+
 	// items default
 	public static int ABS_INGOT_IDD = 3010;
 	public static int ABS_ROD_IDD = 3011;

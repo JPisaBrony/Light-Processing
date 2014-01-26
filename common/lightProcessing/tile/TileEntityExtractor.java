@@ -8,13 +8,14 @@ import LightProcessing.common.lib.ExtractionList;
 import LightProcessing.common.lib.Items;
 import LightProcessing.resources.mods.ltp.models.ModelExtractor.*;
 
-public class TileEntityExtractor extends TileEntity{
-	
-	public TileEntityExtractor(){
+public class TileEntityExtractor extends TileEntity {
+
+	public long animationOffset;
+	public boolean flag;
+
+	public TileEntityExtractor() {
 		animationOffset = System.nanoTime() % 400000;
 		flag = true;
 	}
 
-	public long animationOffset;
-	public boolean flag;
 }

@@ -13,6 +13,7 @@ import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 
 public class ItemDarkBall extends Item {
+
 	public ItemDarkBall(int par1) {
 		super(par1);
 		this.setUnlocalizedName("DarkBall");
@@ -34,7 +35,7 @@ public class ItemDarkBall extends Item {
 	public void registerIcons(IconRegister iconRegister) {
 		itemIcon = iconRegister.registerIcon(Methods.textureName(this.getUnlocalizedName()));
 	}
-	
+
 	public boolean onItemUse(ItemStack ItemStack, EntityPlayer Player, World World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
 		if (World.getBlockId(par4, par5, par6) != 0) {
 			World.setLightValue(EnumSkyBlock.Block, par4 + 1, par5, par6, 0);
@@ -47,5 +48,5 @@ public class ItemDarkBall extends Item {
 		}
 		return false;
 	}
-	
+
 }

@@ -1,7 +1,6 @@
 package LightProcessing.common.lightProcessing.block;
 
 import java.util.Random;
-
 import LightProcessing.common.lib.*;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -33,26 +32,22 @@ public class BlockAbsBlock extends Block {
 	}
 
 	@Override
-	public void setBlockBoundsBasedOnState(IBlockAccess par1IBlockAccess,
-			int par2, int par3, int par4) {
-		if(!par1IBlockAccess.isAirBlock(par2, par3 - 1, par4) && par1IBlockAccess.getBlockId(par2, par3 - 1, par4) != IDRef.ABS_BLOCK_ID){
+	public void setBlockBoundsBasedOnState(IBlockAccess par1IBlockAccess, int par2, int par3, int par4) {
+		if (!par1IBlockAccess.isAirBlock(par2, par3 - 1, par4) && par1IBlockAccess.getBlockId(par2, par3 - 1, par4) != IDRef.ABS_BLOCK_ID) {
 			this.setBlockBounds(0.0F, 0.0001F, 0.0F, 1.0F, 1.0F, 1.0F);
-			}
+		}
 	}
-	
-	public void onEntityCollidedWithBlock(World par1World, int par2, int par3,
-			int par4, Entity par5Entity) {
+
+	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity) {
 		if (par5Entity instanceof EntityPlayer) {
-			((EntityPlayer) par5Entity).curePotionEffects(new ItemStack(
-					Item.bucketMilk));
+			((EntityPlayer) par5Entity).curePotionEffects(new ItemStack(Item.bucketMilk));
 			if (par5Entity.isBurning()) {
 				par5Entity.extinguish();
 			}
 			par5Entity.fallDistance = 0F;
 		}
 		if (par5Entity instanceof EntityLiving) {
-			((EntityLiving) par5Entity).curePotionEffects(new ItemStack(
-					Item.bucketMilk));
+			((EntityLiving) par5Entity).curePotionEffects(new ItemStack(Item.bucketMilk));
 			if (par5Entity.isBurning()) {
 				par5Entity.extinguish();
 			}
@@ -61,8 +56,7 @@ public class BlockAbsBlock extends Block {
 	}
 
 	@SideOnly(Side.CLIENT)
-	public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess,
-			int par2, int par3, int par4, int par5) {
+	public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5) {
 		if (par1IBlockAccess.isAirBlock(par2, par3, par4)) {
 			return true;
 		}
@@ -72,8 +66,7 @@ public class BlockAbsBlock extends Block {
 		if (!par1IBlockAccess.doesBlockHaveSolidTopSurface(par2, par3, par4)) {
 			return true;
 		}
-		if (par5 == 0
-				&& par1IBlockAccess.getBlockId(par2, par3, par4) != IDRef.ABS_BLOCK_ID) {
+		if (par5 == 0 && par1IBlockAccess.getBlockId(par2, par3, par4) != IDRef.ABS_BLOCK_ID) {
 			return true;
 		}
 		return false;
@@ -87,19 +80,18 @@ public class BlockAbsBlock extends Block {
 	public int getRenderBlockPass() {
 		return 1;
 	}
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World,
-			int par2, int par3, int par4) {
+
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4) {
 		return null;
 	}
 
 	public boolean renderAsNormalBlock() {
 		return false;
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister iconRegister) {
-		blockIcon = iconRegister.registerIcon(Methods.textureName(this
-				.getUnlocalizedName()));
+		blockIcon = iconRegister.registerIcon(Methods.textureName(this.getUnlocalizedName()));
 	}
 }

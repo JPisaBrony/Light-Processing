@@ -13,6 +13,7 @@ import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 
 public class ItemDarkIngot extends Item {
+
 	public ItemDarkIngot(int par1) {
 		super(par1);
 		this.setUnlocalizedName("DarkIngot");
@@ -34,5 +35,5 @@ public class ItemDarkIngot extends Item {
 	public void registerIcons(IconRegister iconRegister) {
 		itemIcon = iconRegister.registerIcon(Methods.textureName(this.getUnlocalizedName()));
 	}
-	
+
 }

@@ -15,4 +15,5 @@ public class TileEntityCompressor extends TileEntity {
 			}
 		}
 	}
+	
 }

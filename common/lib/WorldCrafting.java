@@ -1,6 +1,7 @@
 package LightProcessing.common.lib;
 
 public class WorldCrafting {
+	
 	static int DL = IDRef.DARK_LEAF_ID;
 	static int LW = IDRef.LIGHT_WOOD_ID;
 	static int HV = IDRef.HARVESTER_ID;
@@ -8,6 +9,7 @@ public class WorldCrafting {
 	static int DB = IDRef.DARK_BLOCK_ID;
 	static int EX = IDRef.EXTRACTOR_ID;
 	static int SK = -1;
+	
 	public static int harvester[][] = {
 		{LW,DL,DL,DL,LW},
 		{DL,-1 ,-1 ,-1 ,DL},
@@ -15,6 +17,7 @@ public class WorldCrafting {
 		{DL,-1 ,-1 ,-1 ,DL},
 		{LW,DL,DL,DL,LW}
 	};
+	
 	public static int darkGen[][] = {
 		{SK,SK,DB,SK,SK},
 		{SK,DB,0 ,DB,SK},
@@ -22,6 +25,7 @@ public class WorldCrafting {
 		{SK,DB,0 ,DB,SK},
 		{SK,SK,DB,SK,SK}
 	};
+	
 	public static int darkGen2[][] = {
 		{SK,SK,SK,SK,SK},
 		{SK,SK,SK,SK,SK},
@@ -29,4 +33,5 @@ public class WorldCrafting {
 		{SK,SK,SK,SK,SK},
 		{SK,SK,SK,SK,SK}
 	};
+	
 }

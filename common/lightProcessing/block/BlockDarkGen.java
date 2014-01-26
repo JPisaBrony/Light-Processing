@@ -33,14 +33,12 @@ public class BlockDarkGen extends Block {
 	}
 
 	@Override
-	public boolean canConnectRedstone(IBlockAccess world, int x, int y, int z,
-			int side) {
+	public boolean canConnectRedstone(IBlockAccess world, int x, int y, int z, int side) {
 		return true;
 	}
 
 	@Override
-	public void setBlockBoundsBasedOnState(IBlockAccess par1IBlockAccess,
-			int par2, int par3, int par4) {
+	public void setBlockBoundsBasedOnState(IBlockAccess par1IBlockAccess, int par2, int par3, int par4) {
 		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
 	}
 
@@ -48,20 +46,16 @@ public class BlockDarkGen extends Block {
 		return 0;
 	}
 
-	public int onBlockPlaced(World par1World, int par2, int par3, int par4,
-			int par5, float par6, float par7, float par8, int par9) {
+	public int onBlockPlaced(World par1World, int par2, int par3, int par4, int par5, float par6, float par7, float par8, int par9) {
 		return par9;
 	}
 
-	public void breakBlock(World par1World, int par2, int par3, int par4,
-			int par5, int par6) {
+	public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6) {
 		int ID2 = IDRef.DARK_BLOCK_ID;
 		for (int i = -10; i < 10; i++) {
 			for (int j = 0; j < 10; j++) {
 				for (int k = -10; k < 10; k++) {
-					if (par1World.getBlockId(par2 + k, par3 + j, par4 + i) == ID2
-							&& par1World.getBlockMetadata(par2 + k, par3 + j,
-									par4 + i) == 2) {
+					if (par1World.getBlockId(par2 + k, par3 + j, par4 + i) == ID2 && par1World.getBlockMetadata(par2 + k, par3 + j, par4 + i) == 2) {
 						par1World.setBlock(par2 + k, par3 + j, par4 + i, 0);
 
 					}
@@ -72,24 +66,18 @@ public class BlockDarkGen extends Block {
 	}
 
 	@Override
-	public void randomDisplayTick(World world, int x, int y, int z,
-			Random random) {
+	public void randomDisplayTick(World world, int x, int y, int z, Random random) {
 		super.randomDisplayTick(world, x, y, z, random);
 		float f1 = (float) x + 0.5F;
 		float f2 = (float) y + 0.5F;
 		float f3 = (float) z + 0.5F;
 		float f4 = random.nextFloat() * 0.6F - 0.3F;
 		float f5 = random.nextFloat() * -0.6F - -0.3F;
-		world.spawnParticle("smoke", (double) f1, (double) f2, (double) f3,
-				0.0D, 0.0D, 0.0D);
-		world.spawnParticle("smoke", (double) f1, (double) f2, (double) f3,
-				0.0D, 0.0D, 0.0D);
-		world.spawnParticle("smoke", (double) f1, (double) f2, (double) f3,
-				0.0D, 0.0D, 0.0D);
-		world.spawnParticle("smoke", (double) f1, (double) f2, (double) f3,
-				0.0D, 0.0D, 0.0D);
-		world.spawnParticle("smoke", (double) f1, (double) f2, (double) f3,
-				0.0D, 0.0D, 0.0D);
+		world.spawnParticle("smoke", (double) f1, (double) f2, (double) f3, 0.0D, 0.0D, 0.0D);
+		world.spawnParticle("smoke", (double) f1, (double) f2, (double) f3, 0.0D, 0.0D, 0.0D);
+		world.spawnParticle("smoke", (double) f1, (double) f2, (double) f3, 0.0D, 0.0D, 0.0D);
+		world.spawnParticle("smoke", (double) f1, (double) f2, (double) f3, 0.0D, 0.0D, 0.0D);
+		world.spawnParticle("smoke", (double) f1, (double) f2, (double) f3, 0.0D, 0.0D, 0.0D);
 	}
 
 	@Override
@@ -98,11 +86,8 @@ public class BlockDarkGen extends Block {
 		this.blockIcon = iconRegister.registerIcon(Methods.textureName(this.getUnlocalizedName()));
 	}
 
-	public boolean onBlockActivated(World par1World, int par2, int par3,
-			int par4, EntityPlayer par5EntityPlayer, int par6, float par7,
-			float par8, float par9) {
-		if (!par1World.isRemote
-				&& par5EntityPlayer.getCurrentItemOrArmor(0) == null) {
+	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
+		if (!par1World.isRemote && par5EntityPlayer.getCurrentItemOrArmor(0) == null) {
 
 			int ID = 1;
 			int ID2 = IDRef.DARK_BLOCK_ID;
@@ -110,26 +95,21 @@ public class BlockDarkGen extends Block {
 				for (int i = -10; i < 10; i++) {
 					for (int j = 0; j < 10; j++) {
 						for (int k = -10; k < 10; k++) {
-							if (par1World.isAirBlock(par2 + k, par3 + j, par4
-									+ i)) {
-								par1World.setBlock(par2 + k, par3 + j,
-										par4 + i, ID2, 2, 2);
+							if (par1World.isAirBlock(par2 + k, par3 + j, par4 + i)) {
+								par1World.setBlock(par2 + k, par3 + j, par4 + i, ID2, 2, 2);
 
 							}
 						}
 					}
 				}
 				par1World.setBlockMetadataWithNotify(par2, par3, par4, 1, 2);
-			} else if (par1World.getBlockMetadata(par2, par3, par4) == 1) {
+			}
+			else if (par1World.getBlockMetadata(par2, par3, par4) == 1) {
 				for (int i = -10; i < 10; i++) {
 					for (int j = 0; j < 10; j++) {
 						for (int k = -10; k < 10; k++) {
-							if (par1World.getBlockId(par2 + k, par3 + j, par4
-									+ i) == ID2
-									&& par1World.getBlockMetadata(par2 + k,
-											par3 + j, par4 + i) == 2) {
-								par1World.setBlock(par2 + k, par3 + j,
-										par4 + i, 0);
+							if (par1World.getBlockId(par2 + k, par3 + j, par4 + i) == ID2 && par1World.getBlockMetadata(par2 + k, par3 + j, par4 + i) == 2) {
+								par1World.setBlock(par2 + k, par3 + j, par4 + i, 0);
 							}
 						}
 					}
