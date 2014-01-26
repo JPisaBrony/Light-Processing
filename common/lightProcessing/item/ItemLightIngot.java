@@ -35,16 +35,5 @@ public class ItemLightIngot extends Item {
 	public void registerIcons(IconRegister iconRegister) {
 		itemIcon = iconRegister.registerIcon(Methods.textureName(this.getUnlocalizedName()));
 	}
-	
-	public boolean onItemUse(ItemStack ItemStack, EntityPlayer Player, World World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
-		if (World.getBlockId(par4, par5, par6) != 0) {
-			World.setBlock(par4, par5, par6, 0);
-			int block = World.getBlockId(par4, par5, par6);
-			
-			
-			return true;
-		}
-		return false;
-	}
 
 }

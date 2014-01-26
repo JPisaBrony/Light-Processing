@@ -55,5 +55,4 @@ public class ItemAbsRod extends Item {
 		return true;
 	}
 
-		    }
 }
