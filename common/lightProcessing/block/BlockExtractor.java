@@ -86,6 +86,7 @@ public class BlockExtractor extends Block {
 
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
 
+		
 		if (par5EntityPlayer.getCurrentEquippedItem() == null) {
 			if (!par1World.isRemote) {
 				int meta = par1World.getBlockMetadata(par2, par3, par4);
@@ -103,45 +104,46 @@ public class BlockExtractor extends Block {
 
 	public static void extract(World world, int x, int y, int z) {
 		int stack = ExtractionList.getEssence(world, x, y + 1, z);
-		double posx = 0;
-		double posz = 0;
-		double velx = 0;
-		double velz = 0;
+			int stack = ExtractionList.getEssence(world, x, y + 1, z);
+			double posx = 0;
+			double posz = 0;
+			double velx = 0;
+			double velz = 0;
 
 		switch (world.getBlockMetadata(x, y, z)) {
 		case 0:
 		case 4: {
-			posx = x + 0.5;
-			posz = z - 0.6;
-			velz = -1;
-			velx = 0;
+				posx = x + 0.5;
+				posz = z - 0.6;
+				velz = -1;
+				velx = 0;
 		}
 			;
 			break;
 		case 1:
 		case 5: {
-			posx = x + 1.5;
-			posz = z + 0.5;
-			velx = 1;
-			velz = 0;
+				posx = x + 1.5;
+				posz = z + 0.5;
+				velx = 1;
+				velz = 0;
 		}
 			;
 			break;
 		case 2:
 		case 6: {
-			posx = x + 0.5;
-			posz = z + 1.5;
-			velz = 1;
-			velx = 0;
-		}
+				posx = x + 0.5;
+				posz = z + 1.5;
+				velz = 1;
+				velx = 0;
+			}
 			break;
 		case 3:
 		case 7: {
-			posx = x - 0.6;
-			posz = z + 0.5;
-			velx = -1;
-			velz = 0;
-		}
+				posx = x - 0.6;
+				posz = z + 0.5;
+				velx = -1;
+				velz = 0;
+			}
 			break;
 
 		}
@@ -151,10 +153,10 @@ public class BlockExtractor extends Block {
 		if (stack > 0) {
 			System.out.println(stack);
 			Output = new ItemStack(Items.ItemLightBall, stack);
-		}
+				}
 		else if (stack < 0) {
 			Output = new ItemStack(Items.ItemDarkBall, stack);
-		}
+				}
 		OutputItem = new EntityItem(world, posx, y + 0.5, posz, Output);
 		OutputItem.motionX = velx;
 		OutputItem.motionY = 0;
@@ -162,7 +164,10 @@ public class BlockExtractor extends Block {
 		world.setBlockToAir(x, y + 1, z);
 		if (!world.isRemote) {
 			world.spawnEntityInWorld(OutputItem);
+					world.spawnEntityInWorld(OutputItem);
 		}
 	}
+	  
+	
 
 }

@@ -149,7 +149,7 @@ public class BlockLightBlock extends Block {
 		// sets hostile mobs on fire
 
 		if (par5Entity.isCreatureType(EnumCreatureType.monster, true)) {
-			par5Entity.attackEntityFrom(DamageSource.magic, 200);
+			par5Entity.attackEntityFrom(DamageSource.magic, 5);
 			par5Entity.setFire(5);
 		}
 

@@ -1,6 +1,7 @@
 package LightProcessing.common.lightProcessing.block;
 
 import java.util.Random;
+
 import LightProcessing.common.lib.*;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -88,7 +89,7 @@ public class BlockAbsBlock extends Block {
 	public boolean renderAsNormalBlock() {
 		return false;
 	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister iconRegister) {

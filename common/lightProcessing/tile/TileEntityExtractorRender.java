@@ -2,6 +2,7 @@ package LightProcessing.common.lightProcessing.tile;
 
 import org.lwjgl.opengl.GL11;
 import LightProcessing.common.lib.ExtractionList;
+import LightProcessing.common.lib.ExtractionList;
 import LightProcessing.common.lib.Reference;
 import LightProcessing.common.lightProcessing.block.BlockExtractor;
 import LightProcessing.resources.mods.ltp.models.ModelDarkGen;

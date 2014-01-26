@@ -294,4 +294,80 @@ public class Methods {
 		return false;
 	}
 
+	/**	This Method accepts a world location, x, y, z, and a 3 dimensional Array
+	 * 	it will check the 2 dimensional Array in a flat plane with the block's world location
+	 * 	at the center of the checking and if successful, returns true. -1 is the "skip" location sentinel
+	 */
+	public static boolean checkArea(World world, int x, int y, int z, int Array[][][]) {
+		int num = 0, i, j, k;
+		int valX = Array[0][0].length / 2;
+		int valY = Array[0].length / 2;
+		int valZ = Array.length / 2;
+		for(i = -1*valZ; i <= valZ; i++) {
+			for(j = -1*valY; j <= valY; j++) {
+				for(k = -1*valX; k <= valX; k++) {
+					if(world.getBlockId(x + j, y + i, z + k) == Array[i+valZ][j+valY][k+valX]  || Array[i+valZ][j+valY][k+valX] == -1)
+						num++;
+				}
+			}
+		}
+		
+		if(Array[0][0].length * Array[0].length * Array.length == num)
+			return true;
+		else
+			return false;
+	}
+	
+	/**	This Method accepts a world location, x, y, z, a 3 dimensional Array and a block id
+	 * 	it will first check with the checkArea method to make sure it is a valid array
+	 * 	then set the area to the block id. -1 is the "skip" location sentinel
+	 */
+	public static boolean setArea(World world, int x, int y, int z, int Array[][][], int block) {
+		int i, j, k;
+		int valX = Array[0][0].length / 2;
+		int valY = Array[0].length / 2;
+		int valZ = Array.length / 2;
+		if(checkArea(world, x, y, z, Array)) {
+			for(i = -1*valZ; i <= valZ; i++) {
+				for(j = -1*valY; j <= valY; j++) {
+					for(k = -1*valX; k <= valX; k++) {
+						if(Array[i+valZ][j+valY][k+valX] == -1)
+							continue;
+						else if(world.getBlockId(x + j, y + i, z + k) == Array[i+valZ][j+valY][k+valX])
+							world.setBlock(x + j, y + i, z + k, block);
+					}
+				}
+			}
+			return true;
+		}
+		return false;
+	}
+	
+	
+	
+	public static boolean testArea(World world, int x, int y, int z, int ox, int oy, int oz, int Array[][][]) {
+		int num = 0, i, j, k;
+		int valX = Array[0][0].length;
+		int valY = Array[0].length;
+		int valZ = Array.length;
+		for(i = 0; i <= valZ; i++) {
+			for(j = 0; j <= valY; j++) {
+				for(k = 0; k <= valX; k++) {
+					if(world.getBlockId(x + j - ox, y + i - oy, z + k - oz) == Array[i+valZ][j+valY][k+valX]  || Array[i+valZ][j+valY][k+valX] == -1)
+						num++;
+					
+					System.out.println(world.getBlockId(x + j - ox, y + i - oy, z + k - oz));
+				}
+				
+			}
+		}
+		
+		if(Array[0][0].length * Array[0].length * Array.length == num)
+			return true;
+		else
+			return false;
+	}
+	
+	
+	
 }
