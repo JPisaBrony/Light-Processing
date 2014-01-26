@@ -131,7 +131,10 @@ public class BlockLightBlock extends Block {
 		if (par5Entity instanceof EntityZombie && ((EntityZombie) par5Entity).isVillager()) {
 			EntityVillager entityvillager = new EntityVillager(par5Entity.worldObj);
 			entityvillager.copyLocationAndAnglesFrom(par5Entity);
-			entityvillager.func_110161_a((EntityLivingData) null);
+			
+			//TEXUTRE FIX
+			//entityvillager.func_110161_a((EntityLivingData) null);
+			
 			entityvillager.func_82187_q();
 
 			if (((EntityZombie) par5Entity).isChild()) {
