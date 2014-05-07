@@ -18,7 +18,7 @@ public class TileEntityCompressorRender extends TileEntitySpecialRenderer {
 
 	// The model of your block
 	private final ModelCompressor model;
-	public static final ResourceLocation AbsComp = new ResourceLocation(Reference.MOD_ID.toLowerCase(), "/textures/models/ModelAbsComp.png");
+	public static final ResourceLocation AbsComp = new ResourceLocation(Reference.MOD_ID.toLowerCase(), "textures/models/ModelAbsComp.png");
 
 	public TileEntityCompressorRender() {
 		this.model = new ModelCompressor();
@@ -39,10 +39,7 @@ public class TileEntityCompressorRender extends TileEntitySpecialRenderer {
 		GL11.glTranslatef((float) x + 0.5F, (float) y + 1.5F, (float) z + 0.5F);
 		// This is the texture of your block. It's pathed to be the same place
 		// as your other blocks here.
-		
-		//TEXUTRE FIX
-		//Minecraft.getMinecraft().renderEngine.func_110577_a(AbsComp);
-		
+		Minecraft.getMinecraft().renderEngine.bindTexture(AbsComp);
 		// This rotation part is very important! Without it, your model will
 		// render upside-down! And for some reason you DO need PushMatrix again!
 		GL11.glPushMatrix();

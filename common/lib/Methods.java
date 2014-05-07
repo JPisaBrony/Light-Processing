@@ -142,7 +142,7 @@ public class Methods {
 	}
 
 	public static String textureName(String unLocNam) {
-		return Reference.MOD_ID.toLowerCase() + ":" + (unLocNam.substring(5));
+		return Reference.MOD_ID.toLowerCase() + ":" + unLocNam.substring(5);
 	}
 
 	/**

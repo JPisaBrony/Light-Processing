@@ -17,7 +17,7 @@ public class TileEntityDarkGenRender extends TileEntitySpecialRenderer {
 
 	// The model of your block
 	private final ModelDarkGen model;
-	public static final ResourceLocation DarkGen = new ResourceLocation(Reference.MOD_ID.toLowerCase(), "/textures/models/ModelDarkGen.png");
+	public static final ResourceLocation DarkGen = new ResourceLocation(Reference.MOD_ID.toLowerCase(), "textures/models/ModelDarkGen.png");
 
 	public TileEntityDarkGenRender() {
 		this.model = new ModelDarkGen();
@@ -38,10 +38,7 @@ public class TileEntityDarkGenRender extends TileEntitySpecialRenderer {
 		GL11.glTranslatef((float) x + 0.5F, (float) y + 1.5F, (float) z + 0.5F);
 		// This is the texture of your block. It's pathed to be the same place
 		// as your other blocks here.
-		
-		//TEXUTRE FIX
-		//Minecraft.getMinecraft().renderEngine.func_110577_a(DarkGen);
-		
+		Minecraft.getMinecraft().renderEngine.bindTexture(DarkGen);
 		// This rotation part is very important! Without it, your model will
 		// render upside-down! And for some reason you DO need PushMatrix again!
 		GL11.glPushMatrix();

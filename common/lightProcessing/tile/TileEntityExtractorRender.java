@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 public class TileEntityExtractorRender extends TileEntitySpecialRenderer {
 
 	private final ModelExtractor model;
-	public static final ResourceLocation Extractor = new ResourceLocation(Reference.MOD_ID.toLowerCase(), "/textures/models/ModelExtractor.png");
+	public static final ResourceLocation Extractor = new ResourceLocation(Reference.MOD_ID.toLowerCase(), "textures/models/ModelExtractor.png");
 	static boolean running = false;
 
 	public TileEntityExtractorRender() {
@@ -38,10 +38,7 @@ public class TileEntityExtractorRender extends TileEntitySpecialRenderer {
 	public void renderTileEntityAt(TileEntity te, double x, double y, double z, float scale) {
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) x + 0.5F, (float) y + 1.5F, (float) z + 0.5F);
-		
-		//TEXUTRE FIX
-		//Minecraft.getMinecraft().renderEngine.func_110577_a(Extractor);
-		
+		Minecraft.getMinecraft().renderEngine.bindTexture(Extractor);
 		GL11.glPushMatrix();
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
 		TileEntityExtractor tile = (TileEntityExtractor) te;
