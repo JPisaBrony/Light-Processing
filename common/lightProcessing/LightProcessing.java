@@ -25,7 +25,7 @@ public class LightProcessing {
 	@Instance("LightProcessing")
 	public static LightProcessing instance;
 
-	@SidedProxy(clientSide = "LightProcessing.common.lightProcessing.network.ClientProxy", serverSide = "lightProcessing.network.CommonProxy")
+	@SidedProxy(clientSide = "LightProcessing.common.lightProcessing.network.ClientProxy", serverSide = "LightProcessing.common.lightProcessing.network.CommonProxy")
 	public static CommonProxy proxy;
 
 	@PreInit
@@ -44,7 +44,7 @@ public class LightProcessing {
 		IDRef.COMPRESSOR_ID = config.get(config.CATEGORY_BLOCK, "AbsComp", IDRef.COMPRESSOR_IDD).getInt();
 		IDRef.DARK_LEAF_ID = config.get(config.CATEGORY_BLOCK, "DarkLeaf", IDRef.DARK_LEAF_IDD).getInt();
 		IDRef.MACHINE_CORE_ID = config.get(config.CATEGORY_BLOCK, "MachineCore", IDRef.MACHINE_CORE_IDD).getInt();
-		IDRef.EXTRACTOR_ID = config.get(config.CATEGORY_BLOCK, "Extractor", IDRef.EXTRACTOR_IDD).getInt();
+		IDRef.Extractinator_ID = config.get(config.CATEGORY_BLOCK, "Extractinator", IDRef.Extractinator_IDD).getInt();
 
 		// items
 		IDRef.ABS_INGOT_ID = config.get(config.CATEGORY_ITEM, "AbsIngot", IDRef.ABS_INGOT_IDD).getInt();

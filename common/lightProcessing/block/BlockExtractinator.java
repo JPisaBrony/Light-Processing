@@ -22,13 +22,13 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockExtractor extends Block {
+public class BlockExtractinator extends Block {
 
-	public BlockExtractor(int par1, Material par2Material) {
+	public BlockExtractinator(int par1, Material par2Material) {
 		super(par1, par2Material);
 		this.setHardness(10);
 		this.setCreativeTab(BlockTab.blockTab);
-		this.setUnlocalizedName("Extractor");
+		this.setUnlocalizedName("Extractinator");
 	}
 
 	@Override
@@ -42,7 +42,7 @@ public class BlockExtractor extends Block {
 			return;
 		}
 
-		TileEntityExtractor tile = (TileEntityExtractor) world.getBlockTileEntity(x, y, z);
+		TileEntityExtractinator tile = (TileEntityExtractinator) world.getBlockTileEntity(x, y, z);
 		if (!world.isRemote) {
 			world.setBlockMetadataWithNotify(x, y, z, MathHelper.floor_double((double) (entity.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3, 3);
 		}
@@ -71,7 +71,7 @@ public class BlockExtractor extends Block {
 
 	@Override
 	public TileEntity createTileEntity(World world, int metadata) {
-		return new TileEntityExtractor();
+		return new TileEntityExtractinator();
 	}
 
 	@Override

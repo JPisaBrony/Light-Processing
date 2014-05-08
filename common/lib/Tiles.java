@@ -10,6 +10,6 @@ public class Tiles {
 		GameRegistry.registerTileEntity(TileEntityCompressor.class, "Abs Comp");
 		GameRegistry.registerTileEntity(TileEntityDarkGen.class, "Dark Gen");
 		GameRegistry.registerTileEntity(TileEntityMachineCore.class, "Machine Core");
-		GameRegistry.registerTileEntity(TileEntityExtractor.class, "Extractor");
+		GameRegistry.registerTileEntity(TileEntityExtractinator.class, "Extractinator");
 	}
 }

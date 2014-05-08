@@ -1,7 +1,7 @@
 package LightProcessing.common.lightProcessing.network;
 
 import java.util.EnumSet;
-import LightProcessing.resources.mods.ltp.models.ModelExtractor;
+import LightProcessing.resources.mods.ltp.models.ModelExtractinator;
 import LightProcessing.resources.mods.ltp.models.ModelMachineCore;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
@@ -15,7 +15,7 @@ public class ServerTickHandler implements ITickHandler {
 	public static int LS = 0;
 
 	private void onPlayerTick(EntityPlayer player) {
-		ModelMachineCore.rotate();
+		//ModelMachineCore.rotate();
 	}
 
 	@Override

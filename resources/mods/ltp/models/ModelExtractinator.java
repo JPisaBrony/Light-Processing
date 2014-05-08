@@ -3,8 +3,8 @@ package LightProcessing.resources.mods.ltp.models;
 import LightProcessing.common.lib.ExtractionList;
 import LightProcessing.common.lib.IDRef;
 import LightProcessing.common.lib.Items;
-import LightProcessing.common.lightProcessing.block.BlockExtractor;
-import LightProcessing.common.lightProcessing.tile.TileEntityExtractor;
+import LightProcessing.common.lightProcessing.block.BlockExtractinator;
+import LightProcessing.common.lightProcessing.tile.TileEntityExtractinator;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
@@ -12,7 +12,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class ModelExtractor extends ModelBase {
+public class ModelExtractinator extends ModelBase {
 
 	ModelRenderer top;
 	ModelRenderer bottom;
@@ -34,7 +34,7 @@ public class ModelExtractor extends ModelBase {
 	ModelRenderer base3;
 	ModelRenderer base4;
 
-	public ModelExtractor() {
+	public ModelExtractinator() {
 		textureWidth = 64;
 		textureHeight = 128;
 
@@ -189,7 +189,7 @@ public class ModelExtractor extends ModelBase {
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 	}
 
-	public void pump(long animationOffset, World world, int x, int y, int z, TileEntityExtractor tile) {
+	public void pump(long animationOffset, World world, int x, int y, int z, TileEntityExtractinator tile) {
 		final long CYCLE_TIME_IN_MS = 3000;
 		final long HALF_CYCLE_TIME_IN_MS = CYCLE_TIME_IN_MS / 2;
 		final float START_SLIDER_POS = 0.0F;
