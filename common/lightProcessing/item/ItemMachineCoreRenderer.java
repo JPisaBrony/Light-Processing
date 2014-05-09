@@ -1,7 +1,7 @@
 package LightProcessing.common.lightProcessing.item;
 
 import LightProcessing.common.lightProcessing.tile.*;
-import LightProcessing.resources.mods.ltp.models.ModelMachineCore;
+import LightProcessing.resources.ltp.models.ModelMachineCore;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.IItemRenderer;

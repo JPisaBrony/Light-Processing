@@ -1,4 +1,4 @@
-package LightProcessing.resources.mods.ltp.models;
+package LightProcessing.resources.ltp.models;
 
 import LightProcessing.common.lightProcessing.tile.TileEntityCompressor;
 import net.minecraft.client.model.ModelBase;

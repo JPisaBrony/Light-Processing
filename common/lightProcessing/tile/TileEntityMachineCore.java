@@ -1,6 +1,6 @@
 package LightProcessing.common.lightProcessing.tile;
 
-import LightProcessing.resources.mods.ltp.models.ModelMachineCore;
+import LightProcessing.resources.ltp.models.ModelMachineCore;
 import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityMachineCore extends TileEntity {

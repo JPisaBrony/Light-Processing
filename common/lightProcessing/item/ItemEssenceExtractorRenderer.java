@@ -8,7 +8,7 @@ import net.minecraftforge.client.IItemRenderer;
 import net.minecraftforge.client.IItemRenderer.ItemRenderType;
 import net.minecraftforge.client.IItemRenderer.ItemRendererHelper;
 import LightProcessing.common.lightProcessing.tile.TileEntityEssenceExtractor;
-import LightProcessing.resources.mods.ltp.models.ModelEssenceExtractor;
+import LightProcessing.resources.ltp.models.ModelEssenceExtractor;
 
 public class ItemEssenceExtractorRenderer implements IItemRenderer {
 

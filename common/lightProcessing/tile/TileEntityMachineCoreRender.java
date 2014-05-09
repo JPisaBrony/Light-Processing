@@ -2,8 +2,8 @@ package LightProcessing.common.lightProcessing.tile;
 
 import org.lwjgl.opengl.GL11;
 import LightProcessing.common.lib.Reference;
-import LightProcessing.resources.mods.ltp.models.ModelCompressor;
-import LightProcessing.resources.mods.ltp.models.ModelMachineCore;
+import LightProcessing.resources.ltp.models.ModelCompressor;
+import LightProcessing.resources.ltp.models.ModelMachineCore;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.OpenGlHelper;

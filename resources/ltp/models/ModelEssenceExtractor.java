@@ -1,4 +1,4 @@
-package LightProcessing.resources.mods.ltp.models;
+package LightProcessing.resources.ltp.models;
 
 import LightProcessing.common.lib.ExtractionList;
 import LightProcessing.common.lib.IDRef;
