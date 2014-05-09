@@ -18,7 +18,7 @@ public class Blocks {
 	public static Block BlockDarkGen;
 	public static Block BlockDarkLeaf;
 	public static Block BlockMachineCore;
-	public static Block BlockExtractinator;
+	public static Block BlockEssenceExtractor;
 
 	public static void InitBlocks() {
 		// LIGHT BLOCK
@@ -66,10 +66,10 @@ public class Blocks {
 		GameRegistry.registerBlock(BlockMachineCore, "MachineCore");
 		LanguageRegistry.addName(BlockMachineCore, "Machine Core");
 
-		// EXTRACTINATOR
-		BlockExtractinator = (new BlockExtractinator(IDRef.Extractinator_ID, Material.rock));
-		GameRegistry.registerBlock(BlockExtractinator, "Extractinator");
-		LanguageRegistry.addName(BlockExtractinator, "Extractinator");
+		// Essence Extractor
+		BlockEssenceExtractor = (new BlockEssenceExtractor(IDRef.EssenceExtractor_ID, Material.rock));
+		GameRegistry.registerBlock(BlockEssenceExtractor, "EssenceExtractor");
+		LanguageRegistry.addName(BlockEssenceExtractor, "Essence Extractor");
 	}
 
 }

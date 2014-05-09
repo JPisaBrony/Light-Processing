@@ -6,14 +6,13 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import LightProcessing.common.lib.ExtractionList;
 import LightProcessing.common.lib.Items;
-import LightProcessing.resources.mods.ltp.models.ModelExtractinator.*;
 
-public class TileEntityExtractinator extends TileEntity {
+public class TileEntityEssenceExtractor extends TileEntity {
 
 	public long animationOffset;
 	public boolean flag;
 
-	public TileEntityExtractinator() {
+	public TileEntityEssenceExtractor() {
 		animationOffset = System.nanoTime() % 400000;
 		flag = true;
 	}

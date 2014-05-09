@@ -4,9 +4,9 @@ import org.lwjgl.opengl.GL11;
 import LightProcessing.common.lib.ExtractionList;
 import LightProcessing.common.lib.ExtractionList;
 import LightProcessing.common.lib.Reference;
-import LightProcessing.common.lightProcessing.block.BlockExtractinator;
+import LightProcessing.common.lightProcessing.block.BlockEssenceExtractor;
 import LightProcessing.resources.mods.ltp.models.ModelDarkGen;
-import LightProcessing.resources.mods.ltp.models.ModelExtractinator;
+import LightProcessing.resources.mods.ltp.models.ModelEssenceExtractor;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.OpenGlHelper;
@@ -17,14 +17,14 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
-public class TileEntityExtractinatorRender extends TileEntitySpecialRenderer {
+public class TileEntityEssenceExtractorRender extends TileEntitySpecialRenderer {
 
-	private final ModelExtractinator model;
-	public static final ResourceLocation Extractinator = new ResourceLocation(Reference.MOD_ID.toLowerCase(), "textures/models/ModelExtractinator.png");
+	private final ModelEssenceExtractor model;
+	public static final ResourceLocation EssenceExtractor = new ResourceLocation(Reference.MOD_ID.toLowerCase(), "textures/models/ModelEssenceExtractor.png");
 	static boolean running = false;
 
-	public TileEntityExtractinatorRender() {
-		this.model = new ModelExtractinator();
+	public TileEntityEssenceExtractorRender() {
+		this.model = new ModelEssenceExtractor();
 	}
 
 	private void adjustRotatePivotViaMeta(World world, int x, int y, int z) {
@@ -38,10 +38,10 @@ public class TileEntityExtractinatorRender extends TileEntitySpecialRenderer {
 	public void renderTileEntityAt(TileEntity te, double x, double y, double z, float scale) {
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float) x + 0.5F, (float) y + 1.5F, (float) z + 0.5F);
-		Minecraft.getMinecraft().renderEngine.bindTexture(Extractinator);
+		Minecraft.getMinecraft().renderEngine.bindTexture(EssenceExtractor);
 		GL11.glPushMatrix();
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-		TileEntityExtractinator tile = (TileEntityExtractinator) te;
+		TileEntityEssenceExtractor tile = (TileEntityEssenceExtractor) te;
 		GL11.glRotatef(te.blockMetadata * 90, 0.0F, 1.0F, 0.0F);
 		if (tile.blockMetadata > 3) {
 			if (tile.flag) {

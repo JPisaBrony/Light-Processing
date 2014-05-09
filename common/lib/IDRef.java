@@ -13,7 +13,7 @@ public class IDRef {
 	public static int DARK_LEAF_ID;
 	public static int SAPLING_ID;
 	public static int MACHINE_CORE_ID;
-	public static int Extractinator_ID;
+	public static int EssenceExtractor_ID;
 
 	// items
 	public static int ABS_INGOT_ID;
@@ -23,6 +23,8 @@ public class IDRef {
 	public static int LIGHT_BALL_ID;
 	public static int LIGHT_INGOT_ID;
 	public static int UNSTABLE_ABS_ID;
+	public static int DARK_BUCKET_EMTPY;
+	public static int DARK_BUCKET_FULL;
 
 	// blocks default
 	public static int ABS_BLOCK_IDD = 3000;
@@ -34,7 +36,7 @@ public class IDRef {
 	public static int COMPRESSOR_IDD = 3006;
 	public static int DARK_LEAF_IDD = 3007;
 	public static int MACHINE_CORE_IDD = 3008;
-	public static int Extractinator_IDD = 3009;
+	public static int EssenceExtractor_IDD = 3009;
 
 	// items default
 	public static int ABS_INGOT_IDD = 3010;
@@ -44,5 +46,7 @@ public class IDRef {
 	public static int LIGHT_BALL_IDD = 30014;
 	public static int LIGHT_INGOT_IDD = 3015;
 	public static int UNSTABLE_ABS_IDD = 3016;
+	public static int DARK_BUCKET_EMPTY_IDD = 3017;
+	public static int DARK_BUCKET_FULL_IDD = 3018;
 
 }

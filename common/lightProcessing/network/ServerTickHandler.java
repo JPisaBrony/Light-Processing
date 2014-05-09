@@ -1,21 +1,25 @@
 package LightProcessing.common.lightProcessing.network;
 
 import java.util.EnumSet;
-import LightProcessing.resources.mods.ltp.models.ModelExtractinator;
+
+import LightProcessing.resources.mods.ltp.models.ModelEssenceExtractor;
 import LightProcessing.resources.mods.ltp.models.ModelMachineCore;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.ITickHandler;
 import cpw.mods.fml.common.TickType;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ServerTickHandler implements ITickHandler {
 
 	public static boolean twilight = false;
 	public static int DS = 0;
 	public static int LS = 0;
-
+	
+	@SideOnly(Side.CLIENT)
 	private void onPlayerTick(EntityPlayer player) {
-		//ModelMachineCore.rotate();
+		ModelMachineCore.rotate();
 	}
 
 	@Override

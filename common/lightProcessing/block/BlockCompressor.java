@@ -64,7 +64,6 @@ public class BlockCompressor extends Block {
 		return -1;
 	}
 
-	@SideOnly(Side.CLIENT)
 	public static void particles(World world, int x, int y, int z) {
 
 		Random random = new Random();

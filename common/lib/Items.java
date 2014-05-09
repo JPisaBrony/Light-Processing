@@ -3,6 +3,7 @@ package LightProcessing.common.lib;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import LightProcessing.common.lightProcessing.item.*;
 
@@ -15,6 +16,8 @@ public class Items {
 	public static Item ItemAbsIngot;
 	public static Item ItemUnstableAbs;
 	public static Item ItemAbsRod;
+	public static Item ItemDarkBucketEmpty;
+	public static Item ItemDarkBucketFull;
 
 	public static void InitItems() {
 		ItemDarkBall = (new ItemDarkBall(IDRef.DARK_BALL_ID));
@@ -24,6 +27,8 @@ public class Items {
 		ItemUnstableAbs = (new ItemUnstableAbs(IDRef.UNSTABLE_ABS_ID));
 		ItemAbsIngot = (new ItemAbsIngot(IDRef.ABS_INGOT_ID));
 		ItemAbsRod = (new ItemAbsRod(IDRef.ABS_ROD_ID));
+		ItemDarkBucketEmpty = (new ItemDarkBucket(IDRef.DARK_BUCKET_EMPTY_IDD, 0).setUnlocalizedName("dark_bucket_empty"));
+		ItemDarkBucketFull = (new ItemDarkBucket(IDRef.DARK_BUCKET_FULL_IDD, Block.waterMoving.blockID).setUnlocalizedName("dark_bucket_water").setContainerItem(ItemDarkBucketEmpty));
 
 		LanguageRegistry.addName(ItemDarkBall, "Darkness Essence");
 		LanguageRegistry.addName(ItemLightBall, "Light Essence");
@@ -32,6 +37,8 @@ public class Items {
 		LanguageRegistry.addName(ItemAbsIngot, "Stabilized Absolution");
 		LanguageRegistry.addName(ItemUnstableAbs, "Unstable Absolution");
 		LanguageRegistry.addName(ItemAbsRod, "Absolution Rod");
+		LanguageRegistry.addName(ItemDarkBucketEmpty, "Empty Dark Bucket");
+		LanguageRegistry.addName(ItemDarkBucketFull, "Water Dark Bucket");
 	}
 
 }

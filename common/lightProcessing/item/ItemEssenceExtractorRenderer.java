@@ -1,19 +1,21 @@
 package LightProcessing.common.lightProcessing.item;
 
 import org.lwjgl.opengl.GL11;
-import LightProcessing.common.lightProcessing.tile.*;
-import LightProcessing.resources.mods.ltp.models.ModelCompressor;
-import LightProcessing.resources.mods.ltp.models.ModelExtractinator;
+
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.IItemRenderer;
+import net.minecraftforge.client.IItemRenderer.ItemRenderType;
+import net.minecraftforge.client.IItemRenderer.ItemRendererHelper;
+import LightProcessing.common.lightProcessing.tile.TileEntityEssenceExtractor;
+import LightProcessing.resources.mods.ltp.models.ModelEssenceExtractor;
 
-public class ItemExtractinatorRenderer implements IItemRenderer {
+public class ItemEssenceExtractorRenderer implements IItemRenderer {
 
-	private ModelExtractinator ExtractinatorModel;
+	private ModelEssenceExtractor ModelEssenceExtractor;
 
-	public ItemExtractinatorRenderer() {
-		ExtractinatorModel = new ModelExtractinator();
+	public ItemEssenceExtractorRenderer() {
+		ModelEssenceExtractor = new ModelEssenceExtractor();
 	}
 
 	@Override
@@ -30,7 +32,7 @@ public class ItemExtractinatorRenderer implements IItemRenderer {
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
 		GL11.glRotatef(90, 0, 1, 0);
 		GL11.glTranslatef(-1F, -0.1F, 0F);
-		TileEntityRenderer.instance.renderTileEntityAt(new TileEntityExtractinator(), 0.0D, 0.0D, 0.0D, 0.0F);
+		TileEntityRenderer.instance.renderTileEntityAt(new TileEntityEssenceExtractor(), 0.0D, 0.0D, 0.0D, 0.0F);
 	}
 
 }

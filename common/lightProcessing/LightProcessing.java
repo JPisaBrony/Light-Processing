@@ -44,7 +44,7 @@ public class LightProcessing {
 		IDRef.COMPRESSOR_ID = config.get(config.CATEGORY_BLOCK, "AbsComp", IDRef.COMPRESSOR_IDD).getInt();
 		IDRef.DARK_LEAF_ID = config.get(config.CATEGORY_BLOCK, "DarkLeaf", IDRef.DARK_LEAF_IDD).getInt();
 		IDRef.MACHINE_CORE_ID = config.get(config.CATEGORY_BLOCK, "MachineCore", IDRef.MACHINE_CORE_IDD).getInt();
-		IDRef.Extractinator_ID = config.get(config.CATEGORY_BLOCK, "Extractinator", IDRef.Extractinator_IDD).getInt();
+		IDRef.EssenceExtractor_ID = config.get(config.CATEGORY_BLOCK, "Essence Extractor", IDRef.EssenceExtractor_IDD).getInt();
 
 		// items
 		IDRef.ABS_INGOT_ID = config.get(config.CATEGORY_ITEM, "AbsIngot", IDRef.ABS_INGOT_IDD).getInt();
