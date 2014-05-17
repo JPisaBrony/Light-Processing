@@ -7,7 +7,7 @@ public class WorldCrafting {
 	static int HV = IDRef.HARVESTER_ID;
 	static int MC = IDRef.MACHINE_CORE_ID;
 	static int DB = IDRef.DARK_BLOCK_ID;
-	static int EX = IDRef.EssenceExtractor_ID;
+	static int EX = IDRef.ESSENCE_EXTRACTOR_ID;
 	static int SK = -1;
 	
 	public static int harvester[][] = {
@@ -18,20 +18,18 @@ public class WorldCrafting {
 		{LW,DL,DL,DL,LW}
 	};
 	
-	public static int darkGen[][] = {
-		{SK,SK,DB,SK,SK},
-		{SK,DB,0 ,DB,SK},
-		{DB,0 ,MC,0 ,DB},
-		{SK,DB,0 ,DB,SK},
-		{SK,SK,DB,SK,SK}
+	public static Integer harvester2[][] = {
+		{0,0,0,0,0,0,0,0,0,0},
+		{DL,-1 ,-1 ,-1 ,DL},
+		{DL,-1 ,MC ,-1 ,DL},
+		{DL,-1 ,-1 ,-1 ,DL},
+		{LW,DL,DL,DL,LW}
 	};
 	
-	public static int darkGen2[][] = {
-		{SK,SK,SK,SK,SK},
-		{SK,SK,SK,SK,SK},
-		{SK,SK,DB,SK,SK},
-		{SK,SK,SK,SK,SK},
-		{SK,SK,SK,SK,SK}
-	};
+	public WorldCraftingGrid3d mine = new WorldCraftingGrid3d();
+	
+	public WorldCrafting() {
+		mine.add(harvester2);
+	}
 	
 }

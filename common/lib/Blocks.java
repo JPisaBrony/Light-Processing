@@ -67,7 +67,7 @@ public class Blocks {
 		LanguageRegistry.addName(BlockMachineCore, "Machine Core");
 
 		// Essence Extractor
-		BlockEssenceExtractor = (new BlockEssenceExtractor(IDRef.EssenceExtractor_ID, Material.rock));
+		BlockEssenceExtractor = (new BlockEssenceExtractor(IDRef.ESSENCE_EXTRACTOR_ID, Material.rock));
 		GameRegistry.registerBlock(BlockEssenceExtractor, "EssenceExtractor");
 		LanguageRegistry.addName(BlockEssenceExtractor, "Essence Extractor");
 	}

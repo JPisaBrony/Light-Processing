@@ -28,7 +28,6 @@ public class LightProcessing {
 	@SidedProxy(clientSide = "LightProcessing.common.lightProcessing.network.ClientProxy", serverSide = "LightProcessing.common.lightProcessing.network.CommonProxy")
 	public static CommonProxy proxy;
 
-	@PreInit
 	public void preInit(FMLPreInitializationEvent event) {
 		// CONFIG
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
@@ -44,7 +43,7 @@ public class LightProcessing {
 		IDRef.COMPRESSOR_ID = config.get(config.CATEGORY_BLOCK, "AbsComp", IDRef.COMPRESSOR_IDD).getInt();
 		IDRef.DARK_LEAF_ID = config.get(config.CATEGORY_BLOCK, "DarkLeaf", IDRef.DARK_LEAF_IDD).getInt();
 		IDRef.MACHINE_CORE_ID = config.get(config.CATEGORY_BLOCK, "MachineCore", IDRef.MACHINE_CORE_IDD).getInt();
-		IDRef.EssenceExtractor_ID = config.get(config.CATEGORY_BLOCK, "Essence Extractor", IDRef.EssenceExtractor_IDD).getInt();
+		IDRef.ESSENCE_EXTRACTOR_ID = config.get(config.CATEGORY_BLOCK, "Essence Extractor", IDRef.ESSENCE_EXTRACTOR_IDD).getInt();
 
 		// items
 		IDRef.ABS_INGOT_ID = config.get(config.CATEGORY_ITEM, "AbsIngot", IDRef.ABS_INGOT_IDD).getInt();
@@ -65,16 +64,6 @@ public class LightProcessing {
 		Recipes.InitRecipes();
 		Tiles.registerTiles();
 		ExtractionList.setList();
-
-	}
-
-	@Init
-	public void load(FMLInitializationEvent event) {
-
-	}
-
-	@PostInit
-	public void PostInit(FMLInitializationEvent event) {
 
 	}
 

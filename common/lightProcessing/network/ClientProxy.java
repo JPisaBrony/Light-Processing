@@ -19,7 +19,7 @@ public class ClientProxy extends CommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMachineCore.class, new TileEntityMachineCoreRender());
 		MinecraftForgeClient.registerItemRenderer(IDRef.MACHINE_CORE_ID, new ItemMachineCoreRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEssenceExtractor.class, new TileEntityEssenceExtractorRender());
-		MinecraftForgeClient.registerItemRenderer(IDRef.EssenceExtractor_ID, new ItemEssenceExtractorRenderer());
+		MinecraftForgeClient.registerItemRenderer(IDRef.ESSENCE_EXTRACTOR_ID, new ItemEssenceExtractorRenderer());
 	}
 
 }
