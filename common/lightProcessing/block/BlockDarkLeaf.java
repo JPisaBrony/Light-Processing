@@ -2,6 +2,7 @@ package LightProcessing.common.lightProcessing.block;
 
 import java.util.ArrayList;
 import java.util.Random;
+
 import LightProcessing.common.lib.IDRef;
 import LightProcessing.common.lib.Methods;
 import LightProcessing.common.lib.Reference;
@@ -10,6 +11,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockGrass;
 import net.minecraft.block.BlockLeaves;
+import net.minecraft.block.BlockLeavesBase;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -17,11 +19,12 @@ import net.minecraft.entity.item.EntityFallingSand;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import net.minecraftforge.common.IShearable;
 
-public class BlockDarkLeaf extends Block {
+public class BlockDarkLeaf extends BlockLeavesBase implements IShearable{
 
-	public BlockDarkLeaf(int par1, Material material) {
-		super(par1, material);
+	public BlockDarkLeaf(int par1) {
+		super(par1, Material.leaves, false);
 		this.setCreativeTab(LightProcessing.common.lib.BlockTab.blockTab);
 		this.setStepSound(soundGrassFootstep);
 		this.setHardness(0.2F);
@@ -47,11 +50,11 @@ public class BlockDarkLeaf extends Block {
 	}
 
 	public int idDropped(int par1, Random par2Random, int par3) {
-		return IDRef.DARK_LEAF_ID;
+		return IDRef.LIGHT_SAPLING_ID;
 	}
 
 	public int quantityDropped(Random par1Random) {
-		return par1Random.nextInt(2);
+		return par1Random.nextInt(20) == 0 ? 1 : 0;
 	}
 
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
@@ -74,4 +77,19 @@ public class BlockDarkLeaf extends Block {
 	public void registerIcons(IconRegister iconRegister) {
 		blockIcon = iconRegister.registerIcon(Reference.MOD_ID.toLowerCase() + ":" + (this.getUnlocalizedName().substring(5)));
 	}
+
+    @Override
+    public ArrayList<ItemStack> onSheared(ItemStack item, World world, int x, int y, int z, int fortune)
+    {
+        ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
+        ret.add(new ItemStack(this, 1, world.getBlockMetadata(x, y, z) & 3));
+        return ret;
+    }
+    
+    @Override
+    public boolean isShearable(ItemStack item, World world, int x, int y, int z)
+    {
+        return true;
+    }
+    
 }

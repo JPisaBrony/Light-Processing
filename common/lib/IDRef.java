@@ -8,6 +8,8 @@ public class IDRef {
 	public static int DARK_GEN_ID;
 	public static int LIGHT_BLOCK_ID;
 	public static int LIGHT_WOOD_ID;
+	public static int LIGHT_SAPLING_ID;
+	public static int LIGHT_WOOD_PLANKS_ID;
 	public static int HARVESTER_ID;
 	public static int COMPRESSOR_ID;
 	public static int DARK_LEAF_ID;
@@ -37,6 +39,8 @@ public class IDRef {
 	public static int DARK_LEAF_IDD = 3017;
 	public static int MACHINE_CORE_IDD = 3018;
 	public static int ESSENCE_EXTRACTOR_IDD = 3019;
+	public static int LIGHT_SAPLING_IDD = 3020;
+	public static int LIGHT_WOOD_PLANKS_IDD = 3021;
 
 	// items default
 	public static int ABS_INGOT_IDD = 5000;

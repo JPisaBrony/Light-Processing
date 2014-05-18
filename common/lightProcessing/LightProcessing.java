@@ -1,9 +1,11 @@
 package LightProcessing.common.lightProcessing;
 
 import java.util.logging.Level;
+
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
 import LightProcessing.common.lib.*;
+import LightProcessing.common.lightProcessing.generation.WorldGeneration;
 import LightProcessing.common.lightProcessing.network.*;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
@@ -27,7 +29,8 @@ public class LightProcessing {
 
 	@SidedProxy(clientSide = "LightProcessing.common.lightProcessing.network.ClientProxy", serverSide = "LightProcessing.common.lightProcessing.network.CommonProxy")
 	public static CommonProxy proxy;
-
+	
+	@PreInit
 	public void preInit(FMLPreInitializationEvent event) {
 		// CONFIG
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
@@ -44,6 +47,8 @@ public class LightProcessing {
 		IDRef.DARK_LEAF_ID = config.get(config.CATEGORY_BLOCK, "DarkLeaf", IDRef.DARK_LEAF_IDD).getInt();
 		IDRef.MACHINE_CORE_ID = config.get(config.CATEGORY_BLOCK, "MachineCore", IDRef.MACHINE_CORE_IDD).getInt();
 		IDRef.ESSENCE_EXTRACTOR_ID = config.get(config.CATEGORY_BLOCK, "Essence Extractor", IDRef.ESSENCE_EXTRACTOR_IDD).getInt();
+		IDRef.LIGHT_SAPLING_ID = config.get(config.CATEGORY_BLOCK, "LightTreeSapling", IDRef.LIGHT_SAPLING_IDD).getInt();
+		IDRef.LIGHT_WOOD_PLANKS_ID = config.get(config.CATEGORY_BLOCK, "LightWoodPlanks", IDRef.LIGHT_WOOD_PLANKS_IDD).getInt();
 
 		// items
 		IDRef.ABS_INGOT_ID = config.get(config.CATEGORY_ITEM, "AbsIngot", IDRef.ABS_INGOT_IDD).getInt();
@@ -57,6 +62,8 @@ public class LightProcessing {
 
 		proxy.registerRenderThings();
 		proxy.registerServerTickHandler();
+		GameRegistry.registerWorldGenerator(new WorldGeneration());
+		MinecraftForge.EVENT_BUS.register(new Events());
 		ItemTab.InitTab();
 		BlockTab.InitTab();
 		Blocks.InitBlocks();
@@ -64,7 +71,6 @@ public class LightProcessing {
 		Recipes.InitRecipes();
 		Tiles.registerTiles();
 		ExtractionList.setList();
-
 	}
 
 }

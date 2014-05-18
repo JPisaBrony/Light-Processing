@@ -11,6 +11,8 @@ public class Blocks {
 	// vars
 	public static Block BlockLightBlock;
 	public static Block BlockLightWood;
+	public static Block BlockLightTreeSapling;
+	public static Block BlockLightWoodPlanks;
 	public static Block BlockDarkBlock;
 	public static Block BlockAbsBlock;
 	public static Block BlockHarvester;
@@ -30,16 +32,26 @@ public class Blocks {
 		BlockLightWood = (new BlockLightWood(IDRef.LIGHT_WOOD_ID, Material.wood));
 		GameRegistry.registerBlock(BlockLightWood, "LightWood");
 		LanguageRegistry.addName(BlockLightWood, "Light Wood");
+		
+		// DARK LEAF
+		BlockDarkLeaf = (new BlockDarkLeaf(IDRef.DARK_LEAF_ID));
+		GameRegistry.registerBlock(BlockDarkLeaf, "DarkLeaf");
+		LanguageRegistry.addName(BlockDarkLeaf, "Dark Leaf");
+		
+		// LIGHT SAPLING
+		BlockLightTreeSapling = (new BlockLightTreeSapling(IDRef.LIGHT_SAPLING_ID));
+		GameRegistry.registerBlock(BlockLightTreeSapling, "LightTreeSapling");
+		LanguageRegistry.addName(BlockLightTreeSapling, "Light Tree Sapling");
+		
+		// LIGHT PLANKS
+		BlockLightWoodPlanks = new BlockLightWoodPlanks(IDRef.LIGHT_WOOD_PLANKS_ID, Material.wood);
+		GameRegistry.registerBlock(BlockLightWoodPlanks, "LightWoodPlanks");
+		LanguageRegistry.addName(BlockLightWoodPlanks, "Light Wood Planks");
 
 		// DARK BLOCK
 		BlockDarkBlock = (new BlockDarkBlock(IDRef.DARK_BLOCK_ID, Material.rock));
 		GameRegistry.registerBlock(BlockDarkBlock, "DarkBlock");
 		LanguageRegistry.addName(BlockDarkBlock, "Block of Darkness");
-
-		// DARK LEAF
-		BlockDarkLeaf = (new BlockDarkLeaf(IDRef.DARK_LEAF_ID, Material.clay));
-		GameRegistry.registerBlock(BlockDarkLeaf, "DarkLeaf");
-		LanguageRegistry.addName(BlockDarkLeaf, "Dark Leaf");
 
 		// ABSOLUTION BLOCK
 		BlockAbsBlock = (new BlockAbsBlock(IDRef.ABS_BLOCK_ID, Material.rock));
