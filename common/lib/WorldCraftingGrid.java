@@ -15,8 +15,10 @@ public class WorldCraftingGrid {
 	
 	public WorldCraftingGrid(Integer Array[][]) {
 		int i;
-		for(i = 0; i < Array.length; i++)
-			array.add((ArrayList<Integer>) Arrays.asList(Array[i]));
+		for(i = 0; i < Array.length; i++) {
+			ArrayList<Integer> t = new ArrayList<Integer>(Arrays.asList(Array[i]));
+			array.add(t);
+		}
 		if(!checkArray(Array))
 			throw new  IllegalArgumentException();
 		this.height = Array.length;

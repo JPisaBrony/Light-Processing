@@ -58,9 +58,27 @@ public class BlockMachineCore extends Block {
 
 	@Override
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
+		WorldCrafting something = new WorldCrafting();
+		if (par5EntityPlayer.getCurrentItemOrArmor(0) == null) {
+			WorldCraftingRecipeCollection recipe = something.dictionary.get(IDRef.MACHINE_CORE_ID);
+			for(int i = 0; i < recipe.getCount(); i++)
+				if(checkRecipe(par1World, par2, par3, par4, recipe.get(i)))
+					return true;
+		}
+		/*
 		if (par5EntityPlayer.getCurrentItemOrArmor(0) == null) {
 			if (Methods.setArea(par1World, par2, par3, par4, WorldCrafting.harvester, 0, IDRef.MACHINE_CORE_ID))
 				par1World.setBlock(par2, par3, par4, IDRef.HARVESTER_ID);
+		}*/
+		return false;
+	}
+	
+	public boolean checkRecipe(World par1World, int par2, int par3, int par4, WorldCraftingRecipe recipe) {
+		if(recipe.checkRecipe(par2, par3, par4, par1World))
+		{
+			recipe.clearGrid(par2, par3, par4, par1World);
+			par1World.setBlock(par2, par3, par4, recipe.getResultBlockID());
+			return true;
 		}
 		return false;
 	}
