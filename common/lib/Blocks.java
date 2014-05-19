@@ -19,6 +19,8 @@ public class Blocks {
 	public static Block BlockDarkLeaf;
 	public static Block BlockMachineCore;
 	public static Block BlockEssenceExtractor;
+	public static Block BlockLightOre;
+	public static Block BlockLightOreStone;
 
 	public static void InitBlocks() {
 		// LIGHT BLOCK
@@ -70,6 +72,16 @@ public class Blocks {
 		BlockEssenceExtractor = (new BlockEssenceExtractor(IDRef.ESSENCE_EXTRACTOR_ID, Material.rock));
 		GameRegistry.registerBlock(BlockEssenceExtractor, "EssenceExtractor");
 		LanguageRegistry.addName(BlockEssenceExtractor, "Essence Extractor");
+	
+		// Light Ore
+		BlockLightOre = (new BlockLightOre(IDRef.LIGHT_ORE_ID, Material.rock));
+		GameRegistry.registerBlock(BlockLightOre, "LightOre");
+		LanguageRegistry.addName(BlockLightOre, "Light Ore");
+		
+		//Light Ore Stone
+		BlockLightOreStone = (new BlockLightOreStone(IDRef.LIGHT_ORE_STONE_ID, Material.rock));
+		GameRegistry.registerBlock(BlockLightOreStone, "LightOreStone");
+		LanguageRegistry.addName(BlockLightOreStone, "Light Ore Stone");
 	}
 
 }

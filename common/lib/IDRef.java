@@ -14,6 +14,8 @@ public class IDRef {
 	public static int SAPLING_ID;
 	public static int MACHINE_CORE_ID;
 	public static int ESSENCE_EXTRACTOR_ID;
+	public static int LIGHT_ORE_ID;
+	public static int LIGHT_ORE_STONE_ID;
 
 	// items
 	public static int ABS_INGOT_ID;
@@ -37,6 +39,8 @@ public class IDRef {
 	public static int DARK_LEAF_IDD = 3017;
 	public static int MACHINE_CORE_IDD = 3018;
 	public static int ESSENCE_EXTRACTOR_IDD = 3019;
+	public static int LIGHT_ORE_IDD = 3020;
+	public static int LIGHT_ORE_STONE_IDD = 3021;
 
 	// items default
 	public static int ABS_INGOT_IDD = 5000;

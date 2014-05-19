@@ -368,6 +368,26 @@ public class Methods {
 			return false;
 	}
 	
-	
+	public static boolean lightCheck(World world, int x, int y, int z, int minimum){
+		if(world.getLightBrightness(x - 1, y, z) > minimum){
+			return true;
+		}
+		if(world.getFullBlockLightValue(x + 1, y, z) > minimum){
+			return true;
+		}
+		if(world.getFullBlockLightValue(x, y - 1, z) > minimum){
+			return true;
+		}
+		if(world.getFullBlockLightValue(x, y + 1, z) > minimum){
+			return true;
+		}
+		if(world.getFullBlockLightValue(x, y, z - 1) > minimum){
+			return true;
+		}
+		if(world.getFullBlockLightValue(x, y, z + 1) > minimum){
+			return true;
+		}
+		return false;
+	}
 	
 }
