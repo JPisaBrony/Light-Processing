@@ -49,7 +49,10 @@ public class LightProcessing {
 		IDRef.ESSENCE_EXTRACTOR_ID = config.get(config.CATEGORY_BLOCK, "Essence Extractor", IDRef.ESSENCE_EXTRACTOR_IDD).getInt();
 		IDRef.LIGHT_SAPLING_ID = config.get(config.CATEGORY_BLOCK, "LightTreeSapling", IDRef.LIGHT_SAPLING_IDD).getInt();
 		IDRef.LIGHT_WOOD_PLANKS_ID = config.get(config.CATEGORY_BLOCK, "LightWoodPlanks", IDRef.LIGHT_WOOD_PLANKS_IDD).getInt();
-
+		IDRef.LIGHT_ORE_ID = config.get(config.CATEGORY_BLOCK, "Light Ore", IDRef.LIGHT_ORE_IDD).getInt();
+		IDRef.LIGHT_ORE_STONE_ID = config.get(config.CATEGORY_BLOCK, "Light Ore Stone", IDRef.LIGHT_ORE_STONE_IDD).getInt();
+		
+		
 		// items
 		IDRef.ABS_INGOT_ID = config.get(config.CATEGORY_ITEM, "AbsIngot", IDRef.ABS_INGOT_IDD).getInt();
 		IDRef.ABS_ROD_ID = config.get(config.CATEGORY_ITEM, "AbsRod", IDRef.ABS_ROD_IDD).getInt();

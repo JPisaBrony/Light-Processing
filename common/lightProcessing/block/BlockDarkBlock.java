@@ -10,7 +10,10 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
@@ -125,6 +128,20 @@ public class BlockDarkBlock extends Block {
 	}
 
 	public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity) {
+		
+		if (par5Entity instanceof net.minecraft.entity.item.EntityItem && par1World.getBlockMetadata(par2, par3, par4) < 2){
+			if(((net.minecraft.entity.item.EntityItem) par5Entity).getEntityItem().getItem() == Item.bucketEmpty && !par1World.isRemote){
+				ItemStack DarkBucket = new ItemStack(Items.ItemDarkBucketEmpty);
+				EntityItem DBucketI = new EntityItem(par1World,par5Entity.posX, par5Entity.posY, par5Entity.posZ, DarkBucket);
+				DBucketI.motionX = par5Entity.motionX;
+				DBucketI.motionY = par5Entity.motionY;
+				DBucketI.motionZ = par5Entity.motionZ;
+				par1World.removeEntity(par5Entity);
+				DBucketI.delayBeforeCanPickup = 25;
+				par1World.spawnEntityInWorld(DBucketI);
+			}
+		}
+		
 		if (par5Entity instanceof EntityPlayer && par1World.getBlockMetadata(par2, par3, par4) < 2) {
 			((EntityPlayer) par5Entity).addPotionEffect(new PotionEffect(Potion.blindness.getId(), 400, 50));
 		}
