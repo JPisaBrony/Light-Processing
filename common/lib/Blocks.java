@@ -26,22 +26,22 @@ public class Blocks {
 
 	public static void InitBlocks() {
 		// LIGHT BLOCK
-		BlockLightBlock = (new BlockLightBlock(IDRef.LIGHT_BLOCK_ID, Material.rock));
+		BlockLightBlock = new BlockLightBlock(IDRef.LIGHT_BLOCK_ID, Material.rock);
 		GameRegistry.registerBlock(BlockLightBlock, "LightBlock");
 		LanguageRegistry.addName(BlockLightBlock, "Block of Light");
 
 		// LIGHT WOOD
-		BlockLightWood = (new BlockLightWood(IDRef.LIGHT_WOOD_ID, Material.wood));
+		BlockLightWood = new BlockLightWood(IDRef.LIGHT_WOOD_ID, Material.wood);
 		GameRegistry.registerBlock(BlockLightWood, "LightWood");
 		LanguageRegistry.addName(BlockLightWood, "Light Wood");
 		
 		// DARK LEAF
-		BlockDarkLeaf = (new BlockDarkLeaf(IDRef.DARK_LEAF_ID));
+		BlockDarkLeaf = new BlockDarkLeaf(IDRef.DARK_LEAF_ID);
 		GameRegistry.registerBlock(BlockDarkLeaf, "DarkLeaf");
 		LanguageRegistry.addName(BlockDarkLeaf, "Dark Leaf");
 		
 		// LIGHT SAPLING
-		BlockLightTreeSapling = (new BlockLightTreeSapling(IDRef.LIGHT_SAPLING_ID));
+		BlockLightTreeSapling = new BlockLightTreeSapling(IDRef.LIGHT_SAPLING_ID);
 		GameRegistry.registerBlock(BlockLightTreeSapling, "LightTreeSapling");
 		LanguageRegistry.addName(BlockLightTreeSapling, "Light Tree Sapling");
 		
@@ -51,47 +51,47 @@ public class Blocks {
 		LanguageRegistry.addName(BlockLightWoodPlanks, "Light Wood Planks");
 
 		// DARK BLOCK
-		BlockDarkBlock = (new BlockDarkBlock(IDRef.DARK_BLOCK_ID, Material.rock));
+		BlockDarkBlock = new BlockDarkBlock(IDRef.DARK_BLOCK_ID, Material.rock);
 		GameRegistry.registerBlock(BlockDarkBlock, "DarkBlock");
 		LanguageRegistry.addName(BlockDarkBlock, "Block of Darkness");
 
 		// ABSOLUTION BLOCK
-		BlockAbsBlock = (new BlockAbsBlock(IDRef.ABS_BLOCK_ID, Material.rock));
+		BlockAbsBlock = new BlockAbsBlock(IDRef.ABS_BLOCK_ID, Material.rock);
 		GameRegistry.registerBlock(BlockAbsBlock, "AbsBlock");
 		LanguageRegistry.addName(BlockAbsBlock, "Block of Absolution");
 
 		// HARVESTER
-		BlockHarvester = (new BlockHarvester(IDRef.HARVESTER_ID, Material.rock));
+		BlockHarvester = new BlockHarvester(IDRef.HARVESTER_ID, Material.rock);
 		GameRegistry.registerBlock(BlockHarvester, "Harvester");
 		LanguageRegistry.addName(BlockHarvester, "Harvester");
 
 		// ABSOLUTION COMPRESSOR
-		BlockAbsComp = (new BlockCompressor(IDRef.COMPRESSOR_ID, Material.rock));
+		BlockAbsComp = new BlockCompressor(IDRef.COMPRESSOR_ID, Material.rock);
 		GameRegistry.registerBlock(BlockAbsComp, "AbsComp");
 		LanguageRegistry.addName(BlockAbsComp, "Compressor");
 
 		// DARKNESS GENERATOR
-		BlockDarkGen = (new BlockDarkGen(IDRef.DARK_GEN_ID, Material.rock));
+		BlockDarkGen = new BlockDarkGen(IDRef.DARK_GEN_ID, Material.rock);
 		GameRegistry.registerBlock(BlockDarkGen, "DarkGen");
 		LanguageRegistry.addName(BlockDarkGen, "Darkness Generator");
 
 		// MACHINE CORE
-		BlockMachineCore = (new BlockMachineCore(IDRef.MACHINE_CORE_ID, Material.rock));
+		BlockMachineCore = new BlockMachineCore(IDRef.MACHINE_CORE_ID, Material.rock);
 		GameRegistry.registerBlock(BlockMachineCore, "MachineCore");
 		LanguageRegistry.addName(BlockMachineCore, "Machine Core");
 
 		// Essence Extractor
-		BlockEssenceExtractor = (new BlockEssenceExtractor(IDRef.ESSENCE_EXTRACTOR_ID, Material.rock));
+		BlockEssenceExtractor = new BlockEssenceExtractor(IDRef.ESSENCE_EXTRACTOR_ID, Material.rock);
 		GameRegistry.registerBlock(BlockEssenceExtractor, "EssenceExtractor");
 		LanguageRegistry.addName(BlockEssenceExtractor, "Essence Extractor");
 	
 		// Light Ore
-		BlockLightOre = (new BlockLightOre(IDRef.LIGHT_ORE_ID, Material.rock));
+		BlockLightOre = new BlockLightOre(IDRef.LIGHT_ORE_ID, Material.rock);
 		GameRegistry.registerBlock(BlockLightOre, "LightOre");
 		LanguageRegistry.addName(BlockLightOre, "Light Ore");
 		
-		//Light Ore Stone
-		BlockLightOreStone = (new BlockLightOreStone(IDRef.LIGHT_ORE_STONE_ID, Material.rock));
+		// Light Ore Stone
+		BlockLightOreStone = new BlockLightOreStone(IDRef.LIGHT_ORE_STONE_ID, Material.rock);
 		GameRegistry.registerBlock(BlockLightOreStone, "LightOreStone");
 		LanguageRegistry.addName(BlockLightOreStone, "Light Ore Stone");
 	}
