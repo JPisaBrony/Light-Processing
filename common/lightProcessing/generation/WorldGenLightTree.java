@@ -15,27 +15,23 @@ public class WorldGenLightTree extends WorldGenerator
     /** The minimum height of a generated tree. */
     private final int minTreeHeight;
 
-    /** True if this tree should grow Vines. */
-    private final boolean vinesGrow;
-
     /** The metadata value of the wood to use in tree generation. */
     private final int metaWood;
 
     /** The metadata value of the leaves to use in tree generation. */
     private final int metaLeaves;
-
+    
     public WorldGenLightTree(boolean par1)
     {
-        this(par1, 4, 0, 0, false);
+    	this(par1, 3, 0, 0);
     }
-
-    public WorldGenLightTree(boolean par1, int par2, int par3, int par4, boolean par5)
+    
+    public WorldGenLightTree(boolean par1, int par2, int par3, int par4)
     {
         super(par1);
         this.minTreeHeight = par2;
         this.metaWood = par3;
         this.metaLeaves = par4;
-        this.vinesGrow = par5;
     }
 
     public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5)
@@ -75,10 +71,10 @@ public class WorldGenLightTree extends WorldGenerator
                             Block block = Block.blocksList[k1];
 
                             if (!par1World.isAirBlock(l1, i1, j1) &&
-                                !block.isLeaves(par1World, l1, i1, j1) &&
                                  k1 != Block.grass.blockID &&
                                  k1 != Block.dirt.blockID &&
-                                !block.isWood(par1World, l1, i1, j1))
+                                 k1 != IDRef.DARK_LEAF_ID &&
+                                 k1 != IDRef.DARK_LEAF_ID)
                             {
                                 flag = false;
                             }
@@ -104,7 +100,7 @@ public class WorldGenLightTree extends WorldGenerator
                 if (isSoil && par4 < 256 - l - 1)
                 {
                     soil.onPlantGrow(par1World, par3, par4 - 1, par5, par3, par4, par5);
-                    b0 = 3;
+                    b0 = 1;
                     byte b1 = 0;
                     int i2;
                     int j2;
@@ -127,7 +123,6 @@ public class WorldGenLightTree extends WorldGenerator
                                 {
                                     int j3 = par1World.getBlockId(j2, j1, l2);
                                     Block block = Block.blocksList[j3];
-
                                     if (block == null || block.canBeReplacedByLeaves(par1World, j2, j1, l2))
                                     {
                                         this.setBlockAndMetadata(par1World, j2, j1, l2, IDRef.DARK_LEAF_ID, this.metaLeaves);
@@ -143,89 +138,11 @@ public class WorldGenLightTree extends WorldGenerator
 
                         Block block = Block.blocksList[k1];
 
-                        if (block == null || block.isAirBlock(par1World, par3, par4 + j1, par5) || block.isLeaves(par1World, par3, par4 + j1, par5))
+                        if (block == null || block.isAirBlock(par1World, par3, par4 + j1, par5) || k1 == IDRef.DARK_LEAF_ID)
                         {
                             this.setBlockAndMetadata(par1World, par3, par4 + j1, par5, IDRef.LIGHT_WOOD_ID, this.metaWood);
-
-                            if (this.vinesGrow && j1 > 0)
-                            {
-                                if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3 - 1, par4 + j1, par5))
-                                {
-                                    this.setBlockAndMetadata(par1World, par3 - 1, par4 + j1, par5, Block.vine.blockID, 8);
-                                }
-
-                                if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3 + 1, par4 + j1, par5))
-                                {
-                                    this.setBlockAndMetadata(par1World, par3 + 1, par4 + j1, par5, Block.vine.blockID, 2);
-                                }
-
-                                if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3, par4 + j1, par5 - 1))
-                                {
-                                    this.setBlockAndMetadata(par1World, par3, par4 + j1, par5 - 1, Block.vine.blockID, 1);
-                                }
-
-                                if (par2Random.nextInt(3) > 0 && par1World.isAirBlock(par3, par4 + j1, par5 + 1))
-                                {
-                                    this.setBlockAndMetadata(par1World, par3, par4 + j1, par5 + 1, Block.vine.blockID, 4);
-                                }
-                            }
                         }
                     }
-
-                    if (this.vinesGrow)
-                    {
-                        for (j1 = par4 - 3 + l; j1 <= par4 + l; ++j1)
-                        {
-                            k1 = j1 - (par4 + l);
-                            i2 = 2 - k1 / 2;
-
-                            for (j2 = par3 - i2; j2 <= par3 + i2; ++j2)
-                            {
-                                for (k2 = par5 - i2; k2 <= par5 + i2; ++k2)
-                                {
-                                    Block block = Block.blocksList[par1World.getBlockId(j2, j1, k2)];
-                                    if (block != null && block.isLeaves(par1World, j2, j1, k2))
-                                    {
-                                        if (par2Random.nextInt(4) == 0 && par1World.isAirBlock(j2 - 1, j1, k2))
-                                        {
-                                            this.growVines(par1World, j2 - 1, j1, k2, 8);
-                                        }
-
-                                        if (par2Random.nextInt(4) == 0 && par1World.isAirBlock(j2 + 1, j1, k2))
-                                        {
-                                            this.growVines(par1World, j2 + 1, j1, k2, 2);
-                                        }
-
-                                        if (par2Random.nextInt(4) == 0 && par1World.isAirBlock(j2, j1, k2 - 1))
-                                        {
-                                            this.growVines(par1World, j2, j1, k2 - 1, 1);
-                                        }
-
-                                        if (par2Random.nextInt(4) == 0 && par1World.isAirBlock(j2, j1, k2 + 1))
-                                        {
-                                            this.growVines(par1World, j2, j1, k2 + 1, 4);
-                                        }
-                                    }
-                                }
-                            }
-                        }
-
-                        if (par2Random.nextInt(5) == 0 && l > 5)
-                        {
-                            for (j1 = 0; j1 < 2; ++j1)
-                            {
-                                for (k1 = 0; k1 < 4; ++k1)
-                                {
-                                    if (par2Random.nextInt(4 - j1) == 0)
-                                    {
-                                        i2 = par2Random.nextInt(3);
-                                        this.setBlockAndMetadata(par1World, par3 + Direction.offsetX[Direction.rotateOpposite[k1]], par4 + l - 5 + j1, par5 + Direction.offsetZ[Direction.rotateOpposite[k1]], Block.cocoaPlant.blockID, i2 << 2 | k1);
-                                    }
-                                }
-                            }
-                        }
-                    }
-
                     return true;
                 }
                 else
@@ -240,25 +157,4 @@ public class WorldGenLightTree extends WorldGenerator
         }
     }
 
-    /**
-     * Grows vines downward from the given block for a given length. Args: World, x, starty, z, vine-length
-     */
-    private void growVines(World par1World, int par2, int par3, int par4, int par5)
-    {
-        this.setBlockAndMetadata(par1World, par2, par3, par4, Block.vine.blockID, par5);
-        int i1 = 4;
-
-        while (true)
-        {
-            --par3;
-
-            if (!par1World.isAirBlock(par2, par3, par4) || i1 <= 0)
-            {
-                return;
-            }
-
-            this.setBlockAndMetadata(par1World, par2, par3, par4, Block.vine.blockID, par5);
-            --i1;
-        }
-    }
 }

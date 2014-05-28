@@ -21,7 +21,7 @@ public class Methods {
 			return true;
 		else if (world.isBlockIndirectlyGettingPowered(x, y, z - 1))
 			return true;
-		else 
+		else
 			return false;
 	}
 

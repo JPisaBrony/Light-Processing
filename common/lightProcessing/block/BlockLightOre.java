@@ -36,7 +36,7 @@ public class BlockLightOre extends Block {
 	public int idDropped(int par1, Random par2Random, int par3) {
 		if(flag)
 			return IDRef.LIGHT_BALL_ID + 256;
-		return 1;
+		return 4;
 	}
 	
 	@Override
