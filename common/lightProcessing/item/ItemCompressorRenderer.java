@@ -1,7 +1,7 @@
 package LightProcessing.common.lightProcessing.item;
 
-import LightProcessing.common.lightProcessing.tile.*;
-import LightProcessing.resources.ltp.models.ModelCompressor;
+import LightProcessing.common.lightProcessing.tile.TileEntityCompressor;
+import LightProcessing.common.lightProcessing.render.ModelCompressor;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.IItemRenderer;
@@ -17,7 +17,6 @@ public class ItemCompressorRenderer implements IItemRenderer {
 
 	@Override
 	public boolean handleRenderType(ItemStack item, ItemRenderType type) {
-
 		return true;
 	}
 

@@ -1,5 +1,8 @@
 package LightProcessing.common.lib;
 
+import net.minecraft.item.EnumToolMaterial;
+import net.minecraftforge.common.EnumHelper;
+
 public class IDRef {
 
 	// blocks
@@ -29,7 +32,21 @@ public class IDRef {
 	public static int UNSTABLE_ABS_ID;
 	public static int DARK_BUCKET_EMTPY;
 	public static int DARK_BUCKET_FULL;
-
+	public static int LIGHT_SWORD_ID;
+	public static int LIGHT_PICKAXE_ID;
+	public static int LIGHT_SHOVEL_ID;
+	public static int LIGHT_AXE_ID;
+	public static int LIGHT_HOE_ID;
+	public static int DARK_SWORD_ID;
+	public static int DARK_PICKAXE_ID;
+	public static int DARK_SHOVEL_ID;
+	public static int DARK_AXE_ID;
+	public static int DARK_HOE_ID;
+	
+	// material
+	public static EnumToolMaterial light = EnumHelper.addToolMaterial("light", 2, 500, 4.0F, 2.0F, 20);
+	public static EnumToolMaterial dark = EnumHelper.addToolMaterial("dark", 2, 500, 4.0F, 2.0F, 20);
+	
 	// blocks default
 	public static int ABS_BLOCK_IDD = 3010;
 	public static int DARK_BLOCK_IDD = 3011;
@@ -56,5 +73,14 @@ public class IDRef {
 	public static int UNSTABLE_ABS_IDD = 5006;
 	public static int DARK_BUCKET_EMPTY_IDD = 5007;
 	public static int DARK_BUCKET_FULL_IDD = 5008;
-
+	public static int LIGHT_SWORD_IDD = 5009;
+	public static int LIGHT_PICKAXE_IDD = 5010;
+	public static int LIGHT_SHOVEL_IDD = 5011;
+	public static int LIGHT_AXE_IDD = 5012;
+	public static int LIGHT_HOE_IDD = 5013;
+	public static int DARK_SWORD_IDD = 5014;
+	public static int DARK_PICKAXE_IDD = 5015;
+	public static int DARK_SHOVEL_IDD = 5016;
+	public static int DARK_AXE_IDD = 5017;
+	public static int DARK_HOE_IDD = 5018;
 }

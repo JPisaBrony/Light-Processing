@@ -60,6 +60,16 @@ public class LightProcessing {
 		IDRef.LIGHT_BALL_ID = config.get(config.CATEGORY_ITEM, "LightBall", IDRef.LIGHT_BALL_IDD).getInt();
 		IDRef.LIGHT_INGOT_ID = config.get(config.CATEGORY_ITEM, "LightIngot", IDRef.LIGHT_INGOT_IDD).getInt();
 		IDRef.UNSTABLE_ABS_ID = config.get(config.CATEGORY_ITEM, "UnstableAbs", IDRef.UNSTABLE_ABS_IDD).getInt();
+		IDRef.LIGHT_SWORD_ID = config.get(config.CATEGORY_ITEM, "LightSword", IDRef.LIGHT_SWORD_IDD).getInt();
+		IDRef.LIGHT_PICKAXE_ID = config.get(config.CATEGORY_ITEM, "LightPickaxe", IDRef.LIGHT_PICKAXE_IDD).getInt();
+		IDRef.LIGHT_SHOVEL_ID = config.get(config.CATEGORY_ITEM, "LightShovel", IDRef.LIGHT_SHOVEL_IDD).getInt();
+		IDRef.LIGHT_AXE_ID = config.get(config.CATEGORY_ITEM, "LightAxe", IDRef.LIGHT_AXE_IDD).getInt();
+		IDRef.LIGHT_HOE_ID = config.get(config.CATEGORY_ITEM, "LightHoe", IDRef.LIGHT_HOE_IDD).getInt();
+		IDRef.DARK_SWORD_ID = config.get(config.CATEGORY_ITEM, "DarkSword", IDRef.DARK_SWORD_IDD).getInt();
+		IDRef.DARK_PICKAXE_ID = config.get(config.CATEGORY_ITEM, "DarkPickaxe", IDRef.DARK_PICKAXE_IDD).getInt();
+		IDRef.DARK_SHOVEL_ID = config.get(config.CATEGORY_ITEM, "DarkShovel", IDRef.DARK_SHOVEL_IDD).getInt();
+		IDRef.DARK_AXE_ID = config.get(config.CATEGORY_ITEM, "DarkAxe", IDRef.DARK_AXE_IDD).getInt();
+		IDRef.DARK_HOE_ID = config.get(config.CATEGORY_ITEM, "DarkHoe", IDRef.DARK_HOE_IDD).getInt();
 		config.save();
 
 		proxy.registerRenderThings();

@@ -2,8 +2,8 @@ package LightProcessing.common.lightProcessing.network;
 
 import java.util.EnumSet;
 
-import LightProcessing.resources.ltp.models.ModelEssenceExtractor;
-import LightProcessing.resources.ltp.models.ModelMachineCore;
+import LightProcessing.common.lightProcessing.render.ModelEssenceExtractor;
+import LightProcessing.common.lightProcessing.render.ModelMachineCore;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.ITickHandler;

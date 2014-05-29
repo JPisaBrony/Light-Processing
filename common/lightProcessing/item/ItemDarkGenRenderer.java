@@ -1,7 +1,7 @@
 package LightProcessing.common.lightProcessing.item;
 
 import LightProcessing.common.lightProcessing.tile.TileEntityDarkGen;
-import LightProcessing.resources.ltp.models.ModelDarkGen;
+import LightProcessing.common.lightProcessing.render.ModelDarkGen;
 import net.minecraft.client.renderer.tileentity.TileEntityRenderer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.IItemRenderer;

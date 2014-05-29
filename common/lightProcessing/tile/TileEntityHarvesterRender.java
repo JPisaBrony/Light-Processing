@@ -2,7 +2,7 @@ package LightProcessing.common.lightProcessing.tile;
 
 import org.lwjgl.opengl.GL11;
 import LightProcessing.common.lib.Reference;
-import LightProcessing.resources.ltp.models.ModelHarvester;
+import LightProcessing.common.lightProcessing.render.ModelHarvester;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.OpenGlHelper;
