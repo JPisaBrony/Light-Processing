@@ -49,6 +49,8 @@ public class ItemAbsRod extends Item {
 				par2EntityPlayer.addChatMessage("Worth " + Integer.toString(essence * -1) + " dark essence.");
 			else
 				par2EntityPlayer.addChatMessage("Worth 0 essence.");
+			par2EntityPlayer.addChatMessage(Integer.toString(par3World.getBlockMetadata(par4, par5, par6)));
+			
 		}
 		par1ItemStack.useItemRightClick(par3World, par2EntityPlayer);
 		par1ItemStack.damageItem(1, par2EntityPlayer);

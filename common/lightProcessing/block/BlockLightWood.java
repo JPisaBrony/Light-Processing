@@ -54,7 +54,7 @@ public class BlockLightWood extends Block {
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister iconRegister) {
 		blockIcon = iconRegister.registerIcon(Methods.textureName(this.getUnlocalizedName()));
-		blockIcon2 = iconRegister.registerIcon("log_oak_top");
+		blockIcon2 = iconRegister.registerIcon(Methods.textureName(this.getUnlocalizedName()) + "Top");
 	}
 
 	public Icon getIcon(int par1, int par2) {
