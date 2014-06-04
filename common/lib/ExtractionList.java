@@ -13,25 +13,21 @@ public class ExtractionList {
 		list[2] = 3;
 		list[3] = -1;
 		list[4] = -2;
-		list[5] = 1;
 		list[12] = 1;
 		list[13] = -1;
 		list[14] = 5;
 		list[15] = 4;
 		list[16] = -3;
-		list[17] = 2;
 		list[18] = 1;
 		list[19] = 0;
 		list[20] = 2;
 		list[21] = -6;
 		list[22] = 5;
 		list[23] = -10;
-		list[24] = -2;
 		list[25] = 4;
 		list[29] = -5;
 		list[30] = 3;
 		list[33] = 4;
-		list[35] = 2;
 		list[41] = 45;
 		list[42] = 36;
 		list[43] = -2;
@@ -115,10 +111,10 @@ public class ExtractionList {
 		list[IDRef.ABS_BLOCK_ID] = -64;
 		list[IDRef.DARK_LEAF_ID] = -15;
 		list[IDRef.LIGHT_WOOD_ID] = 20;
+		list[IDRef.LIGHT_WOOD_PLANKS_ID] = 5;
 
-		int[] planks = { 1, -2, 2, -1 };
+		int[] planks = { 1, -2, 2, -1, 1, -2, 2, -1, 1, -2, 2, -1};
 		int[] logs = { 2, -4, 4, -2 };
-		int[] leaves = { 1, 1, 1, 1 };
 		int[] sandstone = { -2, -2, -2 };
 		int[] wool = { 2, 2, 2, 2, 2, 2, 2, -2, -2, 2, -2, -2, -2, -2, 2, -2 };
 		int[] dslabs = { -2, -3, 2, 2, 6, 4, -6, 6 };
@@ -126,17 +122,12 @@ public class ExtractionList {
 		int[] sbricks = { -2, -3, -3, -5 };
 		int[] wdslabs = { 2, -4, 4, -2 };
 		int[] wslabs = { 1, -2, 2, -1 };
-		int[] quartz = { 5, 6, 6 };
+		int[] quartz = { 5, 6, 6, 6 };
 		int[] sclay = { 5, 5, 5, 5, 5, 5, 5, -5, -5, 5, -5, -5, -5, -5, 5, -5 };
 		int[] carpet = { 1, 1, 1, 1, 1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1 };
-		int[] db = { -54, -54, -54, -54, -54, -54, -54, -54 };
-		int[] lb = { 54, 54, 54, 54, 54, 54, 54, 54 };
-		int[] ab = { -64, 64 };
-		int[] lw = { 20, 20, 20, 20, 20, 20, 20, 20 };
 
 		list2[5] = planks;
 		list2[17] = logs;
-		list2[18] = leaves;
 		list2[24] = sandstone;
 		list2[35] = wool;
 		list2[43] = dslabs;
@@ -147,21 +138,22 @@ public class ExtractionList {
 		list2[155] = quartz;
 		list2[159] = sclay;
 		list2[171] = carpet;
-		list2[IDRef.DARK_BLOCK_ID] = db;
-		list2[IDRef.LIGHT_BLOCK_ID] = lb;
-		list2[IDRef.ABS_BLOCK_ID] = ab;
-		list2[IDRef.LIGHT_WOOD_ID] = lw;
 	}
 
 	public static int getEssence(World world, int x, int y, int z) {
 		int ID = world.getBlockId(x, y, z);
 		int meta = world.getBlockMetadata(x, y, z);
+		try{
 		if (meta == 0)
 			return list[ID];
 		else if (list2[ID][meta] == 0)
 			return list[ID];
 		else
 			return list2[ID][meta];
+		}
+		catch(java.lang.ArrayIndexOutOfBoundsException e){
+			return list[ID];
+		}
 	}
 
 }
