@@ -3,6 +3,7 @@ package LightProcessing.common.lightProcessing.block;
 import java.util.ArrayList;
 import java.util.Random;
 
+import LightProcessing.common.entities.EntityMoveBlock;
 import LightProcessing.common.lib.IDRef;
 import LightProcessing.common.lib.Methods;
 import LightProcessing.common.lib.Reference;
@@ -59,7 +60,7 @@ public class BlockDarkLeaf extends BlockLeavesBase implements IShearable{
 
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
 		if (!par1World.isRemote && par5EntityPlayer.getCurrentItemOrArmor(0) == null) {
-			EntityFallingSand entityfallingsand = new EntityFallingSand(par1World, (double) ((float) par2 + 0.5F), (double) ((float) par3 + 0.5F), (double) ((float) par4 + 0.5F), IDRef.DARK_LEAF_ID, par1World.getBlockMetadata(par2, par3, par4));
+			EntityMoveBlock entityfallingsand = new EntityMoveBlock(par1World, (double) ((float) par2 + 0.5F), (double) ((float) par3 + 0.5F), (double) ((float) par4 + 0.5F), IDRef.DARK_LEAF_ID, par1World.getBlockMetadata(par2, par3, par4));
 			entityfallingsand.motionX = 0;
 			entityfallingsand.motionY = 0.5;
 			entityfallingsand.motionZ = 0;

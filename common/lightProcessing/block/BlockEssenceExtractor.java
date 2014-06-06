@@ -88,7 +88,7 @@ public class BlockEssenceExtractor extends Block {
 
 		if (par5EntityPlayer.getCurrentEquippedItem() == null) {
 			if (!par1World.isRemote) {
-				int meta = par1World.getBlockMetadata(par2, par3, par4);
+/*				int meta = par1World.getBlockMetadata(par2, par3, par4);
 				if (meta < 4) {
 					meta += 4;
 				}
@@ -96,7 +96,10 @@ public class BlockEssenceExtractor extends Block {
 					meta -= 4;
 				}
 				par1World.setBlockMetadataWithNotify(par2, par3, par4, meta, 3);
+*/
+				extract(par1World,par2,par3,par4);
 			}
+			
 		}
 		return false;
 	}
@@ -150,19 +153,20 @@ public class BlockEssenceExtractor extends Block {
 		EntityItem OutputItem = null;
 		ItemStack Output = null;
 		if (stack > 0) {
-			System.out.println(stack);
 			Output = new ItemStack(Items.ItemLightBall, stack);
 		}
 		else if (stack < 0) {
-			Output = new ItemStack(Items.ItemDarkBall, stack);
+			Output = new ItemStack(Items.ItemDarkBall, Math.abs(stack));
+		}
+		else{
+			return;
 		}
 		OutputItem = new EntityItem(world, posx, y + 0.5, posz, Output);
 		OutputItem.motionX = velx;
 		OutputItem.motionY = 0;
 		OutputItem.motionZ = velz;
-		world.setBlockToAir(x, y + 1, z);
+		world.destroyBlock(x, y + 1, z, false);
 		if (!world.isRemote) {
-			world.spawnEntityInWorld(OutputItem);
 			world.spawnEntityInWorld(OutputItem);
 		}
 	}

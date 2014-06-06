@@ -108,7 +108,7 @@ public class ExtractionList {
 		list[173] = -48;
 		list[IDRef.DARK_BLOCK_ID] = -54;
 		list[IDRef.LIGHT_BLOCK_ID] = 54;
-		list[IDRef.ABS_BLOCK_ID] = -64;
+		list[IDRef.ABS_BLOCK_ID] = -54;
 		list[IDRef.DARK_LEAF_ID] = -15;
 		list[IDRef.LIGHT_WOOD_ID] = 20;
 		list[IDRef.LIGHT_WOOD_PLANKS_ID] = 5;
@@ -138,6 +138,7 @@ public class ExtractionList {
 		list2[155] = quartz;
 		list2[159] = sclay;
 		list2[171] = carpet;
+		
 	}
 
 	public static int getEssence(World world, int x, int y, int z) {
