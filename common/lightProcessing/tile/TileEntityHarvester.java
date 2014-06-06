@@ -18,17 +18,11 @@ public class TileEntityHarvester extends TileEntity {
 
 	@Override
 	public void updateEntity() {
+		
+	chance = 2000;
 		if (this.worldObj.getBlockId(this.xCoord, this.yCoord + 1, this.zCoord) == IDRef.LIGHT_BLOCK_ID || this.worldObj.getBlockId(this.xCoord, this.yCoord + 1, this.zCoord) == IDRef.DARK_BLOCK_ID) {
-			if (this.worldObj.getBlockMetadata(this.xCoord, this.yCoord + 1, this.zCoord) == 2) {
-				chance = 150;
+				chance = chance / 2;
 			}
-			else {
-				chance = 500;
-			}
-		}
-		else {
-			chance = 800;
-		}
 		if (r.nextInt(chance) == 0) {
 			BlockHarvester.Essence(this.worldObj, this.xCoord, this.yCoord, this.zCoord);
 		}
