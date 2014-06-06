@@ -110,6 +110,15 @@ public class BlockEssenceExtractor extends Block {
 		double posz = 0;
 		double velx = 0;
 		double velz = 0;
+		if(world.getBlockId(x, y+1, z) == IDRef.ABS_BLOCK_ID){
+			java.util.Random r = new java.util.Random();
+			if(r.nextInt(30) > 15){
+				stack = 54;
+			}
+			else{
+				stack = -54;
+			}
+		}
 
 		switch (world.getBlockMetadata(x, y, z))
 			{
