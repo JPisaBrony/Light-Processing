@@ -1,8 +1,18 @@
 package LightProcessing.common.lib;
 
+import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.item.ItemStack;
+import net.minecraft.network.packet.Packet;
+import net.minecraft.network.packet.Packet14BlockDig;
+import net.minecraft.network.packet.Packet15Place;
 import net.minecraft.util.Icon;
 import net.minecraft.world.World;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.network.PacketDispatcher;
+import cpw.mods.fml.common.network.Player;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -126,18 +136,47 @@ public class Methods {
 	}
 	
 	public static boolean lightCheck(World world, int x, int y, int z, int minimum){
-		if(world.getLightBrightness(x - 1, y, z) > minimum)
-			return true;
-		if(world.getFullBlockLightValue(x + 1, y, z) > minimum)
-			return true;
-		if(world.getFullBlockLightValue(x, y - 1, z) > minimum)
-			return true;
-		if(world.getFullBlockLightValue(x, y + 1, z) > minimum)
-			return true;
-		if(world.getFullBlockLightValue(x, y, z - 1) > minimum)
-			return true;
-		if(world.getFullBlockLightValue(x, y, z + 1) > minimum)
-			return true;
+		boolean val = false;
+		if(world.getFullBlockLightValue(x - 1, y, z) > minimum)
+			val = true;
+		else if(world.getFullBlockLightValue(x + 1, y, z) > minimum)
+			val = true;
+		else if(world.getFullBlockLightValue(x, y - 1, z) > minimum)
+			val = true;
+		else if(world.getFullBlockLightValue(x, y + 1, z) > minimum)
+			val = true;
+		else if(world.getFullBlockLightValue(x, y, z - 1) > minimum)
+			val = true;
+		else if(world.getFullBlockLightValue(x, y, z + 1) > minimum)
+			val = true;
+		return val;
+	}
+	
+	public static boolean hasItem(EntityPlayer player, int item) {
+		int i;
+		IInventory inv = player.inventory;
+		for(i = 0; i < inv.getSizeInventory(); i++) {
+			if (inv.getStackInSlot(i) == null)
+				continue;
+			if (inv.getStackInSlot(i).getItem().itemID == item + 256)
+				return true;
+		}
+		return false;
+	}
+	
+	public static boolean useItem(EntityPlayer player, int item) {
+		if(hasItem(player, item)) {
+			int i;
+			IInventory inv = player.inventory;
+			for(i = 0; i < inv.getSizeInventory(); i++) {
+				if (inv.getStackInSlot(i) == null)
+					continue;
+				if (inv.getStackInSlot(i).getItem().itemID == item + 256) {
+					player.inventory.decrStackSize(i, 1);
+					return true;
+				}
+			}
+		}
 		return false;
 	}
 	

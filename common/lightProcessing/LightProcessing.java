@@ -1,5 +1,6 @@
 package LightProcessing.common.lightProcessing;
 
+import java.io.IOException;
 import java.util.logging.Level;
 
 import net.minecraftforge.common.Configuration;
@@ -29,7 +30,6 @@ public class LightProcessing {
 
 	@SidedProxy(clientSide = "LightProcessing.common.lightProcessing.network.ClientProxy", serverSide = "LightProcessing.common.lightProcessing.network.CommonProxy")
 	public static CommonProxy proxy;
-	
 	@PreInit
 	public void preInit(FMLPreInitializationEvent event) {
 		// CONFIG
