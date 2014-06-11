@@ -51,11 +51,10 @@ public class BlockDarkGen extends Block {
 	}
 
 	public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6) {
-		int ID2 = IDRef.DARK_BLOCK_ID;
 		for (int i = -10; i < 10; i++) {
-			for (int j = 0; j < 10; j++) {
+			for (int j = -10; j < 10; j++) {
 				for (int k = -10; k < 10; k++) {
-					if (par1World.getBlockId(par2 + k, par3 + j, par4 + i) == ID2 && par1World.getBlockMetadata(par2 + k, par3 + j, par4 + i) == 2) {
+					if (par1World.getBlockId(par2 + k, par3 + j, par4 + i) == IDRef.DARK_BLOCK_ID && par1World.getBlockMetadata(par2 + k, par3 + j, par4 + i) == 2) {
 						par1World.setBlock(par2 + k, par3 + j, par4 + i, 0);
 
 					}
@@ -88,17 +87,12 @@ public class BlockDarkGen extends Block {
 
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
 		if (!par1World.isRemote && par5EntityPlayer.getCurrentItemOrArmor(0) == null) {
-
-			int ID = 1;
-			int ID2 = IDRef.DARK_BLOCK_ID;
 			if (par1World.getBlockMetadata(par2, par3, par4) == 0) {
 				for (int i = -10; i < 10; i++) {
-					for (int j = 0; j < 10; j++) {
+					for (int j = -10; j < 10; j++) {
 						for (int k = -10; k < 10; k++) {
-							if (par1World.isAirBlock(par2 + k, par3 + j, par4 + i)) {
-								par1World.setBlock(par2 + k, par3 + j, par4 + i, ID2, 2, 2);
-
-							}
+							if (par1World.isAirBlock(par2 + k, par3 + j, par4 + i))
+								par1World.setBlock(par2 + k, par3 + j, par4 + i, IDRef.DARK_BLOCK_ID, 2, 2);
 						}
 					}
 				}
@@ -106,9 +100,9 @@ public class BlockDarkGen extends Block {
 			}
 			else if (par1World.getBlockMetadata(par2, par3, par4) == 1) {
 				for (int i = -10; i < 10; i++) {
-					for (int j = 0; j < 10; j++) {
+					for (int j = -10; j < 10; j++) {
 						for (int k = -10; k < 10; k++) {
-							if (par1World.getBlockId(par2 + k, par3 + j, par4 + i) == ID2 && par1World.getBlockMetadata(par2 + k, par3 + j, par4 + i) == 2) {
+							if (par1World.getBlockId(par2 + k, par3 + j, par4 + i) == IDRef.DARK_BLOCK_ID && par1World.getBlockMetadata(par2 + k, par3 + j, par4 + i) == 2) {
 								par1World.setBlock(par2 + k, par3 + j, par4 + i, 0);
 							}
 						}

@@ -1,8 +1,7 @@
 package LightProcessing.common.lightProcessing;
 
-import java.io.IOException;
-import java.util.logging.Level;
 
+import java.util.logging.Level;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
 import LightProcessing.common.lib.*;
