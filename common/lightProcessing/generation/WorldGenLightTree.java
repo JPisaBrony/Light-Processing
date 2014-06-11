@@ -23,7 +23,7 @@ public class WorldGenLightTree extends WorldGenerator
     
     public WorldGenLightTree(boolean par1)
     {
-    	this(par1, 3, 0, 0);
+    	this(par1, 4, 0, 0);
     }
     
     public WorldGenLightTree(boolean par1, int par2, int par3, int par4)
@@ -100,7 +100,7 @@ public class WorldGenLightTree extends WorldGenerator
                 if (isSoil && par4 < 256 - l - 1)
                 {
                     soil.onPlantGrow(par1World, par3, par4 - 1, par5, par3, par4, par5);
-                    b0 = 1;
+                    b0 = 3;
                     byte b1 = 0;
                     int i2;
                     int j2;

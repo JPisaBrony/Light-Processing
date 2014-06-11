@@ -26,7 +26,7 @@ public class WorldGeneration implements IWorldGenerator {
 			int YCoord = random.nextInt(100);
 			int ZCoord = BlockZ + random.nextInt(16);
 			
-			new WorldGenLightTree(false, 3, 0, 0).generate(world, random, XCoord, YCoord, ZCoord);
+			new WorldGenLightTree(false, 4, 0, 0).generate(world, random, XCoord, YCoord, ZCoord);
 		}
 		
 		// Light Ore Generation

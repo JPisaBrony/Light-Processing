@@ -55,7 +55,7 @@ public class BlockDarkLeaf extends BlockLeavesBase implements IShearable{
 	}
 
 	public int quantityDropped(Random par1Random) {
-		return par1Random.nextInt(5) == 0 ? 1 : 0;
+		return par1Random.nextInt(20) == 0 ? 1 : 0;
 	}
 
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
