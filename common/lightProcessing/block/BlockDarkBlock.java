@@ -139,6 +139,7 @@ public class BlockDarkBlock extends Block {
 				par1World.removeEntity(par5Entity);
 				DBucketI.delayBeforeCanPickup = 25;
 				par1World.spawnEntityInWorld(DBucketI);
+				par1World.setBlock(par2, par3, par4, 0);
 			}
 		}
 		
