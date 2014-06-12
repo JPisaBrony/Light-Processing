@@ -5,8 +5,11 @@ import java.util.Random;
 
 import LightProcessing.common.entities.EntityMoveBlock;
 import LightProcessing.common.lib.IDRef;
+import LightProcessing.common.lib.Items;
 import LightProcessing.common.lib.Methods;
 import LightProcessing.common.lib.Reference;
+import LightProcessing.common.lib.WorldCrafting;
+import LightProcessing.common.lib.WorldCraftingRecipeCollection;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
@@ -58,6 +61,38 @@ public class BlockDarkLeaf extends BlockLeavesBase implements IShearable{
 		return par1Random.nextInt(20) == 0 ? 1 : 0;
 	}
 
+	public boolean onBlockActivated(World world, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
+		WorldCrafting darkitems = new WorldCrafting();
+		if (par5EntityPlayer.getCurrentItemOrArmor(0) == null) {
+			WorldCraftingRecipeCollection recipe = darkitems.dictionary.get(IDRef.DARK_LEAF_ID);
+			for(int i = 0; i < recipe.getCount(); i++)
+				if(Methods.checkRecipe(world, par2, par3, par4, recipe.get(i))) {
+					switch(i) {
+						case 0:
+							Methods.spawnItemInWorld(world, par2, par3, par4, Items.ItemDarkPickaxe);
+							break;
+						case 1:
+							Methods.spawnItemInWorld(world, par2, par3, par4, Items.ItemDarkAxe);
+							break;
+						case 2:
+							Methods.spawnItemInWorld(world, par2, par3, par4, Items.ItemDarkHoe);
+							break;
+						case 3:
+							Methods.spawnItemInWorld(world, par2, par3, par4, Items.ItemDarkShovel);
+							break;
+						case 4:
+							Methods.spawnItemInWorld(world, par2, par3, par4, Items.ItemDarkSword);
+							break;
+						default:
+							break;
+					}
+					return true;
+				}
+		}
+		return false;
+	}
+
+/*
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
 		if (!par1World.isRemote && par5EntityPlayer.getCurrentItemOrArmor(0) == null) {
 			EntityMoveBlock entityfallingsand = new EntityMoveBlock(par1World, (double) ((float) par2 + 0.5F), (double) ((float) par3 + 0.5F), (double) ((float) par4 + 0.5F), IDRef.DARK_LEAF_ID, par1World.getBlockMetadata(par2, par3, par4));
@@ -68,7 +103,8 @@ public class BlockDarkLeaf extends BlockLeavesBase implements IShearable{
 		}
 		return false;
 	}
-
+*/
+	
 	public void onFinishFalling(World par1World, int par2, int par3, int par4, int par5) {
 		par1World.setBlockToAir(par2, par3 - 1, par4);
 	}

@@ -2,8 +2,10 @@ package LightProcessing.common.lib;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet14BlockDig;
@@ -176,6 +178,26 @@ public class Methods {
 					return true;
 				}
 			}
+		}
+		return false;
+	}
+	
+	public static boolean checkRecipe(World par1World, int par2, int par3, int par4, WorldCraftingRecipe recipe) {
+		if(recipe.checkRecipe(par2, par3, par4, par1World))
+		{
+			recipe.clearGrid(par2, par3, par4, par1World);
+			par1World.setBlock(par2, par3, par4, recipe.getResultBlockID());
+			return true;
+		}
+		return false;
+	}
+	
+	public static boolean spawnItemInWorld(World world, int par2, int par3, int par4, Item item) {
+		if(!world.isRemote) {
+			ItemStack theItemStack = new ItemStack(item);
+			EntityItem theEntityItem = new EntityItem(world, par2, par3 + 1, par4, theItemStack);
+			world.spawnEntityInWorld(theEntityItem);
+			return true;
 		}
 		return false;
 	}
