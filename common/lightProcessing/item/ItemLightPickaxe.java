@@ -41,7 +41,6 @@ public class ItemLightPickaxe extends ItemPickaxe {
 			itemstack.stackTagCompound = new NBTTagCompound();
 			itemstack.getTagCompound().setString("color", "white");
 			itemstack.getTagCompound().setInteger("mode", 1);
-			itemstack.getTagCompound().setBoolean("flag", true);
 		}
     }
 

@@ -1,7 +1,10 @@
 package LightProcessing.common.lib;
 
+import net.minecraft.block.Block;
+
 public class WorldCrafting {
-	
+	static int I = Block.blockIron.blockID;
+	static int S = Block.stone.blockID;
 	static int DL = IDRef.DARK_LEAF_ID;
 	static int LW = IDRef.LIGHT_WOOD_ID;
 	static int HV = IDRef.HARVESTER_ID;
@@ -14,24 +17,37 @@ public class WorldCrafting {
 	public WorldCraftingRecipeDictionary dictionary = new WorldCraftingRecipeDictionary();
 	
 	public WorldCrafting() {
+		WorldCraftingRecipeCollection machineCoreRecipes = new WorldCraftingRecipeCollection(Block.blockIron.blockID);
 		WorldCraftingRecipeCollection harvesterRecipes = new WorldCraftingRecipeCollection(MC);
 		WorldCraftingRecipeCollection LightToolRecipes = new WorldCraftingRecipeCollection(LP);
 		WorldCraftingRecipeCollection DarkToolRecipes = new WorldCraftingRecipeCollection(DL);
+		machineCoreRecipes.add(new WorldCraftingRecipe(MachineCore, MC, Block.blockIron.blockID));
 		harvesterRecipes.add(new WorldCraftingRecipe(Harvester, H, MC));
 		LightToolRecipes.add(new WorldCraftingRecipe(LightPickaxe, 0, LP));
 		LightToolRecipes.add(new WorldCraftingRecipe(LightAxe, 0, LP));
 		LightToolRecipes.add(new WorldCraftingRecipe(LightHoe, 0, LP));
 		LightToolRecipes.add(new WorldCraftingRecipe(LightShovel, 0, LP));
 		LightToolRecipes.add(new WorldCraftingRecipe(LightSword, 0, LP));
+		LightToolRecipes.add(new WorldCraftingRecipe(LightBlock, LB, LP));
 		DarkToolRecipes.add(new WorldCraftingRecipe(DarkPickaxe, 0, DL));
 		DarkToolRecipes.add(new WorldCraftingRecipe(DarkAxe, 0, DL));
 		DarkToolRecipes.add(new WorldCraftingRecipe(DarkHoe, 0, DL));
 		DarkToolRecipes.add(new WorldCraftingRecipe(DarkShovel, 0, DL));
 		DarkToolRecipes.add(new WorldCraftingRecipe(DarkSword, 0, DL));
+		DarkToolRecipes.add(new WorldCraftingRecipe(DarkBlock, DB, DL));
+		dictionary.add(machineCoreRecipes);
 		dictionary.add(harvesterRecipes);
 		dictionary.add(LightToolRecipes);
 		dictionary.add(DarkToolRecipes);
 	}
+	
+	public static Integer MachineCore[][][] = {
+		{
+			{S,S,S},
+			{S,I,S},
+			{S,S,S}
+		}
+	};
 	
 	public static Integer Harvester[][][] = {
 		{
@@ -120,6 +136,22 @@ public class WorldCrafting {
 			{DB},
 			{DB},
 			{DL}
+		}
+	};
+	
+	public static Integer DarkBlock[][][] = {
+		{
+			{S,S,S},
+			{S,DL,S},
+			{S,S,S}
+		}
+	};
+	
+	public static Integer LightBlock[][][] = {
+		{
+			{S,S,S},
+			{S,LP,S},
+			{S,S,S}
 		}
 	};
 	

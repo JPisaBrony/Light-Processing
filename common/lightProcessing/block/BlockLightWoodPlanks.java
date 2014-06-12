@@ -10,6 +10,7 @@ import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import LightProcessing.common.lib.BlockTab;
 import LightProcessing.common.lib.IDRef;
@@ -44,7 +45,13 @@ public class BlockLightWoodPlanks extends Block{
 				if(Methods.checkRecipe(world, par2, par3, par4, recipe.get(i))) {
 					switch(i) {
 						case 0:
-							Methods.spawnItemInWorld(world, par2, par3, par4, Items.ItemLightPickaxe);
+							ItemStack theItemStack = new ItemStack(Items.ItemLightPickaxe);
+							theItemStack.stackTagCompound = new NBTTagCompound();
+							theItemStack.getTagCompound().setString("color", "white");
+							theItemStack.getTagCompound().setInteger("mode", 1);
+							EntityItem theEntityItem = new EntityItem(world, par2, par3 + 1, par4, theItemStack);
+							if(!world.isRemote)
+								world.spawnEntityInWorld(theEntityItem);
 							break;
 						case 1:
 							Methods.spawnItemInWorld(world, par2, par3, par4, Items.ItemLightAxe);
@@ -57,7 +64,7 @@ public class BlockLightWoodPlanks extends Block{
 							break;
 						case 4:
 							Methods.spawnItemInWorld(world, par2, par3, par4, Items.ItemLightSword);
-							break;
+							break;							
 						default:
 							break;
 					}
