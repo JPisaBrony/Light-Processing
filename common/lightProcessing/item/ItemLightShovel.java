@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
@@ -80,6 +81,9 @@ public class ItemLightShovel extends ItemSpade {
 							ksizeNS = -1;
 							ksizeEW = 1;
 							break;
+					}
+			        if (player instanceof EntityPlayerMP) {
+						((EntityPlayerMP)player).theItemInWorldManager.setBlockReachDistance(6.0D);
 					}
 					if((id == Block.dirt.blockID || id == Block.sand.blockID || id == Block.gravel.blockID || id == Block.slowSand.blockID) && id != 0) {
 						for(i = isizeNS; i <= isizeEW; i++) {

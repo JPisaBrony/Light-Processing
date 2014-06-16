@@ -8,6 +8,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemPickaxe;
@@ -156,6 +157,9 @@ public class ItemLightPickaxe extends ItemPickaxe {
 							ksizeEW = 1;
 							break;
 					}
+			        if (player instanceof EntityPlayerMP) {
+						((EntityPlayerMP)player).theItemInWorldManager.setBlockReachDistance(6.0D);
+					}
 					if((id == Block.cobblestone.blockID || id == Block.stone.blockID || id == Block.sandStone.blockID) && id != 0) {
 						for(i = isizeNS; i <= isizeEW; i++) {
 							for(j = jsizeNS; j <= jsizeEW; j++) {
@@ -186,21 +190,23 @@ public class ItemLightPickaxe extends ItemPickaxe {
 	}
 	
 	public boolean mode2(EntityPlayer player, World world, int par4, int par5, int par6) {
-		if(Methods.lightCheck(world, par4, par5, par6, 7)) {
-			if(Methods.useItem(player, IDRef.LIGHT_BALL_IDD)) {
-				int id = world.getBlockId(par4, par5, par6);
-				if(id == Block.bedrock.blockID)
-					return false;
-				Block block = Block.blocksList[id];
-				ItemStack item = new ItemStack(block, 1);
-				EntityItem entityBlock = new EntityItem(world, par4, par5, par6, item);
-				if (!world.isRemote)
-					world.spawnEntityInWorld(entityBlock);
-				world.setBlock(par4, par5, par6, 0);
-				return true;
+		if(world.getWorldTime() < 12500) {
+			if(Methods.lightCheck(world, par4, par5, par6, 7)) {
+				if(Methods.useItem(player, IDRef.LIGHT_BALL_IDD)) {
+					int id = world.getBlockId(par4, par5, par6);
+					if(id == Block.bedrock.blockID)
+						return false;
+					Block block = Block.blocksList[id];
+					ItemStack item = new ItemStack(block, 1);
+					EntityItem entityBlock = new EntityItem(world, par4, par5, par6, item);
+					if (!world.isRemote)
+						world.spawnEntityInWorld(entityBlock);
+					world.setBlock(par4, par5, par6, 0);
+					return true;
+				}
 			}
 		}
-		return true;
+		return false;
 	}
 	
 	public boolean mode3(EntityPlayer player, World world) {

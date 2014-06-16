@@ -202,6 +202,29 @@ public class Methods {
 		return false;
 	}
 	
+	public static boolean spawnItemFromBlockandRemove(World world, int x, int y, int z, Block block, int number, int meta) {
+		if(!world.isRemote) {
+			ItemStack theItemStack = new ItemStack(block, number, meta);
+			EntityItem theEntityItem = new EntityItem(world, x, y, z, theItemStack);
+			world.spawnEntityInWorld(theEntityItem);
+			world.setBlock(x, y, z, 0);
+			return true;
+		}
+		return false;
+	}
+	
+	
+	public static boolean spawnItemFromItemandRemove(World world, int x, int y, int z, Item item, int number, int meta) {
+		if(!world.isRemote) {
+			ItemStack theItemStack = new ItemStack(item, number, meta);
+			EntityItem theEntityItem = new EntityItem(world, x, y, z, theItemStack);
+			world.spawnEntityInWorld(theEntityItem);
+			world.setBlock(x, y, z, 0);
+			return true;
+		}
+		return false;
+	}
+	
 	public static String textureName(String unLocNam) {
 		return Reference.MOD_ID.toLowerCase() + ":" + unLocNam.substring(5);
 	}
