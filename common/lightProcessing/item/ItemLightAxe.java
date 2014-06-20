@@ -32,6 +32,7 @@ public class ItemLightAxe extends ItemAxe{
 	public void registerIcons(IconRegister iconRegister) {
 		itemIcon = iconRegister.registerIcon(Methods.textureName(this.getUnlocalizedName()));
 	}
+	
 	public boolean onItemUse(ItemStack itemstack, EntityPlayer player, World world, int x, int y, int z, int par7, float par8, float par9, float par10) {
 		if(player.isSneaking()) {
 			if(world.getWorldTime() < 12500) {

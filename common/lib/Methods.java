@@ -213,7 +213,6 @@ public class Methods {
 		return false;
 	}
 	
-	
 	public static boolean spawnItemFromItemandRemove(World world, int x, int y, int z, Item item, int number, int meta) {
 		if(!world.isRemote) {
 			ItemStack theItemStack = new ItemStack(item, number, meta);
