@@ -82,22 +82,6 @@ public class BlockLightTreeSapling extends BlockFlower
         }
     }
 
-    /**
-     * Determines if the same sapling is present at the given location.
-     */
-    public boolean isSameSapling(World par1World, int par2, int par3, int par4, int par5)
-    {
-        return par1World.getBlockId(par2, par3, par4) == this.blockID && (par1World.getBlockMetadata(par2, par3, par4) & 3) == par5;
-    }
-
-    /**
-     * Determines the damage on the item the block drops. Used in cloth and wood.
-     */
-    public int damageDropped(int par1)
-    {
-        return par1 & 3;
-    }
-
     @SideOnly(Side.CLIENT)
     /**
      * returns a list of blocks with the same ID, but different meta (eg: wood returns 4 blocks)

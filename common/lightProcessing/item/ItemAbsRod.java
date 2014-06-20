@@ -42,17 +42,65 @@ public class ItemAbsRod extends Item {
 		itemIcon = iconRegister.registerIcon(Methods.textureName(this.getUnlocalizedName()));
 	}
 
-	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
-		if(par3World.getBlockId(par4, par5, par6) == Block.blockIron.blockID) {
-			WorldCrafting machineCore = new WorldCrafting();
-			WorldCraftingRecipeCollection recipe = machineCore.dictionary.get(Block.blockIron.blockID);
-			for(int i = 0; i < recipe.getCount(); i++)
-				if(Methods.checkRecipe(par3World, par4, par5, par6, recipe.get(i)))
+	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World world, int x, int y, int z, int side, float par8, float par9, float par10) {
+		if(world.getBlockId(x, y, z) == Block.blockIron.blockID || world.getBlockId(x, y, z) == Block.blockDiamond.blockID) {
+			int i;
+			WorldCrafting crafting = new WorldCrafting();
+			WorldCraftingRecipeCollection recipe = crafting.dictionary.get(Block.blockIron.blockID);
+			WorldCraftingRecipeCollection recipe2 = crafting.dictionary.get(Block.blockDiamond.blockID);
+			for(i = 0; i < recipe.getCount(); i++) {
+				if(Methods.checkRecipe(world, x, y, z, recipe.get(i)))
 					return true;
+				}
+				for(i = 0; i < recipe2.getCount(); i++) {
+					if(Methods.checkRecipe(world, x, y, z, recipe2.get(i))) {
+						switch(i) {
+						case 0:
+							ItemStack theItemStack = new ItemStack(Items.ItemLightPickaxe);
+							theItemStack.stackTagCompound = new NBTTagCompound();
+							theItemStack.getTagCompound().setString("color", "white");
+							theItemStack.getTagCompound().setInteger("mode", 1);
+							EntityItem theEntityItem = new EntityItem(world, x, y + 1, z, theItemStack);
+							if(!world.isRemote)
+								world.spawnEntityInWorld(theEntityItem);
+							break;
+						case 1:
+							Methods.spawnItemInWorld(world, x, y, z, Items.ItemLightAxe);
+							break;
+						case 2:
+							Methods.spawnItemInWorld(world, x, y, z, Items.ItemLightHoe);
+							break;
+						case 3:
+							Methods.spawnItemInWorld(world, x, y, z, Items.ItemLightShovel);
+							break;
+						case 4:
+							Methods.spawnItemInWorld(world, x, y, z, Items.ItemLightSword);
+							break;
+						case 5:
+							Methods.spawnItemInWorld(world, x, y, z, Items.ItemDarkPickaxe);
+							break;
+						case 6:
+							Methods.spawnItemInWorld(world, x, y, z, Items.ItemDarkAxe);
+							break;
+						case 7:
+							Methods.spawnItemInWorld(world, x, y, z, Items.ItemDarkHoe);
+							break;
+						case 8:
+							Methods.spawnItemInWorld(world, x, y, z, Items.ItemDarkShovel);
+							break;
+						case 9:
+							Methods.spawnItemInWorld(world, x, y, z, Items.ItemDarkSword);
+							break;
+						default:
+							break;
+					}
+					return true;
+				}
+			}
 			return false;
 		}
-		if (!par3World.isRemote) {
-			int essence = ExtractionList.getEssence(par3World, par4, par5, par6);
+		if (!world.isRemote) {
+			int essence = ExtractionList.getEssence(world, x, y, z);
 			if (essence > 0) {
 				par2EntityPlayer.addChatMessage("Worth " + Integer.toString(essence) + " light essence.");
 			}
@@ -60,8 +108,8 @@ public class ItemAbsRod extends Item {
 				par2EntityPlayer.addChatMessage("Worth " + Integer.toString(essence * -1) + " dark essence.");
 			else
 				par2EntityPlayer.addChatMessage("Worth 0 essence.");
-			par2EntityPlayer.addChatMessage(Integer.toString(par3World.getBlockMetadata(par4, par5, par6)));
-			par1ItemStack.useItemRightClick(par3World, par2EntityPlayer);
+			par2EntityPlayer.addChatMessage(Integer.toString(world.getBlockMetadata(x, y, z)));
+			par1ItemStack.useItemRightClick(world, par2EntityPlayer);
 			par1ItemStack.damageItem(1, par2EntityPlayer);
 			return true;
 		}

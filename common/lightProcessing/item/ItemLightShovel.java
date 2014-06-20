@@ -85,12 +85,12 @@ public class ItemLightShovel extends ItemSpade {
 			        if (player instanceof EntityPlayerMP) {
 						((EntityPlayerMP)player).theItemInWorldManager.setBlockReachDistance(6.0D);
 					}
-					if((id == Block.dirt.blockID || id == Block.sand.blockID || id == Block.gravel.blockID || id == Block.slowSand.blockID) && id != 0) {
+					if((id == Block.dirt.blockID || id == Block.grass.blockID || id == Block.sand.blockID || id == Block.gravel.blockID || id == Block.slowSand.blockID) && id != 0) {
 						for(i = isizeNS; i <= isizeEW; i++) {
 							for(j = jsizeNS; j <= jsizeEW; j++) {
 								for(k = ksizeNS; k <= ksizeEW; k++) {
 									id = world.getBlockId(par4 + i, par5 + j, par6 + k);
-									if((id == Block.dirt.blockID || id == Block.sand.blockID || id == Block.gravel.blockID || id == Block.slowSand.blockID) && id != 0) {
+									if((id == Block.dirt.blockID || id == Block.grass.blockID || id == Block.sand.blockID || id == Block.gravel.blockID || id == Block.slowSand.blockID) && id != 0) {
 										Block block = Block.blocksList[id];
 										ArrayList<ItemStack> item = block.getBlockDropped(world, par4 + i, par5 + j, par6 + k, 0, 0);
 										if(item.isEmpty())

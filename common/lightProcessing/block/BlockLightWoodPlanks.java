@@ -13,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import LightProcessing.common.lib.BlockTab;
+import LightProcessing.common.lib.Blocks;
 import LightProcessing.common.lib.IDRef;
 import LightProcessing.common.lib.Items;
 import LightProcessing.common.lib.Methods;
@@ -37,47 +38,24 @@ public class BlockLightWoodPlanks extends Block{
 		return 1;
 	}
 	
-	public boolean onBlockActivated(World world, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
-		WorldCrafting lightitems = new WorldCrafting();
-		if (par5EntityPlayer.getCurrentItemOrArmor(0) == null) {
-			WorldCraftingRecipeCollection recipe = lightitems.dictionary.get(IDRef.LIGHT_WOOD_PLANKS_ID);
-			for(int i = 0; i < recipe.getCount(); i++)
-				if(Methods.checkRecipe(world, par2, par3, par4, recipe.get(i))) {
-					switch(i) {
-						case 0:
-							ItemStack theItemStack = new ItemStack(Items.ItemLightPickaxe);
-							theItemStack.stackTagCompound = new NBTTagCompound();
-							theItemStack.getTagCompound().setString("color", "white");
-							theItemStack.getTagCompound().setInteger("mode", 1);
-							EntityItem theEntityItem = new EntityItem(world, par2, par3 + 1, par4, theItemStack);
-							if(!world.isRemote)
-								world.spawnEntityInWorld(theEntityItem);
-							break;
-						case 1:
-							Methods.spawnItemInWorld(world, par2, par3, par4, Items.ItemLightAxe);
-							break;
-						case 2:
-							Methods.spawnItemInWorld(world, par2, par3, par4, Items.ItemLightHoe);
-							break;
-						case 3:
-							Methods.spawnItemInWorld(world, par2, par3, par4, Items.ItemLightShovel);
-							break;
-						case 4:
-							Methods.spawnItemInWorld(world, par2, par3, par4, Items.ItemLightSword);
-							break;							
-						default:
-							break;
-					}
-					return true;
-				}
-		}
-		return false;
-	}
-	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister iconRegister) {
 		blockIcon = iconRegister.registerIcon(Methods.textureName(this.getUnlocalizedName()));
+	}
+	
+	@Override
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
+		WorldCrafting harvester = new WorldCrafting();
+		if (par5EntityPlayer.getCurrentItemOrArmor(0) == null) {
+			WorldCraftingRecipeCollection recipe = harvester.dictionary.get(IDRef.LIGHT_WOOD_PLANKS_ID);
+			for(int i = 0; i < recipe.getCount(); i++)
+				if(Methods.checkRecipe(world, x, y, z, recipe.get(i))) {
+					Methods.spawnItemInWorld(world, x, y, z, Items.ItemAbsRod);
+					return true;
+				}
+		}
+		return false;
 	}
 	
 }

@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 
 public class WorldCrafting {
 	static int I = Block.blockIron.blockID;
+	static int D = Block.blockDiamond.blockID;
 	static int S = Block.stone.blockID;
 	static int DL = IDRef.DARK_LEAF_ID;
 	static int LW = IDRef.LIGHT_WOOD_ID;
@@ -17,35 +18,36 @@ public class WorldCrafting {
 	public WorldCraftingRecipeDictionary dictionary = new WorldCraftingRecipeDictionary();
 	
 	public WorldCrafting() {
-		WorldCraftingRecipeCollection machineCoreRecipes = new WorldCraftingRecipeCollection(Block.blockIron.blockID);
-		WorldCraftingRecipeCollection harvesterRecipes = new WorldCraftingRecipeCollection(MC);
-		WorldCraftingRecipeCollection LightToolRecipes = new WorldCraftingRecipeCollection(LP);
-		WorldCraftingRecipeCollection DarkToolRecipes = new WorldCraftingRecipeCollection(DL);
-		machineCoreRecipes.add(new WorldCraftingRecipe(MachineCore, MC, Block.blockIron.blockID));
-		harvesterRecipes.add(new WorldCraftingRecipe(Harvester, H, MC));
-		LightToolRecipes.add(new WorldCraftingRecipe(LightPickaxe, 0, LP));
-		LightToolRecipes.add(new WorldCraftingRecipe(LightAxe, 0, LP));
-		LightToolRecipes.add(new WorldCraftingRecipe(LightHoe, 0, LP));
-		LightToolRecipes.add(new WorldCraftingRecipe(LightShovel, 0, LP));
-		LightToolRecipes.add(new WorldCraftingRecipe(LightSword, 0, LP));
-		LightToolRecipes.add(new WorldCraftingRecipe(LightBlock, LB, LP));
-		DarkToolRecipes.add(new WorldCraftingRecipe(DarkPickaxe, 0, DL));
-		DarkToolRecipes.add(new WorldCraftingRecipe(DarkAxe, 0, DL));
-		DarkToolRecipes.add(new WorldCraftingRecipe(DarkHoe, 0, DL));
-		DarkToolRecipes.add(new WorldCraftingRecipe(DarkShovel, 0, DL));
-		DarkToolRecipes.add(new WorldCraftingRecipe(DarkSword, 0, DL));
-		DarkToolRecipes.add(new WorldCraftingRecipe(DarkBlock, DB, DL));
+		WorldCraftingRecipeCollection ironBlockRecipes = new WorldCraftingRecipeCollection(I);
+		WorldCraftingRecipeCollection machineCoreRecipes = new WorldCraftingRecipeCollection(MC);
+		WorldCraftingRecipeCollection toolRecipes = new WorldCraftingRecipeCollection(D);
+		WorldCraftingRecipeCollection lightPlanks = new WorldCraftingRecipeCollection(LP);
+		ironBlockRecipes.add(new WorldCraftingRecipe(MachineCore, MC, Block.blockIron.blockID));
+		machineCoreRecipes.add(new WorldCraftingRecipe(LightBlock, LB, MC));
+		machineCoreRecipes.add(new WorldCraftingRecipe(DarkBlock, DB, MC));
+		machineCoreRecipes.add(new WorldCraftingRecipe(Harvester, H, MC));
+		toolRecipes.add(new WorldCraftingRecipe(LightPickaxe, 0, D));
+		toolRecipes.add(new WorldCraftingRecipe(LightAxe, 0, D));
+		toolRecipes.add(new WorldCraftingRecipe(LightHoe, 0, D));
+		toolRecipes.add(new WorldCraftingRecipe(LightShovel, 0, D));
+		toolRecipes.add(new WorldCraftingRecipe(LightSword, 0, D));
+		toolRecipes.add(new WorldCraftingRecipe(DarkPickaxe, 0, D));
+		toolRecipes.add(new WorldCraftingRecipe(DarkAxe, 0, D));
+		toolRecipes.add(new WorldCraftingRecipe(DarkHoe, 0, D));
+		toolRecipes.add(new WorldCraftingRecipe(DarkShovel, 0, D));
+		toolRecipes.add(new WorldCraftingRecipe(DarkSword, 0, D));
+		lightPlanks.add(new WorldCraftingRecipe(AbsRod, 0, LP));
+		dictionary.add(ironBlockRecipes);
 		dictionary.add(machineCoreRecipes);
-		dictionary.add(harvesterRecipes);
-		dictionary.add(LightToolRecipes);
-		dictionary.add(DarkToolRecipes);
+		dictionary.add(toolRecipes);
+		dictionary.add(lightPlanks);
 	}
 	
 	public static Integer MachineCore[][][] = {
 		{
-			{S,S,S},
-			{S,I,S},
-			{S,S,S}
+			{LP,DL,LP},
+			{DL,I,DL},
+			{LP,DL,LP}
 		}
 	};
 	
@@ -62,32 +64,32 @@ public class WorldCrafting {
 	public static Integer LightPickaxe[][][] = {
 		{
 			{LB,LB,LB},
-			{0,LP,0},
-			{0,LP,0}
+			{0,D,0},
+			{0,D,0}
 		}
 	};
 	
 	public static Integer LightAxe[][][] = {
 		{
 			{LB,LB},
-			{LB,LP},
-			{0,LP}
+			{LB,D},
+			{0,D}
 		}
 	};
 	
 	public static Integer LightHoe[][][] = {
 		{
 			{LB,LB},
-			{0,LP},
-			{0,LP}
+			{0,D},
+			{0,D}
 		}
 	};
 	
 	public static Integer LightShovel[][][] = {
 		{
 			{LB},
-			{LP},
-			{LP}
+			{D},
+			{D}
 		}
 	};
 	
@@ -95,39 +97,39 @@ public class WorldCrafting {
 		{
 			{LB},
 			{LB},
-			{LP}
+			{D}
 		}
 	};
 	
 	public static Integer DarkPickaxe[][][] = {
 		{
 			{DB,DB,DB},
-			{0,DL,0},
-			{0,DL,0}
+			{0,D,0},
+			{0,D,0}
 		}
 	};
 	
 	public static Integer DarkAxe[][][] = {
 		{
 			{DB,DB},
-			{DB,DL},
-			{0,DL}
+			{DB,D},
+			{0,D}
 		}
 	};
 	
 	public static Integer DarkHoe[][][] = {
 		{
 			{DB,DB},
-			{0,DL},
-			{0,DL}
+			{0,D},
+			{0,D}
 		}
 	};
 	
 	public static Integer DarkShovel[][][] = {
 		{
 			{DB},
-			{DL},
-			{DL}
+			{D},
+			{D}
 		}
 	};
 	
@@ -135,23 +137,33 @@ public class WorldCrafting {
 		{
 			{DB},
 			{DB},
-			{DL}
+			{D}
 		}
 	};
 	
 	public static Integer DarkBlock[][][] = {
 		{
-			{S,S,S},
-			{S,DL,S},
-			{S,S,S}
+			{DL,DL,DL},
+			{DL,MC,DL},
+			{DL,DL,DL}
 		}
 	};
 	
 	public static Integer LightBlock[][][] = {
 		{
-			{S,S,S},
-			{S,LP,S},
-			{S,S,S}
+			{LP,LP,LP},
+			{LP,MC,LP},
+			{LP,LP,LP}
+		}
+	};
+	
+	public static Integer AbsRod[][][] = {
+		{
+			{DL,LP},
+			{DL,LP},
+			{DL,LP},
+			{DL,LP},
+			{DL,LP}
 		}
 	};
 	
