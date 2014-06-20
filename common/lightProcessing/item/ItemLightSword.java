@@ -114,7 +114,7 @@ public class ItemLightSword extends ItemSword{
 									continue;
 								ent.attackEntityFrom(DamageSource.outOfWorld, 50F);
 								useItem++;
-								if(i >= 5)
+								if(useItem >= 5)
 									break;
 							}
 						}

@@ -113,7 +113,7 @@ public class ItemDarkSword extends ItemSword {
 									continue;
 								world.removeEntity(entityList.get(i));
 								useItem++;
-								if(i >= 5)
+								if(useItem >= 5)
 									break;
 							}
 						}
