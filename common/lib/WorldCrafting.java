@@ -15,6 +15,7 @@ public class WorldCrafting {
 	static int H = IDRef.HARVESTER_ID;
 	static int LP = IDRef.LIGHT_WOOD_PLANKS_ID;
 	static int LB = IDRef.LIGHT_BLOCK_ID;
+	static int CM = IDRef.COMPRESSOR_ID;
 	public WorldCraftingRecipeDictionary dictionary = new WorldCraftingRecipeDictionary();
 	
 	public WorldCrafting() {
@@ -26,6 +27,8 @@ public class WorldCrafting {
 		machineCoreRecipes.add(new WorldCraftingRecipe(LightBlock, LB, MC));
 		machineCoreRecipes.add(new WorldCraftingRecipe(DarkBlock, DB, MC));
 		machineCoreRecipes.add(new WorldCraftingRecipe(Harvester, H, MC));
+		machineCoreRecipes.add(new WorldCraftingRecipe(Extractor, EX, MC));
+		machineCoreRecipes.add(new WorldCraftingRecipe(Compressor, CM, MC));
 		toolRecipes.add(new WorldCraftingRecipe(LightPickaxe, 0, D));
 		toolRecipes.add(new WorldCraftingRecipe(LightAxe, 0, D));
 		toolRecipes.add(new WorldCraftingRecipe(LightHoe, 0, D));
@@ -164,6 +167,26 @@ public class WorldCrafting {
 			{DL,LP},
 			{DL,LP},
 			{DL,LP}
+		}
+	};
+	
+	public static Integer Extractor[][][] = {
+		{
+			{LB,LP,LP,LP,DB},
+			{DL,0,0,0,DL},
+			{DL,0,MC,0,DL},
+			{DL,0,0,0,DL},
+			{DB,LP,LP,LP,LB}
+		}
+	};
+	
+	public static Integer Compressor[][][] = {
+		{
+			{LB,LB,LB,DB,DB},
+			{LB,0,0,0,DB},
+			{DB,0,MC,0,DB},
+			{DB,0,0,0,LB},
+			{DB,DB,LB,LB,LB}
 		}
 	};
 	
