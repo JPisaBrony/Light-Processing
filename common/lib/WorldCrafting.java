@@ -66,81 +66,70 @@ public class WorldCrafting {
 	
 	public static Integer LightPickaxe[][][] = {
 		{
-			{LB,LB,LB},
-			{0,D,0},
-			{0,D,0}
+			{0,0,LB},
+			{D,D,LB},
+			{0,0,LB}
 		}
 	};
 	
 	public static Integer LightAxe[][][] = {
 		{
-			{LB,LB},
-			{LB,D},
-			{0,D}
-		}
+			{0,LB,LB},
+			{D,D,LB},
+		},
 	};
 	
 	public static Integer LightHoe[][][] = {
 		{
-			{LB,LB},
-			{0,D},
-			{0,D}
+			{0,0,LB},
+			{D,D,LB}
 		}
+
 	};
 	
 	public static Integer LightShovel[][][] = {
 		{
-			{LB},
-			{D},
-			{D}
+			{D,D,LB}
 		}
 	};
 	
 	public static Integer LightSword[][][] = {
 		{
-			{LB},
-			{LB},
-			{D}
+			{D,LB,LB}
 		}
 	};
 	
 	public static Integer DarkPickaxe[][][] = {
 		{
-			{DB,DB,DB},
-			{0,D,0},
-			{0,D,0}
+			{DB,0,0},
+			{DB,D,D},
+			{DB,0,0}
 		}
 	};
 	
 	public static Integer DarkAxe[][][] = {
 		{
-			{DB,DB},
-			{DB,D},
-			{0,D}
+			{DB,D,D},
+			{DB,DB,0}
 		}
 	};
 	
 	public static Integer DarkHoe[][][] = {
 		{
-			{DB,DB},
-			{0,D},
-			{0,D}
+			{DB,D,D},
+			{DB,0,0}
 		}
 	};
 	
 	public static Integer DarkShovel[][][] = {
 		{
-			{DB},
-			{D},
-			{D}
+			{DB,D,D},
 		}
 	};
 	
 	public static Integer DarkSword[][][] = {
 		{
-			{DB},
-			{DB},
-			{D}
+			{DB,DB,D},
 		}
 	};
 	
