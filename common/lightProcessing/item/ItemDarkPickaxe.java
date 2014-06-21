@@ -88,14 +88,14 @@ public class ItemDarkPickaxe extends ItemPickaxe {
 			        if (player instanceof EntityPlayerMP) {
 						((EntityPlayerMP)player).theItemInWorldManager.setBlockReachDistance(6.0D);
 					}
-					if(!(id == Block.dirt.blockID || id == Block.sand.blockID || id == Block.gravel.blockID || id == Block.slowSand.blockID) && id != 0) {
+			        if((id == Block.cobblestone.blockID || id == Block.stone.blockID || id == Block.sandStone.blockID) && id != 0) {
 						for(i = isizeNS; i <= isizeEW; i++) {
 							for(j = jsizeNS; j <= jsizeEW; j++) {
 								for(k = ksizeNS; k <= ksizeEW; k++) {
 									id = world.getBlockId(par4 + i, par5 + j, par6 + k);
 									if(id == Block.bedrock.blockID)
 										continue;
-									if(!(id == Block.dirt.blockID || id == Block.sand.blockID || id == Block.gravel.blockID || id == Block.slowSand.blockID) && id != 0)
+									if((id == Block.cobblestone.blockID || id == Block.stone.blockID || id == Block.sandStone.blockID) && id != 0)
 										world.setBlock(par4 + i, par5 + j, par6 + k, 0);
 								}
 							}
