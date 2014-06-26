@@ -40,7 +40,6 @@ public class ItemLightAxe extends ItemAxe{
 					if(Methods.hasItem(player, IDRef.LIGHT_BALL_IDD)) {
 						int id = world.getBlockId(x, y, z);
 						int isizeNS = 0, isizeEW = 0, jsizeNS = 0, jsizeEW = 0, ksizeNS = 0, ksizeEW = 0, i, j, k;
-						boolean ranCop = false;
 						switch(par7) {
 						case 5:
 							isizeNS = -2;
@@ -117,40 +116,38 @@ public class ItemLightAxe extends ItemAxe{
 									}
 								}
 							}
-							ranCop = true;
 							Methods.useItem(player, IDRef.LIGHT_BALL_ID);
+							return true;
 						}
-						if(ranCop == false) {
-							if(id == Blocks.BlockDarkLeaf.blockID) {
-								if(Methods.spawnItemFromBlockandRemove(world, x, y, z, Blocks.BlockLightTreeSapling, 1, 0)) {
-									Methods.useItem(player, IDRef.LIGHT_BALL_ID);
-									return true;
-								}
-							}
-							if(id == Block.leaves.blockID) {
-								int meta = world.getBlockMetadata(x, y, z);
-								switch(meta & 3) {
-									case 0:
-										Methods.spawnItemFromBlockandRemove(world, x, y, z, Block.sapling, 1, 0);
-										Methods.useItem(player, IDRef.LIGHT_BALL_ID);
-										break;
-									case 1:
-										Methods.spawnItemFromBlockandRemove(world, x, y, z, Block.sapling, 1, 1);
-										Methods.useItem(player, IDRef.LIGHT_BALL_ID);
-										break;
-									case 2:
-										Methods.spawnItemFromBlockandRemove(world, x, y, z, Block.sapling, 1, 2);
-										Methods.useItem(player, IDRef.LIGHT_BALL_ID);
-										break;
-									case 3:
-										Methods.spawnItemFromBlockandRemove(world, x, y, z, Block.sapling, 1, 3);
-										Methods.useItem(player, IDRef.LIGHT_BALL_ID);
-										break;
-								default:
-									return false;
-								}
+						if(id == Blocks.BlockDarkLeaf.blockID) {
+							if(Methods.spawnItemFromBlockandRemove(world, x, y, z, Blocks.BlockLightTreeSapling, 1, 0)) {
+								Methods.useItem(player, IDRef.LIGHT_BALL_ID);
 								return true;
 							}
+						}
+						if(id == Block.leaves.blockID) {
+							int meta = world.getBlockMetadata(x, y, z);
+							switch(meta & 3) {
+								case 0:
+									Methods.spawnItemFromBlockandRemove(world, x, y, z, Block.sapling, 1, 0);
+									Methods.useItem(player, IDRef.LIGHT_BALL_ID);
+									break;
+								case 1:
+									Methods.spawnItemFromBlockandRemove(world, x, y, z, Block.sapling, 1, 1);
+									Methods.useItem(player, IDRef.LIGHT_BALL_ID);
+									break;
+								case 2:
+									Methods.spawnItemFromBlockandRemove(world, x, y, z, Block.sapling, 1, 2);
+									Methods.useItem(player, IDRef.LIGHT_BALL_ID);
+									break;
+								case 3:
+									Methods.spawnItemFromBlockandRemove(world, x, y, z, Block.sapling, 1, 3);
+									Methods.useItem(player, IDRef.LIGHT_BALL_ID);
+									break;
+							default:
+								return false;
+							}
+							return true;
 						}
 					}
 				}

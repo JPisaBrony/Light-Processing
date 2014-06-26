@@ -63,13 +63,13 @@ public class ItemLightPickaxe extends ItemPickaxe {
 						itemstack.getTagCompound().setString("color", "purple");
 						break;
 				}
-				getColorFromItemStack(itemstack, 0);
+				if(world.isRemote)
+					getColorFromItemStack(itemstack, 0);
 				itemstack.getTagCompound().setInteger("mode", mode);
 			}
 		}
 		return itemstack;
 	}
-	
 	
 	@SideOnly(Side.CLIENT)
 	public int getColorFromItemStack(ItemStack itemstack, int par2){
