@@ -1,5 +1,6 @@
 package LightProcessing.common.lib;
 
+import LightProcessing.common.worldCrafting.WorldCraftingRecipe;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.item.EntityItem;

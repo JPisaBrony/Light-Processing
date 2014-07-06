@@ -3,7 +3,8 @@ package LightProcessing.common.lib;
 import java.awt.Event;
 import java.util.ArrayList;
 import java.util.Random;
-import LightProcessing.common.lightProcessing.block.BlockLightTreeSapling;
+
+import LightProcessing.common.block.BlockLightTreeSapling;
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;

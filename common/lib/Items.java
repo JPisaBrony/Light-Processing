@@ -5,7 +5,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import LightProcessing.common.lightProcessing.item.*;
+import LightProcessing.common.item.*;
 
 public class Items {
 

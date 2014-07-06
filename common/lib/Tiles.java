@@ -1,7 +1,7 @@
 package LightProcessing.common.lib;
 
 import cpw.mods.fml.common.registry.GameRegistry;
-import LightProcessing.common.lightProcessing.tile.*;
+import LightProcessing.common.tile.*;
 
 public class Tiles {
 
