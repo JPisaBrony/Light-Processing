@@ -17,6 +17,7 @@ public class WorldCrafting {
 	static int LP = IDRef.LIGHT_WOOD_PLANKS_ID;
 	static int LB = IDRef.LIGHT_BLOCK_ID;
 	static int CM = IDRef.COMPRESSOR_ID;
+	static int DG = IDRef.DARK_GEN_ID;
 	public WorldCraftingRecipeDictionary dictionary = new WorldCraftingRecipeDictionary();
 	
 	public WorldCrafting() {
@@ -30,6 +31,7 @@ public class WorldCrafting {
 		machineCoreRecipes.add(new WorldCraftingRecipe(Harvester, H, MC));
 		machineCoreRecipes.add(new WorldCraftingRecipe(Extractor, EX, MC));
 		machineCoreRecipes.add(new WorldCraftingRecipe(Compressor, CM, MC));
+		machineCoreRecipes.add(new WorldCraftingRecipe(DarkGen, DG, MC));
 		toolRecipes.add(new WorldCraftingRecipe(LightPickaxe, 0, D));
 		toolRecipes.add(new WorldCraftingRecipe(LightAxe, 0, D));
 		toolRecipes.add(new WorldCraftingRecipe(LightHoe, 0, D));
@@ -177,6 +179,16 @@ public class WorldCrafting {
 			{DB,0,MC,0,DB},
 			{DB,0,0,0,LB},
 			{DB,DB,LB,LB,LB}
+		}
+	};
+	
+	public static Integer DarkGen[][][] = {
+		{
+			{DB,DB,DB,DB,DB},
+			{DB,0,0,0,DB},
+			{DB,0,MC,0,DB},
+			{DB,0,0,0,DB},
+			{DB,DB,DB,DB,DB}
 		}
 	};
 	
