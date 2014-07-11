@@ -228,4 +228,8 @@ public class Methods {
 		return Reference.MOD_ID.toLowerCase() + ":" + unLocNam.substring(5);
 	}
 	
+	public Icon makeIcon(IconRegister iconRegister, String iconName) {
+		return iconRegister.registerIcon(Methods.textureName(iconName));
+	}
+	
 }

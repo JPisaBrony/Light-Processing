@@ -36,15 +36,24 @@ public class ItemDarkBall extends Item {
 		itemIcon = iconRegister.registerIcon(Methods.textureName(this.getUnlocalizedName()));
 	}
 
-	public boolean onItemUse(ItemStack ItemStack, EntityPlayer Player, World World, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
-		if (World.getBlockId(par4, par5, par6) != 0) {
-			World.setLightValue(EnumSkyBlock.Block, par4 + 1, par5, par6, 0);
-			World.setLightValue(EnumSkyBlock.Block, par4 - 1, par5, par6, 0);
-			World.setLightValue(EnumSkyBlock.Block, par4, par5 + 1, par6, 0);
-			World.setLightValue(EnumSkyBlock.Block, par4, par5 - 1, par6, 0);
-			World.setLightValue(EnumSkyBlock.Block, par4, par5, par6 + 1, 0);
-			World.setLightValue(EnumSkyBlock.Block, par4, par5, par6 - 1, 0);
-			return true;
+	public boolean onItemUse(ItemStack ItemStack, EntityPlayer Player, World world, int par4, int par5, int par6, int par7, float par8, float par9, float par10) {
+		if(Methods.useItem(Player, IDRef.DARK_BALL_ID)) {
+			if (world.getBlockId(par4, par5, par6) != 0) {				
+				world.setLightValue(EnumSkyBlock.Block, par4 + 1, par5, par6, 0);
+				world.setLightValue(EnumSkyBlock.Block, par4 - 1, par5, par6, 0);
+				world.setLightValue(EnumSkyBlock.Block, par4, par5 + 1, par6, 0);
+				world.setLightValue(EnumSkyBlock.Block, par4, par5 - 1, par6, 0);
+				world.setLightValue(EnumSkyBlock.Block, par4, par5, par6 + 1, 0);
+				world.setLightValue(EnumSkyBlock.Block, par4, par5, par6 - 1, 0);
+				
+				world.setLightValue(EnumSkyBlock.Sky, par4 + 1, par5, par6, 0);
+				world.setLightValue(EnumSkyBlock.Sky, par4 - 1, par5, par6, 0);
+				world.setLightValue(EnumSkyBlock.Sky, par4, par5 + 1, par6, 0);
+				world.setLightValue(EnumSkyBlock.Sky, par4, par5 - 1, par6, 0);
+				world.setLightValue(EnumSkyBlock.Sky, par4, par5, par6 + 1, 0);
+				world.setLightValue(EnumSkyBlock.Sky, par4, par5, par6 - 1, 0);
+				return true;
+			}
 		}
 		return false;
 	}

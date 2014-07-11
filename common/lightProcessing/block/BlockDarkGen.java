@@ -1,25 +1,30 @@
 package LightProcessing.common.lightProcessing.block;
 
-import java.util.List;
+import java.io.IOException;
+import java.lang.reflect.Array;
+import java.lang.reflect.Field;
+import java.util.Arrays;
 import java.util.Random;
-import LightProcessing.common.lightProcessing.tile.TileEntityDarkGen;
-import LightProcessing.common.lib.*;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+import org.objectweb.asm.*;
+
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.dispenser.IPosition;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.world.ChunkCoordIntPair;
+import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.event.world.ChunkWatchEvent;
+import net.minecraftforge.event.world.ChunkWatchEvent.UnWatch;
+import LightProcessing.common.lib.BlockTab;
+import LightProcessing.common.lib.IDRef;
+import LightProcessing.common.lib.Methods;
+import LightProcessing.common.lightProcessing.tile.TileEntityDarkGen;
+import cpw.mods.fml.common.asm.transformers.AccessTransformer;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -85,7 +90,17 @@ public class BlockDarkGen extends Block {
 		this.blockIcon = iconRegister.registerIcon(Methods.textureName(this.getUnlocalizedName()));
 	}
 
-	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer entityPlayer, int par6, float par7, float par8, float par9) {
+	
+		for (int i = -10; i < 10; i++) {
+			for (int j = -10; j < 10; j++) {
+				for (int k = -10; k < 10; k++) {
+					world.setLightValue(EnumSkyBlock.Block, x+i, y+j, z+k, 0);
+					world.setLightValue(EnumSkyBlock.Sky, x+i, y+j, z+k, 0);
+				}
+			}
+		}
+		/*
 		if (!par1World.isRemote && par5EntityPlayer.getCurrentItemOrArmor(0) == null) {
 			if (par1World.getBlockMetadata(par2, par3, par4) == 0) {
 				for (int i = -10; i < 10; i++) {
@@ -111,6 +126,7 @@ public class BlockDarkGen extends Block {
 				par1World.setBlockMetadataWithNotify(par2, par3, par4, 0, 2);
 			}
 		}
+		*/
 		return false;
 	}
 
