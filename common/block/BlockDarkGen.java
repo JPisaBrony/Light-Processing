@@ -58,21 +58,6 @@ public class BlockDarkGen extends Block {
 		return par9;
 	}
 
-	public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6) {
-		/*
-		for (int i = -10; i < 10; i++) {
-			for (int j = -10; j < 10; j++) {
-				for (int k = -10; k < 10; k++) {
-					if (par1World.getBlockId(par2 + k, par3 + j, par4 + i) == IDRef.DARK_BLOCK_ID && par1World.getBlockMetadata(par2 + k, par3 + j, par4 + i) == 2) {
-						par1World.setBlock(par2 + k, par3 + j, par4 + i, 0);
-
-					}
-				}
-			}
-		}
-		par1World.removeBlockTileEntity(par2, par3, par4);*/
-	}
-
 	@Override
 	public void randomDisplayTick(World world, int x, int y, int z, Random random) {
 		super.randomDisplayTick(world, x, y, z, random);
@@ -95,42 +80,19 @@ public class BlockDarkGen extends Block {
 	}
 
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer entityPlayer, int par6, float par7, float par8, float par9) {
-	
 		for (int i = -10; i < 10; i++) {
 			for (int j = -10; j < 10; j++) {
 				for (int k = -10; k < 10; k++) {
+					if(world.getLightBrightness(x+i, y+j, z+k) == 0) {
+						world.setLightValue(EnumSkyBlock.Block, x+i, y+j, z+k, 1);
+						world.setLightValue(EnumSkyBlock.Sky, x+i, y+j, z+k, 1);
+						continue;
+					}
 					world.setLightValue(EnumSkyBlock.Block, x+i, y+j, z+k, 0);
 					world.setLightValue(EnumSkyBlock.Sky, x+i, y+j, z+k, 0);
 				}
 			}
 		}
-		/*
-		if (!par1World.isRemote && par5EntityPlayer.getCurrentItemOrArmor(0) == null) {
-			if (par1World.getBlockMetadata(par2, par3, par4) == 0) {
-				for (int i = -10; i < 10; i++) {
-					for (int j = -10; j < 10; j++) {
-						for (int k = -10; k < 10; k++) {
-							if (par1World.isAirBlock(par2 + k, par3 + j, par4 + i))
-								par1World.setBlock(par2 + k, par3 + j, par4 + i, IDRef.DARK_BLOCK_ID, 2, 2);
-						}
-					}
-				}
-				par1World.setBlockMetadataWithNotify(par2, par3, par4, 1, 2);
-			}
-			else if (par1World.getBlockMetadata(par2, par3, par4) == 1) {
-				for (int i = -10; i < 10; i++) {
-					for (int j = -10; j < 10; j++) {
-						for (int k = -10; k < 10; k++) {
-							if (par1World.getBlockId(par2 + k, par3 + j, par4 + i) == IDRef.DARK_BLOCK_ID && par1World.getBlockMetadata(par2 + k, par3 + j, par4 + i) == 2) {
-								par1World.setBlock(par2 + k, par3 + j, par4 + i, 0);
-							}
-						}
-					}
-				}
-				par1World.setBlockMetadataWithNotify(par2, par3, par4, 0, 2);
-			}
-		}
-		*/
 		return false;
 	}
 

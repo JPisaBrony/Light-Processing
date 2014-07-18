@@ -71,7 +71,8 @@ public class WorldCraftingRecipe {
 				for(column = 0; column < layer.getWidth(); column++) {
 					Point3D arrayCoords = new Point3D(column, depth, row);
 					Point3D worldCoords = getBlockWorldCoords(arrayCoords, controlBlockCoordsWorld, controlBlockCoordsArray);
-					System.out.println(arrayCoords.x + ":" + arrayCoords.y + ":" + arrayCoords.z + " " + worldCoords.x + ":" + worldCoords.y + ":" + worldCoords.z);
+					//Debug information
+					//System.out.println(arrayCoords.x + ":" + arrayCoords.y + ":" + arrayCoords.z + " " + worldCoords.x + ":" + worldCoords.y + ":" + worldCoords.z);
 					if(!checkBlock(worldCoords, grid.get(row, column, depth), world) && (grid.get(row,column,depth) != 0))
 						isTrue = false;
 					
@@ -114,8 +115,9 @@ public class WorldCraftingRecipe {
 	public boolean checkBlock(Point3D worldCoords, Integer blockID, World world) {
 		Integer blockId = world.getBlockId(worldCoords.x, worldCoords.y, worldCoords.z);
 		boolean temp = world.getBlockId(worldCoords.x, worldCoords.y, worldCoords.z) == blockID;
+		//Debug information
 		//world.setBlock(worldCoords.x, worldCoords.y, worldCoords.z, Block.blockLapis.blockID);
-		System.out.println(world.getBlockId(worldCoords.x, worldCoords.y, worldCoords.z) + " " + blockID);
+		//System.out.println(world.getBlockId(worldCoords.x, worldCoords.y, worldCoords.z) + " " + blockID);
 		return temp;
 	}
 	

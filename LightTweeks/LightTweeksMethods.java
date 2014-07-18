@@ -8,12 +8,15 @@ import net.minecraft.world.World;
 public class LightTweeksMethods {
 	
 	public static int updateLight(int x, int y, int z, EnumSkyBlock enumSkyBlock, World world) {
+		//System.out.println("update light called");
 		if (enumSkyBlock == EnumSkyBlock.Sky && world.canBlockSeeTheSky(x, y, z)) {
 			if(world.getLightBrightness(x, y, z) == 0)
 	    		return 0;
 			return 15;
 		}
 		else {
+			if(world.getLightBrightness(x, y, z) == 0)
+	    		return 0;
 			int blockLight, newLightValue, lightOpacity, blockID;
             blockID = world.getBlockId(x, y, z);
             Block block = Block.blocksList[blockID];
@@ -31,13 +34,13 @@ public class LightTweeksMethods {
             else
             	newLightValue = blockLight;
 
-            if ((lightOpacity >= 15 && blockLight > 0) || lightOpacity < 1)
+            if((lightOpacity >= 15 && blockLight > 0) || lightOpacity < 1)
                 lightOpacity = 1;
 
-            if (lightOpacity >= 15)
+            if(lightOpacity >= 15)
                 return 0;
             
-            else if (newLightValue >= 14)
+            else if(newLightValue >= 14)
                 return newLightValue;
             
             else {

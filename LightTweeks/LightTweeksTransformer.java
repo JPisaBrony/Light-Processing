@@ -32,7 +32,7 @@ public class LightTweeksTransformer implements IClassTransformer, Opcodes {
 		Iterator<MethodNode> methods = classNode.methods.iterator();
 		while (methods.hasNext()) {
 			MethodNode m = methods.next();
-			if ((m.name.equals(methodToReplace) && m.desc.equals("(IIILnet/minecraft/world/EnumSkyBlock;)I"))) {
+			if ((m.name.equals(methodToReplace) && (m.desc.equals("(IIILnet/minecraft/world/EnumSkyBlock;)I") || m.desc.equals("(IIILach;)I")))) {
 				
 				@SuppressWarnings("unchecked")
 				Iterator<AbstractInsnNode> iter = m.instructions.iterator();

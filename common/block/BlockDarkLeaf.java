@@ -58,7 +58,7 @@ public class BlockDarkLeaf extends BlockLeavesBase implements IShearable{
 	}
 
 	public int quantityDropped(Random par1Random) {
-		return par1Random.nextInt(50) == 0 ? 1 : 0;
+		return par1Random.nextInt(40) == 0 ? 1 : 0;
 	}
 
 /*
