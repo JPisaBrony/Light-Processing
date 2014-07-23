@@ -18,11 +18,10 @@ public class TileEntityHarvester extends TileEntity {
 
 	@Override
 	public void updateEntity() {
-		
-	chance = 2000;
+		chance = 10;
 		if (this.worldObj.getBlockId(this.xCoord, this.yCoord + 1, this.zCoord) == IDRef.LIGHT_BLOCK_ID || this.worldObj.getBlockId(this.xCoord, this.yCoord + 1, this.zCoord) == IDRef.DARK_BLOCK_ID) {
-				chance = chance / 2;
-			}
+			chance /= 2;
+		}
 		if (r.nextInt(chance) == 0) {
 			BlockHarvester.Essence(this.worldObj, this.xCoord, this.yCoord, this.zCoord);
 		}
@@ -35,20 +34,22 @@ public class TileEntityHarvester extends TileEntity {
 		return bb;
 	}
 
-	public void Spawn(Float Light2) {
-		ItemStack lightStack = new ItemStack(Items.ItemLightBall, 1);
-		ItemStack darkStack = new ItemStack(Items.ItemDarkBall, 1);
+	public void Spawn(Float LightValue, boolean isAbove) {
 		ItemStack stack;
-		if (Light2 > 0.7F) {
-			stack = lightStack;
+		
+		if (LightValue > 0.7F) {
+			stack = new ItemStack(Items.ItemLightBall, 1);
 		}
 		else {
-			stack = darkStack;
+			stack = new ItemStack(Items.ItemDarkBall, 1);
 		}
-
 		EntityItem entityitem;
-		entityitem = new EntityItem(this.worldObj, this.xCoord + 0.5, this.yCoord + 0.2, this.zCoord + 0.5, stack);
-
+		
+		if(isAbove)
+			entityitem = new EntityItem(this.worldObj, this.xCoord + 0.5, this.yCoord + 1.0, this.zCoord + 0.5, stack);
+		else
+			entityitem = new EntityItem(this.worldObj, this.xCoord + 0.5, this.yCoord + 0.2, this.zCoord + 0.5, stack);
+		
 		entityitem.motionX = 0;
 		entityitem.motionY = 0;
 		entityitem.motionZ = 0;

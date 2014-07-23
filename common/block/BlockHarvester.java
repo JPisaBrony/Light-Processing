@@ -2,25 +2,23 @@ package LightProcessing.common.block;
 
 import java.util.List;
 import java.util.Random;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import LightProcessing.common.lib.*;
-import LightProcessing.common.tile.*;
+
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.Icon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import LightProcessing.common.lib.BlockTab;
+import LightProcessing.common.lib.IDRef;
+import LightProcessing.common.lib.Methods;
+import LightProcessing.common.tile.TileEntityHarvester;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockHarvester extends BlockContainer {
 
@@ -33,10 +31,13 @@ public class BlockHarvester extends BlockContainer {
 	}
 
 	public static void Essence(World par1World, int par2, int par3, int par4) {
-
 		TileEntityHarvester te = (TileEntityHarvester) par1World.getBlockTileEntity(par2, par3, par4);
 		float Light = par1World.getLightBrightness(par2, par3 + 1, par4);
-		te.Spawn(Light);
+		int blockAbove = par1World.getBlockId(par2, par3 + 1, par4);
+		if (blockAbove == IDRef.LIGHT_BLOCK_ID || blockAbove == IDRef.DARK_BLOCK_ID)
+			te.Spawn(Light, true);
+		else
+			te.Spawn(Light, false);
 	}
 
 	@Override
