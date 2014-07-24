@@ -193,10 +193,13 @@ public class Methods {
 		return false;
 	}
 	
-	public static boolean spawnItemInWorld(World world, int par2, int par3, int par4, Item item) {
+	public static boolean spawnItemInWorld(World world, int x, int y, int z, Item item) {
 		if(!world.isRemote) {
 			ItemStack theItemStack = new ItemStack(item);
-			EntityItem theEntityItem = new EntityItem(world, par2, par3 + 1, par4, theItemStack);
+			EntityItem theEntityItem = new EntityItem(world, x, y + 1, z, theItemStack);
+			theEntityItem.motionX = 0;
+			theEntityItem.motionY = 0;
+			theEntityItem.motionZ = 0;
 			world.spawnEntityInWorld(theEntityItem);
 			return true;
 		}
