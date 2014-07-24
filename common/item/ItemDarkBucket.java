@@ -155,7 +155,7 @@ public class ItemDarkBucket extends Item
                         return par1ItemStack;
                     }
 
-                    if (this.tryPlaceContainedLiquid(par2World, i, j, k) && !par3EntityPlayer.capabilities.isCreativeMode)
+                    if (this.tryPlaceContainedLiquid(par2World, i, j, k, par3EntityPlayer) && !par3EntityPlayer.capabilities.isCreativeMode)
                     {
                         return new ItemStack(Items.ItemDarkBucketEmpty);
                     }
@@ -169,7 +169,7 @@ public class ItemDarkBucket extends Item
     /**
      * Attempts to place the liquid contained inside the bucket.
      */
-    public boolean tryPlaceContainedLiquid(World par1World, int par2, int par3, int par4)
+    public boolean tryPlaceContainedLiquid(World par1World, int par2, int par3, int par4, EntityPlayer player)
     {
         if (this.isFull <= 0)
         {
@@ -201,8 +201,10 @@ public class ItemDarkBucket extends Item
                     {
                         par1World.destroyBlock(par2, par3, par4, true);
                     }
-
-                    par1World.setBlock(par2, par3, par4, this.isFull, 0, 3);
+                    if(player.isSneaking())
+                    	par1World.setBlock(par2, par3, par4, Block.waterStill.blockID, 0, 3);
+                    else
+                    	par1World.setBlock(par2, par3, par4, this.isFull, 0, 3);
                 //}
 
                 return true;
