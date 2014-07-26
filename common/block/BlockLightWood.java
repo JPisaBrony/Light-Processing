@@ -12,7 +12,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockLightWood extends Block {
-
+	
 	public BlockLightWood(int par1, Material par2Material) {
 		super(par1, par2Material);
 		this.setUnlocalizedName("LightWood");
@@ -21,14 +21,14 @@ public class BlockLightWood extends Block {
 		this.setStepSound(soundWoodFootstep);
 		this.setLightValue(1.0F);
 	}
-
+	
 	public Icon blockIcon2;
-
+	
 	@Override
 	public boolean isWood(World world, int x, int y, int z) {
 		return true;
 	}
-
+	
 	public int onBlockPlaced(World par1World, int par2, int par3, int par4, int par5, float par6, float par7, float par8, int par9) {
 		int j1 = par9 & 3;
 		byte b0 = 0;
@@ -49,7 +49,7 @@ public class BlockLightWood extends Block {
 
 		return j1 | b0;
 	}
-
+	
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister iconRegister) {
@@ -62,12 +62,7 @@ public class BlockLightWood extends Block {
 		int l = par2 & 3;
 		return k == 0 && (par1 == 1 || par1 == 0) ? blockIcon2 : (k == 4 && (par1 == 5 || par1 == 4) ? blockIcon2 : (k == 8 && (par1 == 2 || par1 == 3) ? blockIcon2 : this.blockIcon));
 	}
-
-	/*
-	 * public Icon getBlockTexture(IBlockAccess par1IBlockAccess, int par2, int
-	 * par3, int par4, int par5) { if(par5 == 0 || par5 == 1){ return
-	 * blockIcon2; } else{ return blockIcon; } }
-	 */
+	
 	public int idDropped(int par1, Random par2Random, int par3) {
 		return IDRef.LIGHT_WOOD_ID;
 	}

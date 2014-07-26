@@ -34,7 +34,7 @@ public class BlockDarkLeaf extends BlockLeavesBase implements IShearable{
 		this.setHardness(0.2F);
 		this.setUnlocalizedName("DarkLeaf");
 	}
-
+	
 	@Override
 	public void randomDisplayTick(World world, int x, int y, int z, Random random) {
 		super.randomDisplayTick(world, x, y, z, random);
@@ -61,23 +61,6 @@ public class BlockDarkLeaf extends BlockLeavesBase implements IShearable{
 		return par1Random.nextInt(40) == 0 ? 1 : 0;
 	}
 
-/*
-	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9) {
-		if (!par1World.isRemote && par5EntityPlayer.getCurrentItemOrArmor(0) == null) {
-			EntityMoveBlock entityfallingsand = new EntityMoveBlock(par1World, (double) ((float) par2 + 0.5F), (double) ((float) par3 + 0.5F), (double) ((float) par4 + 0.5F), IDRef.DARK_LEAF_ID, par1World.getBlockMetadata(par2, par3, par4));
-			entityfallingsand.motionX = 0;
-			entityfallingsand.motionY = 0.5;
-			entityfallingsand.motionZ = 0;
-			par1World.spawnEntityInWorld(entityfallingsand);
-		}
-		return false;
-	}
-*/
-	
-	public void onFinishFalling(World par1World, int par2, int par3, int par4, int par5) {
-		par1World.setBlockToAir(par2, par3 - 1, par4);
-	}
-
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IconRegister iconRegister) {
@@ -88,13 +71,22 @@ public class BlockDarkLeaf extends BlockLeavesBase implements IShearable{
     public ArrayList<ItemStack> onSheared(ItemStack item, World world, int x, int y, int z, int fortune)
     {
         ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-        ret.add(new ItemStack(this, 1, world.getBlockMetadata(x, y, z) & 3));
+        ret.add(new ItemStack(this, 1, 0));
         return ret;
     }
     
     @Override
-    public boolean isShearable(ItemStack item, World world, int x, int y, int z)
-    {
+    public boolean isShearable(ItemStack item, World world, int x, int y, int z) {
+        return true;
+    }
+    
+    @Override
+    public void beginLeavesDecay(World world, int x, int y, int z) {
+    	world.setBlockMetadataWithNotify(x, y, z, 0, 4);
+    }
+    
+    @Override
+    public boolean isLeaves(World world, int x, int y, int z) {
         return true;
     }
     
