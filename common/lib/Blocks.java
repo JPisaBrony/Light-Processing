@@ -23,6 +23,7 @@ public class Blocks {
 	public static Block BlockEssenceExtractor;
 	public static Block BlockLightOre;
 	public static Block BlockLightOreStone;
+	public static Block BlockStabilizer;
 
 	public static void InitBlocks() {
 		// LIGHT BLOCK
@@ -94,6 +95,11 @@ public class Blocks {
 		BlockLightOreStone = new BlockLightOreStone(IDRef.LIGHT_ORE_STONE_ID, Material.rock);
 		GameRegistry.registerBlock(BlockLightOreStone, "LightOreStone");
 		LanguageRegistry.addName(BlockLightOreStone, "Light Ore Stone");
+	
+		// Stabilizer
+		BlockStabilizer = new BlockStabilizer(IDRef.STABILIZER_ID, Material.rock);
+		GameRegistry.registerBlock(BlockStabilizer, "Stabilizer");
+		LanguageRegistry.addName(BlockStabilizer, "Stabilizer");
 	}
 
 }

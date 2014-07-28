@@ -11,5 +11,6 @@ public class Tiles {
 		GameRegistry.registerTileEntity(TileEntityDarkGen.class, "Dark Gen");
 		GameRegistry.registerTileEntity(TileEntityMachineCore.class, "Machine Core");
 		GameRegistry.registerTileEntity(TileEntityEssenceExtractor.class, "Essence Extractor");
+		GameRegistry.registerTileEntity(TileEntityStabilizer.class, "Stabilizer");
 	}
 }

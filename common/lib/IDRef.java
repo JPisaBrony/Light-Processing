@@ -21,6 +21,7 @@ public class IDRef {
 	public static int ESSENCE_EXTRACTOR_ID;
 	public static int LIGHT_ORE_ID;
 	public static int LIGHT_ORE_STONE_ID;
+	public static int STABILIZER_ID;
 
 	// items
 	public static int ABS_INGOT_ID;
@@ -62,6 +63,7 @@ public class IDRef {
 	public static int LIGHT_WOOD_PLANKS_IDD = 3021;
 	public static int LIGHT_ORE_IDD = 3022;
 	public static int LIGHT_ORE_STONE_IDD = 3023;
+	public static int STABILIZER_IDD = 3024;
 
 	// items default
 	public static int ABS_INGOT_IDD = 5000;

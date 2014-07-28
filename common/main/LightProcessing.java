@@ -50,6 +50,8 @@ public class LightProcessing {
 		IDRef.LIGHT_WOOD_PLANKS_ID = config.get(config.CATEGORY_BLOCK, "LightWoodPlanks", IDRef.LIGHT_WOOD_PLANKS_IDD).getInt();
 		IDRef.LIGHT_ORE_ID = config.get(config.CATEGORY_BLOCK, "Light Ore", IDRef.LIGHT_ORE_IDD).getInt();
 		IDRef.LIGHT_ORE_STONE_ID = config.get(config.CATEGORY_BLOCK, "Light Ore Stone", IDRef.LIGHT_ORE_STONE_IDD).getInt();
+		IDRef.STABILIZER_ID = config.get(config.CATEGORY_BLOCK, "Stabilizer", IDRef.STABILIZER_IDD).getInt();
+		
 		
 		// items
 		IDRef.ABS_INGOT_ID = config.get(config.CATEGORY_ITEM, "AbsIngot", IDRef.ABS_INGOT_IDD).getInt();
